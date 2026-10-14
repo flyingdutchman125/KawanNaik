@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Java/Maven
+/target/
+*.class
+*.jar
+*.war
+
+# Logs
+*.log
+
+# Misc
+*.env
+*.sqlite
