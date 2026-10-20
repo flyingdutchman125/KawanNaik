@@ -1,21 +1,85 @@
-# OS
+# ===============================
+# Operating System Files
+# ===============================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
 
-# IDE
+# ===============================
+# IDE & Editor Files
+# ===============================
+# IntelliJ IDEA
 .idea/
-.vscode/
 *.iml
+*.iws
+*.ipr
+out/
 
-# Java/Maven
-/target/
+# Eclipse
+.apt_generated
+.apt_generated_tests
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# Visual Studio Code
+.vscode/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Generic Editors
+*.swp
+*~
+*.bak
+
+# ===============================
+# Java & Maven Build
+# ===============================
+target/
 *.class
 *.jar
 *.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
 
-# Logs
+# Maven Wrapper JAR (keep wrapper script & jar if needed, or uncomment below to ignore)
+# .mvn/wrapper/maven-wrapper.jar
+
+# JVM Crash Logs
+hs_err_pid*
+replay_pid*
+
+# ===============================
+# Logs & Databases
+# ===============================
 *.log
-
-# Misc
-*.env
+logs/
 *.sqlite
+*.db
+
+# ===============================
+# Environment & Local Overrides
+# ===============================
+*.env
+.env
+.env.*
+application-local.properties
+application-local.yml
+application-dev.local.properties
+application-dev.local.yml
