@@ -60,6 +60,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/jalur/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/titik-jalur/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/rencana/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/panduan/**").permitAll()
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );

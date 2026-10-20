@@ -11,4 +11,5 @@ import java.util.List;
 public interface PanduanKeselamatanRepository extends JpaRepository<PanduanKeselamatan, Long> {
     List<PanduanKeselamatan> findByKategoriIgnoreCase(String kategori);
     List<PanduanKeselamatan> findByLevelMinimum(LevelFisik levelMinimum);
+    List<PanduanKeselamatan> findByKategoriIgnoreCaseAndLevelMinimum(String kategori, LevelFisik levelMinimum);
 }

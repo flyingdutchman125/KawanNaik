@@ -1,6 +1,7 @@
 package com.kawannaik.controller;
 
 import com.kawannaik.dto.request.RencanaPendakianRequest;
+import com.kawannaik.dto.request.UpdateStatusRencanaRequest;
 import com.kawannaik.dto.response.ApiResponse;
 import com.kawannaik.dto.response.RencanaPendakianResponse;
 import com.kawannaik.model.enums.LevelFisik;
@@ -52,4 +53,31 @@ public class RencanaPendakianController {
         List<RencanaPendakianResponse> list = rencanaService.getMyRencana(authentication.getName());
         return ResponseEntity.ok(ApiResponse.success(list, "Daftar rencana saya berhasil diambil"));
     }
+
+    /**
+     * PUT /api/v1/rencana/{id}/status
+     * Update status rencana (DIBUKA → DITUTUP → SELESAI / DIBATALKAN).
+     */
+    @PutMapping("/{id}/status")
+    public ResponseEntity<ApiResponse<RencanaPendakianResponse>> updateStatusRencana(
+            Authentication authentication,
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateStatusRencanaRequest request) {
+        RencanaPendakianResponse response = rencanaService.updateStatusRencana(
+                authentication.getName(), id, request.getStatus());
+        return ResponseEntity.ok(ApiResponse.success(response, "Status rencana pendakian berhasil diperbarui"));
+    }
+
+    /**
+     * DELETE /api/v1/rencana/{id}/cancel
+     * Pembatalan rencana oleh pemilik/host.
+     */
+    @DeleteMapping("/{id}/cancel")
+    public ResponseEntity<ApiResponse<RencanaPendakianResponse>> cancelRencana(
+            Authentication authentication,
+            @PathVariable Long id) {
+        RencanaPendakianResponse response = rencanaService.cancelRencana(authentication.getName(), id);
+        return ResponseEntity.ok(ApiResponse.success(response, "Rencana pendakian berhasil dibatalkan"));
+    }
 }
+

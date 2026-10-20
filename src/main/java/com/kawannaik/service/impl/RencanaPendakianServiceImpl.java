@@ -2,6 +2,7 @@ package com.kawannaik.service.impl;
 
 import com.kawannaik.dto.request.RencanaPendakianRequest;
 import com.kawannaik.dto.response.RencanaPendakianResponse;
+import com.kawannaik.exception.BadRequestException;
 import com.kawannaik.exception.ResourceNotFoundException;
 import com.kawannaik.model.Jalur;
 import com.kawannaik.model.Pengguna;
@@ -49,6 +50,11 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
         Jalur jalur = jalurRepository.findById(request.getJalurId())
                 .orElseThrow(() -> new ResourceNotFoundException("Jalur dengan ID " + request.getJalurId() + " tidak ditemukan"));
 
+        // Validasi tanggal: tanggal naik tidak boleh di masa lalu
+        if (request.getTanggalNaik().isBefore(LocalDate.now())) {
+            throw new BadRequestException("Tanggal pendakian tidak boleh di masa lalu");
+        }
+
         RencanaPendakian rencana = RencanaPendakian.builder()
                 .pembuat(pembuat)
                 .jalur(jalur)
@@ -89,6 +95,65 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
+    public RencanaPendakianResponse updateStatusRencana(String userEmail, Long rencanaId, StatusRencana newStatus) {
+        Pengguna pembuat = penggunaRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new ResourceNotFoundException("Pengguna tidak ditemukan"));
+
+        RencanaPendakian rencana = rencanaRepository.findById(rencanaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Rencana pendakian dengan ID " + rencanaId + " tidak ditemukan"));
+
+        // Validasi: hanya pembuat yang boleh mengubah status
+        if (!rencana.getPembuat().getId().equals(pembuat.getId())) {
+            throw new BadRequestException("Hanya pembuat rencana yang bisa mengubah status rencana");
+        }
+
+        // Validasi state machine lifecycle
+        validateStatusTransition(rencana.getStatus(), newStatus);
+
+        rencana.setStatus(newStatus);
+        return mapToResponse(rencanaRepository.save(rencana));
+    }
+
+    @Override
+    @Transactional
+    public RencanaPendakianResponse cancelRencana(String userEmail, Long rencanaId) {
+        return updateStatusRencana(userEmail, rencanaId, StatusRencana.DIBATALKAN);
+    }
+
+    /**
+     * Validasi transisi status rencana pendakian (state machine).
+     *
+     * Transisi yang diperbolehkan:
+     * - DIBUKA → DITUTUP (menutup pendaftaran)
+     * - DIBUKA → DIBATALKAN (membatalkan sebelum ditutup)
+     * - DITUTUP → SELESAI (pendakian selesai)
+     * - DITUTUP → DIBATALKAN (membatalkan setelah ditutup)
+     *
+     * Transisi yang TIDAK diperbolehkan:
+     * - SELESAI → apapun (final state)
+     * - DIBATALKAN → apapun (final state)
+     * - DIBUKA → SELESAI (harus ditutup dulu)
+     * - DITUTUP → DIBUKA (tidak bisa mundur)
+     */
+    private void validateStatusTransition(StatusRencana currentStatus, StatusRencana newStatus) {
+        if (currentStatus == newStatus) {
+            throw new BadRequestException("Status rencana sudah " + currentStatus);
+        }
+
+        boolean valid = switch (currentStatus) {
+            case DIBUKA -> newStatus == StatusRencana.DITUTUP || newStatus == StatusRencana.DIBATALKAN;
+            case DITUTUP -> newStatus == StatusRencana.SELESAI || newStatus == StatusRencana.DIBATALKAN;
+            case SELESAI, DIBATALKAN -> false;
+        };
+
+        if (!valid) {
+            throw new BadRequestException(
+                    "Transisi status dari " + currentStatus + " ke " + newStatus + " tidak diperbolehkan");
+        }
+    }
+
     private RencanaPendakianResponse mapToResponse(RencanaPendakian r) {
         long diterimaCount = pesertaRepository.countByRencanaIdAndStatus(r.getId(), StatusPermintaan.DITERIMA);
 
@@ -111,3 +176,4 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
                 .build();
     }
 }
+
