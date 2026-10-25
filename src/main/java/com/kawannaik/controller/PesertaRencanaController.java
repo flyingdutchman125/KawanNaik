@@ -4,8 +4,10 @@ import com.kawannaik.dto.request.PesertaRencanaRequest;
 import com.kawannaik.dto.response.ApiResponse;
 import com.kawannaik.dto.response.PesertaRencanaResponse;
 import com.kawannaik.service.PesertaRencanaService;
+import com.kawannaik.util.PaginationUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -13,17 +15,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "5. Peserta Rencana", description = "Pengajuan bergabung, persetujuan peserta oleh host, dan daftar peserta")
 @RestController
 @RequestMapping("/api/v1/rencana/{rencanaId}")
-@RequiredArgsConstructor
 public class PesertaRencanaController {
 
     private final PesertaRencanaService pesertaService;
+
+    public PesertaRencanaController(PesertaRencanaService pesertaService) {
+        this.pesertaService = pesertaService;
+    }
 
     /**
      * POST /api/v1/rencana/{id}/join
      * Ajukan bergabung ke rencana pendakian.
      */
+    @Operation(summary = "Ajukan bergabung", description = "Pendaki mengajukan diri untuk bergabung ke rencana pendakian terbuka")
     @PostMapping("/join")
     public ResponseEntity<ApiResponse<PesertaRencanaResponse>> joinRencana(
             Authentication authentication,
@@ -37,6 +44,7 @@ public class PesertaRencanaController {
      * DELETE /api/v1/rencana/{id}/leave
      * Batalkan ajuan / tinggalkan rencana pendakian.
      */
+    @Operation(summary = "Batalkan ajuan / tinggalkan rencana", description = "Membatalkan permohonan bergabung atau meninggalkan rencana pendakian")
     @DeleteMapping("/leave")
     public ResponseEntity<ApiResponse<Void>> leaveRencana(
             Authentication authentication,
@@ -49,6 +57,7 @@ public class PesertaRencanaController {
      * PUT /api/v1/rencana/{id}/peserta/{pesertaId}/status
      * Host menerima / menolak peserta.
      */
+    @Operation(summary = "Update status peserta (Host)", description = "Host/pembuat rencana menerima (DISETUJUI) atau menolak (DITOLAK) calon peserta")
     @PutMapping("/peserta/{pesertaId}/status")
     public ResponseEntity<ApiResponse<PesertaRencanaResponse>> updateStatusPeserta(
             Authentication authentication,
@@ -64,10 +73,13 @@ public class PesertaRencanaController {
      * GET /api/v1/rencana/{id}/peserta
      * Daftar peserta per rencana pendakian.
      */
+    @Operation(summary = "Daftar peserta rencana", description = "Melihat seluruh peserta (dan status persetujuannya) pada rencana pendakian")
     @GetMapping("/peserta")
     public ResponseEntity<ApiResponse<List<PesertaRencanaResponse>>> getPesertaByRencana(
-            @PathVariable Long rencanaId) {
+            @PathVariable Long rencanaId,
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer size) {
         List<PesertaRencanaResponse> list = pesertaService.getPesertaByRencana(rencanaId);
-        return ResponseEntity.ok(ApiResponse.success(list, "Daftar peserta berhasil diambil"));
+        return ResponseEntity.ok(PaginationUtil.paginate(list, page, size, "Daftar peserta berhasil diambil"));
     }
 }

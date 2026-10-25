@@ -1,6 +1,5 @@
 package com.kawannaik.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kawannaik.model.enums.LevelFisik;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

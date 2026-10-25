@@ -68,7 +68,7 @@ public class DataSeeder implements CommandLineRunner {
         // ---------------------------------------------------------------
         String encodedPassword = passwordEncoder.encode("password123");
 
-        Pengguna admin = penggunaRepository.save(Pengguna.builder()
+        penggunaRepository.save(Pengguna.builder()
                 .nama("Admin KawanNaik")
                 .email("admin@kawannaik.com")
                 .passwordHash(encodedPassword)

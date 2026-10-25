@@ -11,6 +11,12 @@ import com.kawannaik.service.TitikJalurService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import java.io.StringReader;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,6 +87,56 @@ public class TitikJalurServiceImpl implements TitikJalurService {
             throw new ResourceNotFoundException("Titik jalur dengan ID " + id + " tidak ditemukan");
         }
         titikJalurRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public int importGpx(Long jalurId, String gpxContent) {
+        if (gpxContent == null || gpxContent.length() > 10_000_000) {
+            throw new IllegalArgumentException("File GPX kosong atau terlalu besar");
+        }
+        Jalur jalur = jalurRepository.findById(jalurId)
+                .orElseThrow(() -> new ResourceNotFoundException("Jalur dengan ID " + jalurId + " tidak ditemukan"));
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+            NodeList nodes = factory.newDocumentBuilder()
+                    .parse(new InputSource(new StringReader(gpxContent)))
+                    .getElementsByTagName("trkpt");
+            if (nodes.getLength() < 2) throw new IllegalArgumentException("GPX harus memiliki minimal 2 titik track");
+
+            titikJalurRepository.deleteByJalurId(jalurId);
+            for (int i = 0; i < nodes.getLength(); i++) {
+                var node = (org.w3c.dom.Element) nodes.item(i);
+                String lat = node.getAttribute("lat");
+                String lon = node.getAttribute("lon");
+                if (lat.isBlank() || lon.isBlank()) continue;
+                com.kawannaik.model.enums.JenisTitik jenis = i == 0
+                        ? com.kawannaik.model.enums.JenisTitik.BASECAMP
+                        : i == nodes.getLength() - 1
+                        ? com.kawannaik.model.enums.JenisTitik.PUNCAK
+                        : com.kawannaik.model.enums.JenisTitik.POS;
+                TitikJalur titik = TitikJalur.builder()
+                        .jalur(jalur)
+                        .jenis(jenis)
+                        .nama(i == 0 ? "Awal jalur" : i == nodes.getLength() - 1 ? "Puncak" : "Titik " + (i + 1))
+                        .latitude(Double.valueOf(lat))
+                        .longitude(Double.valueOf(lon))
+                        .urutan(i + 1)
+                        .build();
+                titikJalurRepository.save(titik);
+            }
+            return nodes.getLength();
+        } catch (IllegalArgumentException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Format GPX tidak valid", e);
+        }
     }
 
     private TitikJalurResponse mapToResponse(TitikJalur t) {

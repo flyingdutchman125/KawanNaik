@@ -10,4 +10,5 @@ public interface TitikJalurService {
     TitikJalurResponse createTitikJalur(TitikJalurRequest request);
     TitikJalurResponse updateTitikJalur(Long id, TitikJalurRequest request);
     void deleteTitikJalur(Long id);
+    int importGpx(Long jalurId, String gpxContent);
 }

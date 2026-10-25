@@ -11,4 +11,5 @@ import java.util.List;
 public interface TitikJalurRepository extends JpaRepository<TitikJalur, Long> {
     List<TitikJalur> findByJalurIdOrderByUrutanAsc(Long jalurId);
     List<TitikJalur> findByJalurIdAndJenis(Long jalurId, JenisTitik jenis);
+    void deleteByJalurId(Long jalurId);
 }

@@ -3,7 +3,6 @@ package com.kawannaik.service.impl;
 import com.kawannaik.dto.response.PesertaRencanaResponse;
 import com.kawannaik.exception.BadRequestException;
 import com.kawannaik.exception.ResourceNotFoundException;
-import com.kawannaik.model.Jalur;
 import com.kawannaik.model.Pengguna;
 import com.kawannaik.model.PesertaRencana;
 import com.kawannaik.model.RencanaPendakian;

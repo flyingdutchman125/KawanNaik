@@ -3,7 +3,6 @@ package com.kawannaik.config;
 import com.kawannaik.security.CustomUserDetailsService;
 import com.kawannaik.security.JwtAuthenticationEntryPoint;
 import com.kawannaik.security.JwtAuthenticationFilter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -29,12 +28,19 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationEntryPoint authenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SecurityConfig(CustomUserDetailsService userDetailsService,
+                          JwtAuthenticationEntryPoint authenticationEntryPoint,
+                          JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.userDetailsService = userDetailsService;
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -77,12 +83,17 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // Swagger / OpenAPI
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html",
-                                "/v3/api-docs/**", "/v3/api-docs.yaml").permitAll()
+                                "/v3/api-docs", "/v3/api-docs/**", "/v3/api-docs.yaml").permitAll()
+                        // Static Frontend Web & PWA
+                        .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/images/**", "/manifest.json", "/favicon.ico", "/*.css", "/*.js").permitAll()
+                        // H2 Console (Dev Profile)
+                        .requestMatchers("/h2-console/**").permitAll()
                         // Public API endpoints
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/gunung/**").permitAll()
