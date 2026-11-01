@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gunungApi } from '../lib/api';
+import { useAuth } from '../context/AuthContext';
 import { getMtnEmoji } from '../utils/helpers';
 
 function IconSearch() {
@@ -16,6 +17,7 @@ const REGION_FILTERS = ['Semua', 'Jawa Timur', 'Jawa Tengah', 'Jawa Barat', 'Lua
 
 export default function GunungPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [gunung, setGunung] = useState([]);
   const [search, setSearch] = useState('');
   const [regionFilter, setRegionFilter] = useState('Semua');
@@ -45,11 +47,20 @@ export default function GunungPage() {
   return (
     <div className="page page-enter">
       {/* App Bar */}
-      <div className="app-bar">
+      <div className="app-bar" style={{ justifyContent: 'space-between' }}>
         <div>
           <div className="app-bar-title">Gunung</div>
           <div className="app-bar-subtitle">Katalog gunung Indonesia</div>
         </div>
+        {user?.peran === 'ADMIN' && (
+          <button
+            className="btn btn-primary btn-sm"
+            onClick={() => navigate('/admin/gunung?tab=tambah')}
+            style={{ padding: '8px 14px', fontSize: 13, gap: 4 }}
+          >
+            ➕ Tambah Gunung
+          </button>
+        )}
       </div>
 
       <div className="container" style={{ paddingTop: 16 }}>

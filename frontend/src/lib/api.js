@@ -45,6 +45,9 @@ export const userApi = {
 export const gunungApi = {
   getAll:  (search) => api.get('/gunung', { params: { search } }),
   getById: (id)     => api.get(`/gunung/${id}`),
+  create:  (data)   => api.post('/admin/gunung', data),
+  update:  (id, data) => api.put(`/admin/gunung/${id}`, data),
+  delete:  (id)     => api.delete(`/admin/gunung/${id}`),
 };
 
 // ---- Jalur ----

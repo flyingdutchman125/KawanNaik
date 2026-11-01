@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { gunungApi, jalurApi } from '../lib/api';
+import { useAuth } from '../context/AuthContext';
 import { levelLabel, levelColor, getMtnEmoji } from '../utils/helpers';
 import JalurMap from '../components/JalurMap';
 
@@ -12,6 +13,7 @@ const JENIS_ICON = {
 export default function GunungDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [gunung, setGunung]         = useState(null);
   const [jalur, setJalur]           = useState([]);
   const [selectedJalur, setSelected] = useState(null);
@@ -62,12 +64,24 @@ export default function GunungDetailPage() {
         background: 'var(--color-surface)',
         overflow: 'hidden'
       }}>
-        <button onClick={() => navigate(-1)}
-          style={{ position: 'absolute', top: 16, left: 16, background: 'var(--color-surface-2)',
-            border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)',
-            color: 'var(--color-text)', padding: '8px 14px', fontSize: 13, cursor: 'pointer' }}>
-          ← Kembali
-        </button>
+        <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', zIndex: 10 }}>
+          <button onClick={() => navigate(-1)}
+            style={{ background: 'var(--color-surface-2)',
+              border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)',
+              color: 'var(--color-text)', padding: '8px 14px', fontSize: 13, cursor: 'pointer' }}>
+            ← Kembali
+          </button>
+          {user?.peran === 'ADMIN' && (
+            <button
+              onClick={() => navigate(`/admin/gunung?edit=${gunung.id}`)}
+              style={{ background: 'var(--color-surface-2)',
+                border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)',
+                color: 'var(--color-primary)', fontWeight: 600, padding: '8px 14px', fontSize: 13, cursor: 'pointer' }}
+            >
+              ⚙️ Edit di Admin
+            </button>
+          )}
+        </div>
 
         <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ fontSize: 72, lineHeight: 1, marginBottom: 12 }}>{getMtnEmoji(gunung.id)}</div>

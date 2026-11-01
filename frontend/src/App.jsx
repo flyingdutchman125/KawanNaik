@@ -18,6 +18,7 @@ import BuatRencanaPage from './pages/BuatRencanaPage';
 import PanduanPage     from './pages/PanduanPage';
 import ProfilPage      from './pages/ProfilPage';
 import AdminJalurPage  from './pages/AdminJalurPage';
+import AdminGunungPage from './pages/AdminGunungPage';
 
 function ProtectedRoute({ children, admin = false }) {
   const { isAuthenticated, loading, user } = useAuth();
@@ -65,6 +66,7 @@ function AppShell() {
               <Route path="/panduan"        element={<PanduanPage />} />
               <Route path="/profil"         element={<ProfilPage />} />
               <Route path="/admin/jalur"    element={<ProtectedRoute admin><AdminJalurPage /></ProtectedRoute>} />
+              <Route path="/admin/gunung"   element={<ProtectedRoute admin><AdminGunungPage /></ProtectedRoute>} />
               <Route path="*"               element={<Navigate to="/" replace />} />
             </Routes>
             <BottomNav />

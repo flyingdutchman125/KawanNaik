@@ -155,17 +155,26 @@ export default function ProfilPage() {
                         👑 <span>Panel Administrator</span>
                       </div>
                       <div className="body-sm" style={{ marginTop: 2 }}>
-                        Kelola data jalur, pos waypoint, dan import GPX.
+                        Kelola data master gunung, rute jalur pendakian, pos waypoint, dan import GPX.
                       </div>
                     </div>
                   </div>
-                  <button
-                    className="btn btn-secondary btn-block"
-                    onClick={() => navigate('/admin/jalur')}
-                    style={{ marginTop: 12, justifyContent: 'center' }}
-                  >
-                    🛠️ Buka Kelola Jalur & GPX
-                  </button>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 14 }}>
+                    <button
+                      className="btn btn-primary btn-block"
+                      onClick={() => navigate('/admin/gunung')}
+                      style={{ justifyContent: 'center' }}
+                    >
+                      ⛰️ Kelola & Tambah Gunung
+                    </button>
+                    <button
+                      className="btn btn-secondary btn-block"
+                      onClick={() => navigate('/admin/jalur')}
+                      style={{ justifyContent: 'center' }}
+                    >
+                      🛠️ Buka Kelola Jalur & GPX
+                    </button>
+                  </div>
                 </div>
               </div>
             )}

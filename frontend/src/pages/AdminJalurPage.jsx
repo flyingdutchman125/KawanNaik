@@ -239,7 +239,23 @@ export default function AdminJalurPage() {
         <div className="card" style={{ marginBottom: 16 }}>
           <div className="card-body">
             <div className="form-group">
-              <label className="form-label">Pilih Gunung</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label className="form-label" style={{ marginBottom: 0 }}>Pilih Gunung</label>
+                <button
+                  type="button"
+                  onClick={() => navigate('/admin/gunung?tab=tambah')}
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: 'var(--color-primary)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  ➕ Tambah Gunung Baru
+                </button>
+              </div>
               <select
                 className="form-select"
                 value={gunungId}
