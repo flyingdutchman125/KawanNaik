@@ -86,7 +86,7 @@ export default function JalurMap({ titik = [] }) {
           {tracking ? 'Matikan GPS' : 'Gunakan GPS'}
         </button>
       </div>
-      <div className="jalur-map" ref={elementRef} />
+      <div className="jalur-map" ref={elementRef} style={{ position: 'relative', zIndex: 1, isolation: 'isolate' }} />
       {gpsError && <div className="form-error" style={{ marginTop: 6 }}>{gpsError}</div>}
       <div className="body-sm" style={{ marginTop: 8 }}>
         Rute berdasarkan {points.length} titik admin. GPS hanya digunakan di perangkat ini.

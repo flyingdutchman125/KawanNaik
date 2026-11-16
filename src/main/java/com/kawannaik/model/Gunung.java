@@ -33,6 +33,10 @@ public class Gunung {
     @Column(name = "kontak_basecamp", length = 50)
     private String kontakBasecamp;
 
+    // Kode wilayah administrasi tingkat IV (Kepmendagri). Wajib untuk API BMKG.
+    @Column(name = "kode_wilayah", length = 20)
+    private String kodeWilayah;
+
     @OneToMany(mappedBy = "gunung", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Jalur> jalurList = new ArrayList<>();
@@ -49,7 +53,7 @@ public class Gunung {
         super();
     }
 
-    public Gunung(Long id, String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp, List<Jalur> jalurList, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Gunung(Long id, String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp, String kodeWilayah, List<Jalur> jalurList, LocalDateTime createdAt, LocalDateTime updatedAt) {
         super();
         this.id = id;
         this.nama = nama;
@@ -58,6 +62,7 @@ public class Gunung {
         this.latitude = latitude;
         this.longitude = longitude;
         this.kontakBasecamp = kontakBasecamp;
+        this.kodeWilayah = kodeWilayah;
         this.jalurList = jalurList != null ? jalurList : new ArrayList<>();
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -75,6 +80,7 @@ public class Gunung {
         private Double latitude;
         private Double longitude;
         private String kontakBasecamp;
+        private String kodeWilayah;
         private List<Jalur> jalurList = new ArrayList<>();
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
@@ -114,6 +120,11 @@ public class Gunung {
             return this;
         }
 
+        public Builder kodeWilayah(String kodeWilayah) {
+            this.kodeWilayah = kodeWilayah;
+            return this;
+        }
+
         public Builder jalurList(List<Jalur> jalurList) {
             this.jalurList = jalurList;
             return this;
@@ -130,7 +141,7 @@ public class Gunung {
         }
 
         public Gunung build() {
-            return new Gunung(id, nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp, jalurList, createdAt, updatedAt);
+            return new Gunung(id, nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp, kodeWilayah, jalurList, createdAt, updatedAt);
         }
     }
 
@@ -188,6 +199,14 @@ public class Gunung {
 
     public void setKontakBasecamp(String kontakBasecamp) {
         this.kontakBasecamp = kontakBasecamp;
+    }
+
+    public String getKodeWilayah() {
+        return kodeWilayah;
+    }
+
+    public void setKodeWilayah(String kodeWilayah) {
+        this.kodeWilayah = kodeWilayah;
     }
 
     public List<Jalur> getJalurList() {

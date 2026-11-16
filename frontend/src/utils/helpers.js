@@ -53,3 +53,10 @@ export const MOUNTAIN_EMOJIS = ['🏔️', '⛰️', '🗻', '🌋'];
 export function getMtnEmoji(id) {
   return MOUNTAIN_EMOJIS[id % MOUNTAIN_EMOJIS.length];
 }
+
+export function formatRupiah(num) {
+  if (num === null || num === undefined || num === '') return 'Gratis / Mandiri';
+  const val = Number(num);
+  if (val === 0) return 'Gratis / Mandiri';
+  return `Rp ${val.toLocaleString('id-ID')}`;
+}

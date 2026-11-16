@@ -119,6 +119,7 @@ public class DataSeeder implements CommandLineRunner {
                 .ketinggianMdpl(3676)
                 .latitude(-8.108)
                 .longitude(112.922)
+                .kodeWilayah("35.08.05.2002")
                 .build());
 
         Gunung arjuno = gunungRepository.save(Gunung.builder()
@@ -127,6 +128,7 @@ public class DataSeeder implements CommandLineRunner {
                 .ketinggianMdpl(3339)
                 .latitude(-7.761)
                 .longitude(112.596)
+                .kodeWilayah("35.07.22.2001")
                 .build());
 
         Gunung welirang = gunungRepository.save(Gunung.builder()
@@ -135,6 +137,7 @@ public class DataSeeder implements CommandLineRunner {
                 .ketinggianMdpl(3156)
                 .latitude(-7.766)
                 .longitude(112.577)
+                .kodeWilayah("35.14.04.2005")
                 .build());
 
         log.info("  ✔ {} gunung disimpan", gunungRepository.count());
@@ -230,6 +233,11 @@ public class DataSeeder implements CommandLineRunner {
                 .pembuat(budi)
                 .jalur(ranuPani)
                 .tanggalNaik(LocalDate.of(2026, 11, 15))
+                .waktuKumpul("06:00 WIB")
+                .titikKumpul("Stasiun Malang Kota Baru (Pintu Timur)")
+                .perlengkapan("Tenda kapasitas 4, Sleeping bag polar/bulu angsa, Matras foil, Jaket windproof/down jacket, Headlamp + baterai cadangan, Jas hujan setelan, P3K & obat pribadi, Sepatu trekking")
+                .estimasiBiaya(250000)
+                .kontak("081234567890")
                 .kuota(5)
                 .levelMinimum(LevelFisik.MAHIR)
                 .catatan("Pendakian Semeru via Ranu Pani. Wajib bawa sleeping bag dan jaket tebal. Kumpul di Malang H-1.")
@@ -240,9 +248,14 @@ public class DataSeeder implements CommandLineRunner {
                 .pembuat(sari)
                 .jalur(viaTretes)
                 .tanggalNaik(LocalDate.of(2026, 11, 22))
+                .waktuKumpul("07:00 WIB")
+                .titikKumpul("Basecamp Tretes (Depan Loket Registrasi)")
+                .perlengkapan("Sleeping bag, Matras, Jaket gunung, Jas hujan ponco, Headlamp, Pakaian ganti, Air minum min. 2 liter, Logistik pribadi")
+                .estimasiBiaya(80000)
+                .kontak("082345678901")
                 .kuota(8)
                 .levelMinimum(LevelFisik.PEMULA)
-                .catatan("Pendakian santai Welirang, cocok untuk pemula. Peralatan dasar disediakan.")
+                .catatan("Pendakian santai Welirang, cocok untuk pemula. Peralatan dasar tenda & nesting disediakan oleh host.")
                 .status(StatusRencana.DIBUKA)
                 .build());
 

@@ -24,11 +24,15 @@ public class GunungRequest {
     @Size(max = 50, message = "Kontak basecamp maksimal 50 karakter")
     private String kontakBasecamp;
 
+    // Format Kepmendagri tingkat IV, contoh 35.08.05.2002
+    @jakarta.validation.constraints.Pattern(regexp = "^\\d{2}\\.\\d{2}\\.\\d{2}\\.\\d{4}$", message = "Kode wilayah harus format adm4, contoh 35.08.05.2002")
+    private String kodeWilayah;
+
     public GunungRequest() {
         super();
     }
 
-    public GunungRequest(String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp) {
+    public GunungRequest(String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp, String kodeWilayah) {
         super();
         this.nama = nama;
         this.lokasi = lokasi;
@@ -36,6 +40,7 @@ public class GunungRequest {
         this.latitude = latitude;
         this.longitude = longitude;
         this.kontakBasecamp = kontakBasecamp;
+        this.kodeWilayah = kodeWilayah;
     }
 
     public static Builder builder() {
@@ -49,6 +54,7 @@ public class GunungRequest {
         private Double latitude;
         private Double longitude;
         private String kontakBasecamp;
+        private String kodeWilayah;
 
         public Builder nama(String nama) {
             this.nama = nama;
@@ -80,8 +86,13 @@ public class GunungRequest {
             return this;
         }
 
+        public Builder kodeWilayah(String kodeWilayah) {
+            this.kodeWilayah = kodeWilayah;
+            return this;
+        }
+
         public GunungRequest build() {
-            return new GunungRequest(nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp);
+            return new GunungRequest(nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp, kodeWilayah);
         }
     }
 
@@ -131,5 +142,13 @@ public class GunungRequest {
 
     public void setKontakBasecamp(String kontakBasecamp) {
         this.kontakBasecamp = kontakBasecamp;
+    }
+
+    public String getKodeWilayah() {
+        return kodeWilayah;
+    }
+
+    public void setKodeWilayah(String kodeWilayah) {
+        this.kodeWilayah = kodeWilayah;
     }
 }

@@ -10,6 +10,7 @@ public class GunungResponse {
     private Double latitude;
     private Double longitude;
     private String kontakBasecamp;
+    private String kodeWilayah;
     private Integer jumlahJalur;
     private LocalDateTime createdAt;
 
@@ -17,7 +18,7 @@ public class GunungResponse {
         super();
     }
 
-    public GunungResponse(Long id, String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp, Integer jumlahJalur, LocalDateTime createdAt) {
+    public GunungResponse(Long id, String nama, String lokasi, Integer ketinggianMdpl, Double latitude, Double longitude, String kontakBasecamp, String kodeWilayah, Integer jumlahJalur, LocalDateTime createdAt) {
         super();
         this.id = id;
         this.nama = nama;
@@ -26,6 +27,7 @@ public class GunungResponse {
         this.latitude = latitude;
         this.longitude = longitude;
         this.kontakBasecamp = kontakBasecamp;
+        this.kodeWilayah = kodeWilayah;
         this.jumlahJalur = jumlahJalur;
         this.createdAt = createdAt;
     }
@@ -42,6 +44,7 @@ public class GunungResponse {
         private Double latitude;
         private Double longitude;
         private String kontakBasecamp;
+        private String kodeWilayah;
         private Integer jumlahJalur;
         private LocalDateTime createdAt;
 
@@ -80,6 +83,11 @@ public class GunungResponse {
             return this;
         }
 
+        public Builder kodeWilayah(String kodeWilayah) {
+            this.kodeWilayah = kodeWilayah;
+            return this;
+        }
+
         public Builder jumlahJalur(Integer jumlahJalur) {
             this.jumlahJalur = jumlahJalur;
             return this;
@@ -91,7 +99,7 @@ public class GunungResponse {
         }
 
         public GunungResponse build() {
-            return new GunungResponse(id, nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp, jumlahJalur, createdAt);
+            return new GunungResponse(id, nama, lokasi, ketinggianMdpl, latitude, longitude, kontakBasecamp, kodeWilayah, jumlahJalur, createdAt);
         }
     }
 
@@ -149,6 +157,14 @@ public class GunungResponse {
 
     public void setKontakBasecamp(String kontakBasecamp) {
         this.kontakBasecamp = kontakBasecamp;
+    }
+
+    public String getKodeWilayah() {
+        return kodeWilayah;
+    }
+
+    public void setKodeWilayah(String kodeWilayah) {
+        this.kodeWilayah = kodeWilayah;
     }
 
     public Integer getJumlahJalur() {

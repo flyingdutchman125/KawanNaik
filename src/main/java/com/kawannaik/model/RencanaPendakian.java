@@ -32,6 +32,21 @@ public class RencanaPendakian {
     @Column(name = "tanggal_naik", nullable = false)
     private LocalDate tanggalNaik;
 
+    @Column(name = "waktu_kumpul", length = 50)
+    private String waktuKumpul;
+
+    @Column(name = "titik_kumpul")
+    private String titikKumpul;
+
+    @Column(columnDefinition = "TEXT")
+    private String perlengkapan;
+
+    @Column(name = "estimasi_biaya")
+    private Integer estimasiBiaya;
+
+    @Column(length = 100)
+    private String kontak;
+
     @Column(nullable = false)
     private Integer kuota;
 
@@ -67,11 +82,20 @@ public class RencanaPendakian {
     }
 
     public RencanaPendakian(Long id, Pengguna pembuat, Jalur jalur, LocalDate tanggalNaik, Integer kuota, LevelFisik levelMinimum, StatusKelayakan statusKelayakan, String catatan, StatusRencana status, List<PesertaRencana> pesertaList, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this(id, pembuat, jalur, tanggalNaik, null, null, null, null, null, kuota, levelMinimum, statusKelayakan, catatan, status, pesertaList, createdAt, updatedAt);
+    }
+
+    public RencanaPendakian(Long id, Pengguna pembuat, Jalur jalur, LocalDate tanggalNaik, String waktuKumpul, String titikKumpul, String perlengkapan, Integer estimasiBiaya, String kontak, Integer kuota, LevelFisik levelMinimum, StatusKelayakan statusKelayakan, String catatan, StatusRencana status, List<PesertaRencana> pesertaList, LocalDateTime createdAt, LocalDateTime updatedAt) {
         super();
         this.id = id;
         this.pembuat = pembuat;
         this.jalur = jalur;
         this.tanggalNaik = tanggalNaik;
+        this.waktuKumpul = waktuKumpul;
+        this.titikKumpul = titikKumpul;
+        this.perlengkapan = perlengkapan;
+        this.estimasiBiaya = estimasiBiaya;
+        this.kontak = kontak;
         this.kuota = kuota;
         this.levelMinimum = levelMinimum;
         this.statusKelayakan = statusKelayakan;
@@ -91,6 +115,11 @@ public class RencanaPendakian {
         private Pengguna pembuat;
         private Jalur jalur;
         private LocalDate tanggalNaik;
+        private String waktuKumpul;
+        private String titikKumpul;
+        private String perlengkapan;
+        private Integer estimasiBiaya;
+        private String kontak;
         private Integer kuota;
         private LevelFisik levelMinimum;
         private StatusKelayakan statusKelayakan;
@@ -117,6 +146,31 @@ public class RencanaPendakian {
 
         public Builder tanggalNaik(LocalDate tanggalNaik) {
             this.tanggalNaik = tanggalNaik;
+            return this;
+        }
+
+        public Builder waktuKumpul(String waktuKumpul) {
+            this.waktuKumpul = waktuKumpul;
+            return this;
+        }
+
+        public Builder titikKumpul(String titikKumpul) {
+            this.titikKumpul = titikKumpul;
+            return this;
+        }
+
+        public Builder perlengkapan(String perlengkapan) {
+            this.perlengkapan = perlengkapan;
+            return this;
+        }
+
+        public Builder estimasiBiaya(Integer estimasiBiaya) {
+            this.estimasiBiaya = estimasiBiaya;
+            return this;
+        }
+
+        public Builder kontak(String kontak) {
+            this.kontak = kontak;
             return this;
         }
 
@@ -161,7 +215,7 @@ public class RencanaPendakian {
         }
 
         public RencanaPendakian build() {
-            return new RencanaPendakian(id, pembuat, jalur, tanggalNaik, kuota, levelMinimum, statusKelayakan, catatan, status, pesertaList, createdAt, updatedAt);
+            return new RencanaPendakian(id, pembuat, jalur, tanggalNaik, waktuKumpul, titikKumpul, perlengkapan, estimasiBiaya, kontak, kuota, levelMinimum, statusKelayakan, catatan, status, pesertaList, createdAt, updatedAt);
         }
     }
 
@@ -195,6 +249,46 @@ public class RencanaPendakian {
 
     public void setTanggalNaik(LocalDate tanggalNaik) {
         this.tanggalNaik = tanggalNaik;
+    }
+
+    public String getWaktuKumpul() {
+        return waktuKumpul;
+    }
+
+    public void setWaktuKumpul(String waktuKumpul) {
+        this.waktuKumpul = waktuKumpul;
+    }
+
+    public String getTitikKumpul() {
+        return titikKumpul;
+    }
+
+    public void setTitikKumpul(String titikKumpul) {
+        this.titikKumpul = titikKumpul;
+    }
+
+    public String getPerlengkapan() {
+        return perlengkapan;
+    }
+
+    public void setPerlengkapan(String perlengkapan) {
+        this.perlengkapan = perlengkapan;
+    }
+
+    public Integer getEstimasiBiaya() {
+        return estimasiBiaya;
+    }
+
+    public void setEstimasiBiaya(Integer estimasiBiaya) {
+        this.estimasiBiaya = estimasiBiaya;
+    }
+
+    public String getKontak() {
+        return kontak;
+    }
+
+    public void setKontak(String kontak) {
+        this.kontak = kontak;
     }
 
     public Integer getKuota() {

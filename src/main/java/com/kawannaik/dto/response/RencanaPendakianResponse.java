@@ -16,6 +16,11 @@ public class RencanaPendakianResponse {
     private String namaJalur;
     private String namaGunung;
     private LocalDate tanggalNaik;
+    private String waktuKumpul;
+    private String titikKumpul;
+    private String perlengkapan;
+    private Integer estimasiBiaya;
+    private String kontak;
     private Integer kuota;
     private Long jumlahPesertaDiterima;
     private LevelFisik levelMinimum;
@@ -29,6 +34,10 @@ public class RencanaPendakianResponse {
     }
 
     public RencanaPendakianResponse(Long id, Long pembuatId, String namaPembuat, LevelFisik levelPembuat, Long jalurId, String namaJalur, String namaGunung, LocalDate tanggalNaik, Integer kuota, Long jumlahPesertaDiterima, LevelFisik levelMinimum, StatusKelayakan statusKelayakan, String catatan, StatusRencana status, LocalDateTime createdAt) {
+        this(id, pembuatId, namaPembuat, levelPembuat, jalurId, namaJalur, namaGunung, tanggalNaik, null, null, null, null, null, kuota, jumlahPesertaDiterima, levelMinimum, statusKelayakan, catatan, status, createdAt);
+    }
+
+    public RencanaPendakianResponse(Long id, Long pembuatId, String namaPembuat, LevelFisik levelPembuat, Long jalurId, String namaJalur, String namaGunung, LocalDate tanggalNaik, String waktuKumpul, String titikKumpul, String perlengkapan, Integer estimasiBiaya, String kontak, Integer kuota, Long jumlahPesertaDiterima, LevelFisik levelMinimum, StatusKelayakan statusKelayakan, String catatan, StatusRencana status, LocalDateTime createdAt) {
         super();
         this.id = id;
         this.pembuatId = pembuatId;
@@ -38,6 +47,11 @@ public class RencanaPendakianResponse {
         this.namaJalur = namaJalur;
         this.namaGunung = namaGunung;
         this.tanggalNaik = tanggalNaik;
+        this.waktuKumpul = waktuKumpul;
+        this.titikKumpul = titikKumpul;
+        this.perlengkapan = perlengkapan;
+        this.estimasiBiaya = estimasiBiaya;
+        this.kontak = kontak;
         this.kuota = kuota;
         this.jumlahPesertaDiterima = jumlahPesertaDiterima;
         this.levelMinimum = levelMinimum;
@@ -60,6 +74,11 @@ public class RencanaPendakianResponse {
         private String namaJalur;
         private String namaGunung;
         private LocalDate tanggalNaik;
+        private String waktuKumpul;
+        private String titikKumpul;
+        private String perlengkapan;
+        private Integer estimasiBiaya;
+        private String kontak;
         private Integer kuota;
         private Long jumlahPesertaDiterima;
         private LevelFisik levelMinimum;
@@ -108,6 +127,31 @@ public class RencanaPendakianResponse {
             return this;
         }
 
+        public Builder waktuKumpul(String waktuKumpul) {
+            this.waktuKumpul = waktuKumpul;
+            return this;
+        }
+
+        public Builder titikKumpul(String titikKumpul) {
+            this.titikKumpul = titikKumpul;
+            return this;
+        }
+
+        public Builder perlengkapan(String perlengkapan) {
+            this.perlengkapan = perlengkapan;
+            return this;
+        }
+
+        public Builder estimasiBiaya(Integer estimasiBiaya) {
+            this.estimasiBiaya = estimasiBiaya;
+            return this;
+        }
+
+        public Builder kontak(String kontak) {
+            this.kontak = kontak;
+            return this;
+        }
+
         public Builder kuota(Integer kuota) {
             this.kuota = kuota;
             return this;
@@ -144,7 +188,7 @@ public class RencanaPendakianResponse {
         }
 
         public RencanaPendakianResponse build() {
-            return new RencanaPendakianResponse(id, pembuatId, namaPembuat, levelPembuat, jalurId, namaJalur, namaGunung, tanggalNaik, kuota, jumlahPesertaDiterima, levelMinimum, statusKelayakan, catatan, status, createdAt);
+            return new RencanaPendakianResponse(id, pembuatId, namaPembuat, levelPembuat, jalurId, namaJalur, namaGunung, tanggalNaik, waktuKumpul, titikKumpul, perlengkapan, estimasiBiaya, kontak, kuota, jumlahPesertaDiterima, levelMinimum, statusKelayakan, catatan, status, createdAt);
         }
     }
 
@@ -210,6 +254,46 @@ public class RencanaPendakianResponse {
 
     public void setTanggalNaik(LocalDate tanggalNaik) {
         this.tanggalNaik = tanggalNaik;
+    }
+
+    public String getWaktuKumpul() {
+        return waktuKumpul;
+    }
+
+    public void setWaktuKumpul(String waktuKumpul) {
+        this.waktuKumpul = waktuKumpul;
+    }
+
+    public String getTitikKumpul() {
+        return titikKumpul;
+    }
+
+    public void setTitikKumpul(String titikKumpul) {
+        this.titikKumpul = titikKumpul;
+    }
+
+    public String getPerlengkapan() {
+        return perlengkapan;
+    }
+
+    public void setPerlengkapan(String perlengkapan) {
+        this.perlengkapan = perlengkapan;
+    }
+
+    public Integer getEstimasiBiaya() {
+        return estimasiBiaya;
+    }
+
+    public void setEstimasiBiaya(Integer estimasiBiaya) {
+        this.estimasiBiaya = estimasiBiaya;
+    }
+
+    public String getKontak() {
+        return kontak;
+    }
+
+    public void setKontak(String kontak) {
+        this.kontak = kontak;
     }
 
     public Integer getKuota() {

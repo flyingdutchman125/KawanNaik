@@ -436,9 +436,26 @@ input, textarea, select { font-family: inherit; }
   opacity: 0.15;
 }
 
-.jalur-map-section { margin: 20px 0; }
-.jalur-map { height: 320px; margin-top: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-.leaflet-container { font-family: inherit; }
+.jalur-map-section {
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+.jalur-map {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  height: 320px;
+  margin-top: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.leaflet-container {
+  font-family: inherit;
+  z-index: 1;
+}
 
 /* --- Rencana Card --- */
 .rencana-card {
@@ -488,6 +505,177 @@ input, textarea, select { font-family: inherit; }
   border-radius: var(--radius-md);
   padding: 12px;
   text-align: center;
+}
+
+/* --- Open Trip & Expeditions Design System --- */
+.trip-header-banner {
+  background: linear-gradient(135deg, #173c2b 0%, #1f7a4d 100%);
+  color: #ffffff;
+  padding: 32px 16px 24px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trip-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+
+.trip-preview-ticket {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.trip-preview-ticket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.trip-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.trip-detail-cell {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trip-detail-cell .cell-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.trip-detail-cell .cell-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.trip-detail-cell .cell-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.gear-category-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 12px 0 6px;
+}
+
+.gear-interactive-chip {
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-2);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.gear-interactive-chip:active {
+  transform: scale(0.96);
+}
+
+.gear-interactive-chip.active {
+  background: #e7f5ee;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 1px 3px rgba(31, 122, 77, 0.12);
+}
+
+.gear-interactive-chip .chip-check {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-border);
+  color: #fff;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  transition: background 0.15s;
+}
+
+.gear-interactive-chip.active .chip-check {
+  background: var(--color-primary);
+}
+
+.wa-btn-styled {
+  background: #25d366;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.wa-btn-styled:hover {
+  background: #20ba59;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transform: translateY(-1px);
+}
+
+.wa-btn-styled:active {
+  transform: scale(0.98);
 }
 
 /* --- Tabs --- */

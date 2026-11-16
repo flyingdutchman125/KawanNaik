@@ -18,6 +18,8 @@ export default function GunungDetailPage() {
   const [jalur, setJalur]           = useState([]);
   const [selectedJalur, setSelected] = useState(null);
   const [titik, setTitik]           = useState([]);
+  const [cuaca, setCuaca]           = useState(null);
+  const [cuacaError, setCuacaError] = useState('');
   const [loading, setLoading]       = useState(true);
 
   useEffect(() => {
@@ -32,6 +34,9 @@ export default function GunungDetailPage() {
         }
       })
       .finally(() => setLoading(false));
+    gunungApi.getCuaca(id)
+      .then(r => setCuaca(r.data.data))
+      .catch(err => setCuacaError(err.response?.data?.message || 'Prakiraan cuaca tidak tersedia'));
   }, [id]);
 
   const selectJalur = (j) => {
@@ -99,6 +104,35 @@ export default function GunungDetailPage() {
       </div>
 
       <div className="container" style={{ paddingTop: 20 }}>
+        {/* Cuaca BMKG */}
+        <div className="card" style={{ marginBottom: 20 }}>
+          <div className="card-body">
+            <div className="heading-sm" style={{ marginBottom: 4 }}>Prakiraan Cuaca</div>
+            {cuaca ? (
+              <>
+                <div className="body-sm" style={{ marginBottom: 12 }}>
+                  {cuaca.desa}, {cuaca.kecamatan}, {cuaca.kota}
+                </div>
+                <div className="scroll-x" style={{ padding: '4px 0', marginBottom: 10 }}>
+                  {(cuaca.prakiraan || []).slice(0, 8).map((s, i) => (
+                    <div key={i} className="stat-box" style={{ flexShrink: 0, minWidth: 120 }}>
+                      <div className="body-sm">{s.localDatetime?.slice(5, 16).replace(' ', ' ')}</div>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--color-text)', marginTop: 4 }}>
+                        {s.suhuC != null ? `${s.suhuC}°C` : '-'}
+                      </div>
+                      <div className="body-sm" style={{ marginTop: 4 }}>{s.kondisi || '-'}</div>
+                      <div className="body-sm">{s.kelembapanPersen != null ? `${s.kelembapanPersen}%` : ''} {s.arahAngin || ''}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="body-sm" style={{ color: 'var(--color-text-muted)' }}>Sumber: {cuaca.sumber}</div>
+              </>
+            ) : (
+              <div className="body-sm">{cuacaError || 'Memuat prakiraan BMKG...'}</div>
+            )}
+          </div>
+        </div>
+
         {/* Coordinates */}
         {gunung.latitude && (
           <div className="card" style={{ marginBottom: 20 }}>

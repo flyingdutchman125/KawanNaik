@@ -80,6 +80,11 @@ class RencanaPendakianServiceTest {
                 .pembuat(pengguna)
                 .jalur(jalur)
                 .tanggalNaik(LocalDate.now().plusDays(10))
+                .waktuKumpul("06:00 WIB")
+                .titikKumpul("Stasiun Malang")
+                .perlengkapan("Tenda, SB, Matras")
+                .estimasiBiaya(150000)
+                .kontak("081234567890")
                 .kuota(5)
                 .levelMinimum(LevelFisik.MAHIR)
                 .status(StatusRencana.DIBUKA)
@@ -91,6 +96,11 @@ class RencanaPendakianServiceTest {
         RencanaPendakianRequest request = RencanaPendakianRequest.builder()
                 .jalurId(1L)
                 .tanggalNaik(LocalDate.now().plusDays(10))
+                .waktuKumpul("06:00 WIB")
+                .titikKumpul("Stasiun Malang")
+                .perlengkapan("Tenda, SB, Matras")
+                .estimasiBiaya(150000)
+                .kontak("081234567890")
                 .kuota(5)
                 .levelMinimum(LevelFisik.MAHIR)
                 .catatan("Kumpul di Malang")
@@ -108,6 +118,29 @@ class RencanaPendakianServiceTest {
         assertEquals("Gunung Semeru", response.getNamaGunung());
         assertEquals("Budi", response.getNamaPembuat());
         assertEquals(5, response.getKuota());
+        assertEquals("06:00 WIB", response.getWaktuKumpul());
+        assertEquals("Stasiun Malang", response.getTitikKumpul());
+        assertEquals("Tenda, SB, Matras", response.getPerlengkapan());
+        assertEquals(150000, response.getEstimasiBiaya());
+        assertEquals("081234567890", response.getKontak());
+    }
+
+    @Test
+    void createRencana_UserLevelTidakMahir_ThrowsBadRequestException() {
+        pengguna.setLevelFisik(LevelFisik.MENENGAH);
+        RencanaPendakianRequest request = RencanaPendakianRequest.builder()
+                .jalurId(1L)
+                .tanggalNaik(LocalDate.now().plusDays(10))
+                .kuota(5)
+                .build();
+
+        when(penggunaRepository.findByEmail("budi@example.com")).thenReturn(Optional.of(pengguna));
+
+        BadRequestException ex = assertThrows(BadRequestException.class,
+                () -> rencanaService.createRencana("budi@example.com", request));
+
+        assertEquals("Hanya pengguna dengan level fisik MAHIR yang dapat membuat rencana pendakian", ex.getMessage());
+        verifyNoInteractions(jalurRepository, rencanaRepository);
     }
 
     @Test

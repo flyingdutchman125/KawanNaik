@@ -47,6 +47,10 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
         Pengguna pembuat = penggunaRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("Pengguna tidak ditemukan"));
 
+        if (pembuat.getLevelFisik() != LevelFisik.MAHIR) {
+            throw new BadRequestException("Hanya pengguna dengan level fisik MAHIR yang dapat membuat rencana pendakian");
+        }
+
         Jalur jalur = jalurRepository.findById(request.getJalurId())
                 .orElseThrow(() -> new ResourceNotFoundException("Jalur dengan ID " + request.getJalurId() + " tidak ditemukan"));
 
@@ -59,6 +63,11 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
                 .pembuat(pembuat)
                 .jalur(jalur)
                 .tanggalNaik(request.getTanggalNaik())
+                .waktuKumpul(request.getWaktuKumpul())
+                .titikKumpul(request.getTitikKumpul())
+                .perlengkapan(request.getPerlengkapan())
+                .estimasiBiaya(request.getEstimasiBiaya())
+                .kontak(request.getKontak())
                 .kuota(request.getKuota())
                 .levelMinimum(request.getLevelMinimum() != null ? request.getLevelMinimum() : jalur.getLevelMinimum())
                 .catatan(request.getCatatan())
@@ -166,6 +175,11 @@ public class RencanaPendakianServiceImpl implements RencanaPendakianService {
                 .namaJalur(r.getJalur() != null ? r.getJalur().getNamaJalur() : null)
                 .namaGunung(r.getJalur() != null && r.getJalur().getGunung() != null ? r.getJalur().getGunung().getNama() : null)
                 .tanggalNaik(r.getTanggalNaik())
+                .waktuKumpul(r.getWaktuKumpul())
+                .titikKumpul(r.getTitikKumpul())
+                .perlengkapan(r.getPerlengkapan())
+                .estimasiBiaya(r.getEstimasiBiaya())
+                .kontak(r.getKontak())
                 .kuota(r.getKuota())
                 .jumlahPesertaDiterima(diterimaCount)
                 .levelMinimum(r.getLevelMinimum())

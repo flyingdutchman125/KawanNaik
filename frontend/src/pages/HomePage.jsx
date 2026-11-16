@@ -124,8 +124,9 @@ export default function HomePage() {
                 <span className={`badge badge-green`}>Dibuka</span>
               </div>
               <div className="rencana-meta">
-                <div className="rencana-meta-item">📅 {formatDateShort(r.tanggalNaik)}</div>
-                <div className="rencana-meta-item">{r.jumlahPesertaDiterima || 0}/{r.kuota} peserta</div>
+                <div className="rencana-meta-item">📅 {formatDateShort(r.tanggalNaik)} {r.waktuKumpul ? `• ⏰ ${r.waktuKumpul}` : ''}</div>
+                <div className="rencana-meta-item">👥 {r.jumlahPesertaDiterima || 0}/{r.kuota} peserta</div>
+                {r.titikKumpul && <div className="rencana-meta-item">📍 {r.titikKumpul}</div>}
                 <div className="rencana-meta-item">
                   <span className={`badge ${levelColor(r.levelMinimum)}`} style={{ fontSize: 10 }}>
                     {levelLabel(r.levelMinimum)}

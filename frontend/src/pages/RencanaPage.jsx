@@ -2,18 +2,32 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { rencanaApi, gunungApi } from '../lib/api';
-import { formatDate, levelLabel, levelColor, statusRencanaLabel, statusRencanaColor, getMtnEmoji } from '../utils/helpers';
+import { formatDate, levelLabel, levelColor, statusRencanaLabel, statusRencanaColor, getMtnEmoji, formatRupiah } from '../utils/helpers';
 import { useAuth } from '../context/AuthContext';
+
+const RANK = { PEMULA: 0, MENENGAH: 1, MAHIR: 2 };
+
+function cuacaBadge(cuaca, tanggal) {
+  const day = (cuaca?.prakiraan || []).filter(s => s.localDatetime?.startsWith(tanggal));
+  if (!day.length) return null;
+  const hujan = day.some(s => /hujan|petir/i.test(s.kondisi || ''));
+  const angin = day.some(s => (s.kecepatanAnginKmh || 0) >= 30);
+  if (hujan) return 'Hujan';
+  if (angin) return 'Angin kencang';
+  return null;
+}
 
 export default function RencanaPage() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   const [rencana, setRencana]   = useState([]);
   const [gunung, setGunung]     = useState([]);
+  const [peringatan, setPeringatan] = useState({});
   const [loading, setLoading]   = useState(true);
   const [showFilter, setShow]   = useState(false);
+  const [sesuaiLevel, setSesuai] = useState(false);
   const [filter, setFilter]     = useState({
     gunungId: params.get('gunungId') || '',
     level: '',
@@ -34,7 +48,26 @@ export default function RencanaPage() {
   useEffect(() => { gunungApi.getAll().then(r => setGunung(r.data.data || [])); }, []);
   useEffect(() => { load(); }, [load]);
 
-  const activeFilters = [filter.gunungId, filter.level, filter.tanggal].filter(Boolean).length;
+  useEffect(() => {
+    const ids = [...new Set(rencana.map(r => gunung.find(g => g.nama === r.namaGunung)?.id).filter(Boolean))];
+    ids.forEach(id => {
+      gunungApi.getCuaca(id).then(res => {
+        const cuaca = res.data.data;
+        setPeringatan(prev => {
+          const next = { ...prev };
+          rencana.filter(r => gunung.find(g => g.nama === r.namaGunung)?.id === id)
+            .forEach(r => { const b = cuacaBadge(cuaca, r.tanggalNaik); if (b) next[r.id] = b; });
+          return next;
+        });
+      }).catch(() => {});
+    });
+  }, [rencana, gunung]);
+
+  const tampil = rencana.filter(r => {
+    if (!sesuaiLevel || !user?.levelFisik) return true;
+    return RANK[r.levelMinimum] <= RANK[user.levelFisik];
+  });
+  const activeFilters = [filter.gunungId, filter.level, filter.tanggal, sesuaiLevel].filter(Boolean).length;
 
   return (
     <div className="page page-enter">
@@ -94,8 +127,17 @@ export default function RencanaPage() {
           </div>
           {activeFilters > 0 && (
             <button className="btn btn-ghost btn-sm btn-block" style={{ marginTop: 10 }}
-              onClick={() => setFilter({ gunungId: '', level: '', tanggal: '' })}>
+              onClick={() => { setFilter({ gunungId: '', level: '', tanggal: '' }); setSesuai(false); }}>
               Hapus Filter
+            </button>
+          )}
+          {isAuthenticated && user?.levelFisik && (
+            <button className="btn btn-sm btn-block" style={{ marginTop: 10,
+              background: sesuaiLevel ? '#e7f5ee' : 'var(--color-surface)',
+              border: `1.5px solid ${sesuaiLevel ? 'var(--color-primary)' : 'var(--color-border)'}`,
+              color: sesuaiLevel ? 'var(--color-primary)' : 'var(--color-text-2)' }}
+              onClick={() => setSesuai(v => !v)}>
+              {sesuaiLevel ? 'Level saya: aktif' : `Sesuai level saya (${levelLabel(user.levelFisik)})`}
             </button>
           )}
         </div>
@@ -112,7 +154,7 @@ export default function RencanaPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {loading ? [1,2,3].map(i => (
             <div key={i} className="skeleton" style={{ height: 140, borderRadius: 'var(--radius-lg)' }} />
-          )) : rencana.length === 0 ? (
+          )) : tampil.length === 0 ? (
             <div className="empty-state">
               <div className="empty-icon">🔍</div>
               <div className="heading-sm">Tidak ada rencana ditemukan</div>
@@ -122,7 +164,7 @@ export default function RencanaPage() {
                   onClick={() => navigate('/rencana/buat')}>+ Buat Rencana</button>
               )}
             </div>
-          ) : rencana.map(r => (
+              ) : tampil.map(r => (
             <div key={r.id} className="rencana-card" onClick={() => navigate(`/rencana/${r.id}`)}>
               <div className="rencana-card-header">
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -135,13 +177,28 @@ export default function RencanaPage() {
                   {statusRencanaLabel(r.status)}
                 </span>
               </div>
+              {peringatan[r.id] && (
+                <div className="badge badge-amber" style={{ marginTop: 8 }}>Cuaca: {peringatan[r.id]} di tanggal naik</div>
+              )}
 
               <div className="rencana-meta">
-                <div className="rencana-meta-item">📅 {formatDate(r.tanggalNaik)}</div>
                 <div className="rencana-meta-item">
-                  {r.jumlahPesertaDiterima || 0}/{r.kuota} peserta
+                  📅 {formatDate(r.tanggalNaik)} {r.waktuKumpul ? `• ⏰ ${r.waktuKumpul}` : ''}
+                </div>
+                <div className="rencana-meta-item">
+                  👥 {r.jumlahPesertaDiterima || 0}/{r.kuota} peserta
                   {r.jumlahPesertaDiterima >= r.kuota && <span style={{ color: 'var(--color-red)', marginLeft: 4 }}>Penuh</span>}
                 </div>
+                {r.titikKumpul && (
+                  <div className="rencana-meta-item" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    📍 {r.titikKumpul}
+                  </div>
+                )}
+                {r.estimasiBiaya !== null && r.estimasiBiaya !== undefined ? (
+                  <div className="rencana-meta-item" style={{ color: 'var(--color-primary)', fontWeight: 700 }}>
+                    💰 {formatRupiah(r.estimasiBiaya)}
+                  </div>
+                ) : null}
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}>
