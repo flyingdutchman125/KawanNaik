@@ -14,11 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 
 /**
- * DataSeeder — mengimpor data awal pengguna, gunung favorit (pemula s.d. senior),
- * jalur pendakian, titik pos waypoint, rencana pendakian, dan panduan keselamatan.
- * <p>
- * Hanya dijalankan jika profil "!test" aktif.
- * Mendukung inisialisasi awal serta pembaruan otomatis jika ada master gunung yang belum ada.
+ * DataSeeder — mengimpor data awal pengguna, 16 gunung favorit di Indonesia,
+ * jalur-jalur pendakian resmi di setiap gunung, titik pos waypoint, serta rencana pendakian.
  */
 @Component
 @Profile("!test")
@@ -56,25 +53,18 @@ public class DataSeeder implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
-        log.info("======= DataSeeder: Memeriksa dan menginisialisasi data awal =======");
+        log.info("======= DataSeeder: Memeriksa dan menginisialisasi master data KawanNaik =======");
 
-        // 1. Pengguna (Akun Demo)
         seedPengguna();
-
-        // 2. Master Gunung, Jalur, dan Titik Waypoint (Favorit Pemula & Senior)
-        seedGunungDanJalur();
-
-        // 3. Rencana Pendakian & Peserta
+        seedGunungDanJalurLengkap();
         seedRencanaDanPeserta();
-
-        // 4. Panduan Keselamatan
         seedPanduanKeselamatan();
 
         log.info("======= DataSeeder: Inisialisasi data selesai =======");
     }
 
     // -------------------------------------------------------------------------
-    // 1. Pengguna
+    // 1. Pengguna (Akun Demo)
     // -------------------------------------------------------------------------
     private void seedPengguna() {
         if (penggunaRepository.count() > 0) {
@@ -123,491 +113,370 @@ public class DataSeeder implements CommandLineRunner {
                 .kontakDarurat("08133333333")
                 .build());
 
-        log.info("  ✔ {} pengguna disimpan (termasuk admin)", penggunaRepository.count());
+        log.info("  ✔ {} pengguna tersimpan", penggunaRepository.count());
     }
 
     // -------------------------------------------------------------------------
-    // 2. Gunung, Jalur, & Titik Pos
+    // 2. Master Gunung & Jalur Pendakian Lengkap
     // -------------------------------------------------------------------------
-    private void seedGunungDanJalur() {
-        // ==================== A. GUNUNG FAVORIT SENIOR / MAHIR ====================
-
+    private void seedGunungDanJalurLengkap() {
         // 1. Gunung Semeru (3.676 mdpl) - Jawa Timur
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Semeru")) {
-            Gunung semeru = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Semeru")
-                    .lokasi("Lumajang, Jawa Timur")
-                    .ketinggianMdpl(3676)
-                    .latitude(-8.1080)
-                    .longitude(112.9220)
-                    .kontakBasecamp("0812-3456-7890 (TNBTS Ranu Pani)")
-                    .kodeWilayah("35.08.05.2002")
-                    .build());
-
-            Jalur ranuPani = jalurRepository.save(Jalur.builder()
-                    .gunung(semeru)
-                    .namaJalur("Ranu Pani")
-                    .tingkatKesulitan("Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(12.0)
-                    .build());
-            seedTitik(ranuPani, JenisTitik.BASECAMP, "Basecamp Ranu Pani", -8.013, 112.952, "Titik awal pendakian, registrasi & briefing TNBTS", 1);
-            seedTitik(ranuPani, JenisTitik.POS, "Pos 1 Watu Rejeng", -8.030, 112.940, "Pos peristirahatan pertama di bawah tebing batu", 2);
-            seedTitik(ranuPani, JenisTitik.POS, "Ranu Kumbolo", -8.050, 112.932, "Danau air tawar indah, area mendirikan tenda utama", 3);
-            seedTitik(ranuPani, JenisTitik.TITIK_RAWAN, "Tanjakan Cinta", -8.053, 112.933, "Tanjakan terjal melegenda, rawan kram otot", 4);
-            seedTitik(ranuPani, JenisTitik.POS, "Pos Kalimati", -8.065, 112.930, "Camp terakhir sebelum summit attack Mahameru", 5);
-            seedTitik(ranuPani, JenisTitik.SUMBER_AIR, "Sumber Mani", -8.066, 112.931, "Mata air alami bersih di hutan dekat Kalimati", 6);
-            seedTitik(ranuPani, JenisTitik.TITIK_RAWAN, "Puncak Mahameru & Arcopodo", -8.108, 112.922, "Tanjakan pasir curam, waspadai gas beracun & batu gugur", 7);
-
-            Jalur arekArek = jalurRepository.save(Jalur.builder()
-                    .gunung(semeru)
-                    .namaJalur("Arek-Arek")
-                    .tingkatKesulitan("Sangat Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(14.0)
-                    .build());
-            seedTitik(arekArek, JenisTitik.BASECAMP, "Basecamp Arek-Arek", -8.010, 112.945, "Titik start jalur alternatif Semeru", 1);
-            seedTitik(arekArek, JenisTitik.POS, "Pos Oro-Oro Ombo", -8.035, 112.938, "Padang savana luas bunga verbena", 2);
-            seedTitik(arekArek, JenisTitik.SUMBER_AIR, "Sumber Air Ranu Kumbolo", -8.050, 112.932, "Sumber air tepi danau", 3);
-            seedTitik(arekArek, JenisTitik.TITIK_RAWAN, "Tanjakan Besi", -8.070, 112.928, "Tanjakan sangat curam menuju puncak Mahameru", 4);
-        }
+        Gunung semeru = getOrCreateGunung("Gunung Semeru", "Lumajang, Jawa Timur", 3676, -8.1080, 112.9220, "0812-3456-7890 (TNBTS Ranu Pani)", "35.08.05.2002");
+        initJalur(semeru, "Ranu Pani", "Sulit", LevelFisik.MAHIR, 12.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Ranu Pani", -8.013, 112.952, "Titik awal pendakian, registrasi & briefing TNBTS", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Watu Rejeng", -8.030, 112.940, "Pos peristirahatan pertama di bawah tebing batu", 2);
+            seedTitik(j, JenisTitik.POS, "Ranu Kumbolo", -8.050, 112.932, "Danau air tawar indah, area mendirikan tenda utama", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Tanjakan Cinta", -8.053, 112.933, "Tanjakan terjal melegenda, rawan kram otot", 4);
+            seedTitik(j, JenisTitik.POS, "Pos Kalimati", -8.065, 112.930, "Camp terakhir sebelum summit attack Mahameru", 5);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sumber Mani", -8.066, 112.931, "Mata air alami bersih di hutan dekat Kalimati", 6);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Mahameru & Arcopodo", -8.108, 112.922, "Tanjakan pasir curam, waspadai gas beracun & batu gugur", 7);
+        });
+        initJalur(semeru, "Arek-Arek", "Sangat Sulit", LevelFisik.MAHIR, 14.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Arek-Arek", -8.010, 112.945, "Titik start jalur alternatif Semeru", 1);
+            seedTitik(j, JenisTitik.POS, "Pos Oro-Oro Ombo", -8.035, 112.938, "Padang savana luas bunga verbena", 2);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sumber Air Ranu Kumbolo", -8.050, 112.932, "Sumber air tepi danau", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Tanjakan Besi", -8.070, 112.928, "Tanjakan sangat curam menuju puncak Mahameru", 4);
+        });
+        initJalur(semeru, "via Tawon Songo", "Ekstrem / Petualangan", LevelFisik.MAHIR, 15.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pos Pasrujambe Tawon Songo", -8.145, 112.985, "Pos jalur selatan Lumajang melewati hutan lindung rapat", 1);
+            seedTitik(j, JenisTitik.POS, "Pos Kali Kebo", -8.132, 112.960, "Pos lembah sungai berbatu", 2);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Punggungan Cadas Selatan", -8.118, 112.940, "Punggungan jurang terjal rawan longsor lahar dingin", 3);
+        });
 
         // 2. Gunung Rinjani (3.726 mdpl) - Lombok, NTB (Luar Jawa)
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Rinjani")) {
-            Gunung rinjani = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Rinjani")
-                    .lokasi("Lombok Timur, Nusa Tenggara Barat")
-                    .ketinggianMdpl(3726)
-                    .latitude(-8.4190)
-                    .longitude(116.4580)
-                    .kontakBasecamp("0819-0700-1234 (TNGR Sembalun)")
-                    .kodeWilayah("52.03.09.2001")
-                    .build());
+        Gunung rinjani = getOrCreateGunung("Gunung Rinjani", "Lombok Timur, Nusa Tenggara Barat", 3726, -8.4190, 116.4580, "0819-0700-1234 (TNGR Sembalun)", "52.03.09.2001");
+        initJalur(rinjani, "via Sembalun", "Sangat Sulit", LevelFisik.MAHIR, 14.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Sembalun", -8.358, 116.531, "Pintu gerbang registrasi pendakian Rinjani", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Pemantauan", -8.375, 116.515, "Pos istirahat di tengah padang savana Sembalun", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Tengengean", -8.390, 116.495, "Pos peristirahatan dengan jembatan sungai kecil", 3);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Pada Balong", -8.402, 116.479, "Pos terakhir sebelum tanjakan ekstrem Bukit Penyesalan", 4);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Bukit Penyesalan", -8.410, 116.468, "7 bukit berturut-turut dengan tanjakan sangat terjal", 5);
+            seedTitik(j, JenisTitik.POS, "Plawangan Sembalun", -8.416, 116.460, "Bibir kawah dengan pemandangan Danau Segara Anak & Gunung Barujari", 6);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Mata Air Plawangan", -8.417, 116.459, "Sumber mata air di tebing dekat Plawangan", 7);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Letter E Summit Ridge", -8.418, 116.458, "Punggungan sempit berpasir licin menuju Puncak Dewi Anjani", 8);
+        });
+        initJalur(rinjani, "via Senaru", "Sulit", LevelFisik.MAHIR, 13.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pintu Masuk Senaru (Jebak Gawah)", -8.305, 116.408, "Gerbang hutan tropis lebat jalur Senaru", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Montong Satas", -8.330, 116.415, "Pos tengah hutan lindung", 2);
+            seedTitik(j, JenisTitik.POS, "Plawangan Senaru", -8.372, 116.430, "Spot spektakuler menghadap Danau Segara Anak", 3);
+        });
+        initJalur(rinjani, "via Torean", "Sulit / Petualangan", LevelFisik.MAHIR, 12.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Desa Wisata Torean", -8.290, 116.440, "Pintu masuk lembah purba jalur Torean", 1);
+            seedTitik(j, JenisTitik.POS, "Birisan Nangka", -8.320, 116.445, "Pos hutan basah dan perkebunan kopi", 2);
+            seedTitik(j, JenisTitik.POS, "Lembah Kokok Puteh & Gua Susu", -8.360, 116.448, "Air terjun megah mengalir ke sungai belerang putih", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Tebing Propok Torean", -8.375, 116.442, "Tebing jurang sempit berpagar besi di atas sungai", 4);
+        });
+        initJalur(rinjani, "via Aik Berik", "Sedang-Sulit", LevelFisik.MENENGAH, 11.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pintu Masuk Aik Berik (Lombok Tengah)", -8.502, 116.325, "Jalur alternatif selatan dengan air terjun Benang Stokel", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Telaga", -8.460, 116.365, "Area camp telaga alami di dalam hutan tropis", 2);
+            seedTitik(j, JenisTitik.POS, "Plawangan Aik Berik", -8.435, 116.420, "Tepi kaldera selatan Rinjani", 3);
+        });
 
-            Jalur sembalun = jalurRepository.save(Jalur.builder()
-                    .gunung(rinjani)
-                    .namaJalur("via Sembalun")
-                    .tingkatKesulitan("Sangat Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(14.0)
-                    .build());
-            seedTitik(sembalun, JenisTitik.BASECAMP, "Basecamp Sembalun", -8.358, 116.531, "Pintu gerbang registrasi pendakian Rinjani", 1);
-            seedTitik(sembalun, JenisTitik.POS, "Pos 1 Pemantauan", -8.375, 116.515, "Pos istirahat di tengah padang savana Sembalun", 2);
-            seedTitik(sembalun, JenisTitik.POS, "Pos 2 Tengengean", -8.390, 116.495, "Pos peristirahatan dengan jembatan sungai kecil", 3);
-            seedTitik(sembalun, JenisTitik.POS, "Pos 3 Pada Balong", -8.402, 116.479, "Pos terakhir sebelum tanjakan ekstrem Bukit Penyesalan", 4);
-            seedTitik(sembalun, JenisTitik.TITIK_RAWAN, "Bukit Penyesalan", -8.410, 116.468, "7 bukit berturut-turut dengan tanjakan sangat terjal", 5);
-            seedTitik(sembalun, JenisTitik.POS, "Plawangan Sembalun", -8.416, 116.460, "Bibir kawah dengan pemandangan Danau Segara Anak & Gunung Barujari", 6);
-            seedTitik(sembalun, JenisTitik.SUMBER_AIR, "Mata Air Plawangan", -8.417, 116.459, "Sumber mata air di tebing dekat Plawangan", 7);
-            seedTitik(sembalun, JenisTitik.TITIK_RAWAN, "Letter E Summit Ridge", -8.418, 116.458, "Punggungan sempit berpasir licin menuju Puncak Dewi Anjani", 8);
+        // 3. Gunung Kerinci (3.805 mdpl) - Jambi / Sumbar (Luar Jawa)
+        Gunung kerinci = getOrCreateGunung("Gunung Kerinci", "Kerinci, Jambi & Solok Selatan, Sumbar", 3805, -1.6970, 101.2640, "0852-6677-8899 (Pos R10 Kersik Tuo)", "15.01.05.2001");
+        initJalur(kerinci, "via Kersik Tuo", "Sangat Sulit", LevelFisik.MAHIR, 12.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pintu Rimba R10", -1.745, 101.265, "Batas perkebunan teh Kayu Aro dan hutan tropis TNKS", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Bangku Panjang", -1.735, 101.264, "Pos peristirahatan awal", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Pondok Panorama", -1.720, 101.263, "Panorama kebun teh dan perbukitan Kerinci", 3);
+            seedTitik(j, JenisTitik.POS, "Shelter 1 & 2", -1.710, 101.264, "Area perkemahan di dalam hutan lebat", 4);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Lorong Hantu", -1.705, 101.264, "Jalur lorong tanah terjal dengan akar pohon menjuntai", 5);
+            seedTitik(j, JenisTitik.POS, "Shelter 3", -1.702, 101.264, "Camp tertinggi sebelum summit attack (3.073 mdpl)", 6);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Mata Air Shelter 3", -1.703, 101.265, "Mata air rembesan jurang dekat Shelter 3", 7);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Tugu Yudha & Puncak Indrapura", -1.697, 101.264, "Atap Sumatera 3.805 mdpl, medan cadas terjal dan bebatuan", 8);
+        });
+        initJalur(kerinci, "via Solok Selatan (Bangun Rejo)", "Ekstrem / Ekspedisi", LevelFisik.MAHIR, 18.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Bangun Rejo Solok Selatan", -1.650, 101.280, "Titik awal ekspedisi rimba sisi Sumatera Barat", 1);
+            seedTitik(j, JenisTitik.POS, "Pos Camp Rimba Lumut", -1.670, 101.272, "Hutan lumut purba yang sangat lebat dan sejuk", 2);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Punggungan Batu Cadas Utara", -1.685, 101.268, "Jalur cadas berbatu terjal menyambung ke puncak", 3);
+        });
 
-            Jalur senaru = jalurRepository.save(Jalur.builder()
-                    .gunung(rinjani)
-                    .namaJalur("via Senaru")
-                    .tingkatKesulitan("Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(13.0)
-                    .build());
-            seedTitik(senaru, JenisTitik.BASECAMP, "Pintu Masuk Senaru (Jebak Gawah)", -8.305, 116.408, "Gerbang hutan tropis lebat jalur Senaru", 1);
-            seedTitik(senaru, JenisTitik.POS, "Pos 2 Montong Satas", -8.330, 116.415, "Pos tengah hutan lindung", 2);
-            seedTitik(senaru, JenisTitik.POS, "Plawangan Senaru", -8.372, 116.430, "Spot spektakuler menghadap Danau Segara Anak", 3);
-        }
-
-        // 3. Gunung Kerinci (3.805 mdpl) - Jambi/Sumbar (Luar Jawa)
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Kerinci")) {
-            Gunung kerinci = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Kerinci")
-                    .lokasi("Kerinci, Jambi & Solok Selatan, Sumbar")
-                    .ketinggianMdpl(3805)
-                    .latitude(-1.6970)
-                    .longitude(101.2640)
-                    .kontakBasecamp("0852-6677-8899 (Pos R10 Kersik Tuo)")
-                    .kodeWilayah("15.01.05.2001")
-                    .build());
-
-            Jalur kersikTuo = jalurRepository.save(Jalur.builder()
-                    .gunung(kerinci)
-                    .namaJalur("via Kersik Tuo")
-                    .tingkatKesulitan("Sangat Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(12.0)
-                    .build());
-            seedTitik(kersikTuo, JenisTitik.BASECAMP, "Pintu Rimba R10", -1.745, 101.265, "Batas perkebunan teh Kayu Aro dan hutan tropis TNKS", 1);
-            seedTitik(kersikTuo, JenisTitik.POS, "Pos 1 Bangku Panjang", -1.735, 101.264, "Pos peristirahatan awal", 2);
-            seedTitik(kersikTuo, JenisTitik.POS, "Pos 3 Pondok Panorama", -1.720, 101.263, "Panorama kebun teh dan perbukitan Kerinci", 3);
-            seedTitik(kersikTuo, JenisTitik.POS, "Shelter 1 & 2", -1.710, 101.264, "Area perkemahan di dalam hutan lebat", 4);
-            seedTitik(kersikTuo, JenisTitik.TITIK_RAWAN, "Lorong Hantu", -1.705, 101.264, "Jalur lorong tanah terjal dengan akar pohon menjuntai", 5);
-            seedTitik(kersikTuo, JenisTitik.POS, "Shelter 3", -1.702, 101.264, "Camp tertinggi sebelum summit attack (3.073 mdpl)", 6);
-            seedTitik(kersikTuo, JenisTitik.SUMBER_AIR, "Mata Air Shelter 3", -1.703, 101.265, "Mata air rembesan jurang dekat Shelter 3", 7);
-            seedTitik(kersikTuo, JenisTitik.TITIK_RAWAN, "Tugu Yudha & Puncak Indrapura", -1.697, 101.264, "Atap Sumatera 3.805 mdpl, medan cadas terjal dan bebatuan", 8);
-        }
-
-        // 4. Gunung Raung (3.344 mdpl) - Banyuwangi/Bondowoso, Jawa Timur
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Raung")) {
-            Gunung raung = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Raung")
-                    .lokasi("Banyuwangi-Bondowoso, Jawa Timur")
-                    .ketinggianMdpl(3344)
-                    .latitude(-8.1250)
-                    .longitude(114.0450)
-                    .kontakBasecamp("0812-4980-9988 (Basecamp Kalibaru)")
-                    .kodeWilayah("35.10.02.2001")
-                    .build());
-
-            Jalur kalibaru = jalurRepository.save(Jalur.builder()
-                    .gunung(raung)
-                    .namaJalur("via Kalibaru")
-                    .tingkatKesulitan("Ekstrem / Teknikal")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(16.0)
-                    .build());
-            seedTitik(kalibaru, JenisTitik.BASECAMP, "Basecamp Kalibaru", -8.210, 113.985, "Registrasi dan pengecekan perlengkapan climbing / tali temali", 1);
-            seedTitik(kalibaru, JenisTitik.POS, "Pos 1 Pak Syarif", -8.190, 114.005, "Pondok singgah perkebunan kopi", 2);
-            seedTitik(kalibaru, JenisTitik.POS, "Pos 4 Pondok Motor", -8.160, 114.020, "Pos peristirahatan hutan vegetasi pinus", 3);
-            seedTitik(kalibaru, JenisTitik.POS, "Pos 7 Camp Terakhir", -8.138, 114.038, "Lokasi perkemahan terakhir sebelum summit attack", 4);
-            seedTitik(kalibaru, JenisTitik.POS, "Puncak Bendera", -8.130, 114.040, "Titik persiapan pemakaian alat safety harness & carabiner", 5);
-            seedTitik(kalibaru, JenisTitik.TITIK_RAWAN, "Jembatan Shiratal Mustaqim", -8.127, 114.043, "Punggungan batu selebar 1 meter dengan jurang 500m di kedua sisi", 6);
-            seedTitik(kalibaru, JenisTitik.TITIK_RAWAN, "Puncak Sejati Raung", -8.125, 114.045, "Puncak sejati dengan pemandangan kaldera raksasa menakjubkan", 7);
-        }
+        // 4. Gunung Raung (3.344 mdpl) - Banyuwangi / Bondowoso, Jawa Timur
+        Gunung raung = getOrCreateGunung("Gunung Raung", "Banyuwangi-Bondowoso, Jawa Timur", 3344, -8.1250, 114.0450, "0812-4980-9988 (Basecamp Kalibaru)", "35.10.02.2001");
+        initJalur(raung, "via Kalibaru", "Ekstrem / Teknikal", LevelFisik.MAHIR, 16.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Kalibaru", -8.210, 113.985, "Registrasi dan pengecekan perlengkapan climbing / tali temali", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Pak Syarif", -8.190, 114.005, "Pondok singgah perkebunan kopi", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 4 Pondok Motor", -8.160, 114.020, "Pos peristirahatan hutan vegetasi pinus", 3);
+            seedTitik(j, JenisTitik.POS, "Pos 7 Camp Terakhir", -8.138, 114.038, "Lokasi perkemahan terakhir sebelum summit attack", 4);
+            seedTitik(j, JenisTitik.POS, "Puncak Bendera", -8.130, 114.040, "Titik persiapan pemakaian alat safety harness & carabiner", 5);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Jembatan Shiratal Mustaqim", -8.127, 114.043, "Punggungan batu selebar 1 meter dengan jurang 500m di kedua sisi", 6);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Sejati Raung", -8.125, 114.045, "Puncak sejati dengan pemandangan kaldera raksasa menakjubkan", 7);
+        });
+        initJalur(raung, "via Sumberwringin", "Sulit", LevelFisik.MAHIR, 12.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Sumberwringin Bondowoso", -7.985, 114.120, "Jalur utara legendaris sebelum jalur Kalibaru dibuka", 1);
+            seedTitik(j, JenisTitik.POS, "Pondok Motor Sumberwringin", -8.065, 114.085, "Batas kebun pinus dan hutan pegunungan", 2);
+            seedTitik(j, JenisTitik.POS, "Puncak Bayangan Raung", -8.115, 114.055, "Bibir kaldera utara menghadap kawah raksasa", 3);
+        });
 
         // 5. Gunung Slamet (3.428 mdpl) - Jawa Tengah
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Slamet")) {
-            Gunung slamet = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Slamet")
-                    .lokasi("Purbalingga, Jawa Tengah")
-                    .ketinggianMdpl(3428)
-                    .latitude(-7.2420)
-                    .longitude(109.2080)
-                    .kontakBasecamp("0857-1234-5678 (Basecamp Bambangan)")
-                    .kodeWilayah("33.03.10.2001")
-                    .build());
-
-            Jalur bambangan = jalurRepository.save(Jalur.builder()
-                    .gunung(slamet)
-                    .namaJalur("via Bambangan")
-                    .tingkatKesulitan("Sangat Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(11.0)
-                    .build());
-            seedTitik(bambangan, JenisTitik.BASECAMP, "Basecamp Bambangan", -7.275, 109.245, "Basecamp resmi terpopuler pendakian Atap Jawa Tengah", 1);
-            seedTitik(bambangan, JenisTitik.POS, "Pos 1 Pondok Gembirung", -7.265, 109.235, "Pos dengan warung dan shelter berteduh", 2);
-            seedTitik(bambangan, JenisTitik.POS, "Pos 3 Pondok Cemara", -7.255, 109.225, "Hutan cemara asri dan tanah lapang camp", 3);
-            seedTitik(bambangan, JenisTitik.SUMBER_AIR, "Pos 5 Samyang Rangkah", -7.248, 109.218, "Sumber mata air utama para pendaki", 4);
-            seedTitik(bambangan, JenisTitik.POS, "Pos 9 Plawangan", -7.245, 109.210, "Batas vegetasi terakhir sebelum zona bebatuan", 5);
-            seedTitik(bambangan, JenisTitik.TITIK_RAWAN, "Puncak Surono & Kawah Segoro Wedi", -7.242, 109.208, "Medan pasir dan batu merah labil yang curam, rawan badai es", 6);
-        }
-
-
-        // ==================== B. GUNUNG FAVORIT PEMULA ====================
+        Gunung slamet = getOrCreateGunung("Gunung Slamet", "Purbalingga, Jawa Tengah", 3428, -7.2420, 109.2080, "0857-1234-5678 (Basecamp Bambangan)", "33.03.10.2001");
+        initJalur(slamet, "via Bambangan", "Sangat Sulit", LevelFisik.MAHIR, 11.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Bambangan", -7.275, 109.245, "Basecamp resmi terpopuler pendakian Atap Jawa Tengah", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Pondok Gembirung", -7.265, 109.235, "Pos dengan warung dan shelter berteduh", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Pondok Cemara", -7.255, 109.225, "Hutan cemara asri dan tanah lapang camp", 3);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Pos 5 Samyang Rangkah", -7.248, 109.218, "Sumber mata air utama para pendaki", 4);
+            seedTitik(j, JenisTitik.POS, "Pos 9 Plawangan", -7.245, 109.210, "Batas vegetasi terakhir sebelum zona bebatuan", 5);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Surono & Kawah Segoro Wedi", -7.242, 109.208, "Medan pasir dan batu merah labil yang curam, rawan badai es", 6);
+        });
+        initJalur(slamet, "via Guci (Tegal)", "Sulit", LevelFisik.MAHIR, 12.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Permadi Guci", -7.185, 109.168, "Titik awal dekat pemandian air panas alami Guci", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Amreta", -7.215, 109.182, "Pos hutan pinus dengan sumber air jernih", 2);
+            seedTitik(j, JenisTitik.POS, "Plawangan Guci", -7.235, 109.198, "Batas punggungan utara menuju puncak Slamet", 3);
+        });
+        initJalur(slamet, "via Dipajaya (Pemalang)", "Sulit", LevelFisik.MAHIR, 11.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Dipajaya Clekatakan", -7.212, 109.240, "Jalur timur laut Pemalang yang teduh dan asri", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 4 Igir-igir", -7.228, 109.225, "Punggungan savana menyatu dengan jalur Bambangan", 2);
+        });
+        initJalur(slamet, "via Baturraden (Banyumas)", "Sangat Sulit", LevelFisik.MAHIR, 13.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Baturraden (Wana Wisata)", -7.310, 109.220, "Jalur selatan Banyumas dengan hutan lumut basah lebat", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Pelangkah", -7.280, 109.215, "Pos peristirahatan hutan hujan pegunungan", 2);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Plawangan Selatan", -7.250, 109.210, "Batu terjal curam sebelum mencapai bibir kawah", 3);
+        });
 
         // 6. Gunung Prau (2.565 mdpl) - Wonosobo, Jawa Tengah
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Prau")) {
-            Gunung prau = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Prau")
-                    .lokasi("Wonosobo & Batang, Jawa Tengah")
-                    .ketinggianMdpl(2565)
-                    .latitude(-7.1856)
-                    .longitude(109.9234)
-                    .kontakBasecamp("0852-2891-2345 (Basecamp Patak Banteng)")
-                    .kodeWilayah("33.07.12.2001")
-                    .build());
-
-            Jalur patakBanteng = jalurRepository.save(Jalur.builder()
-                    .gunung(prau)
-                    .namaJalur("via Patak Banteng")
-                    .tingkatKesulitan("Mudah")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(3.5)
-                    .build());
-            seedTitik(patakBanteng, JenisTitik.BASECAMP, "Basecamp Patak Banteng", -7.208, 109.932, "Basecamp favorit pemula dengan fasilitas komplit & ojek", 1);
-            seedTitik(patakBanteng, JenisTitik.POS, "Pos 1 Senthongsari", -7.200, 109.930, "Pos pertama dengan gazebo dan warung makanan", 2);
-            seedTitik(patakBanteng, JenisTitik.POS, "Pos 2 Canggal Walitis", -7.195, 109.928, "Jalur tangga batu di tengah perkebunan dan pinus", 3);
-            seedTitik(patakBanteng, JenisTitik.TITIK_RAWAN, "Pos 3 Cacingan", -7.190, 109.925, "Tanjakan tangga tanah berakar, licin saat musim hujan", 4);
-            seedTitik(patakBanteng, JenisTitik.POS, "Sunrise Camp Teletubbies", -7.186, 109.923, "Puncak hamparan bukit rumput luas, Golden Sunrise terindah", 5);
-
-            Jalur dieng = jalurRepository.save(Jalur.builder()
-                    .gunung(prau)
-                    .namaJalur("via Dieng Kulon")
-                    .tingkatKesulitan("Mudah")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(4.0)
-                    .build());
-            seedTitik(dieng, JenisTitik.BASECAMP, "Basecamp Dieng", -7.205, 109.915, "Jalur lebih landai dan santai ramah pemula", 1);
-            seedTitik(dieng, JenisTitik.POS, "Puncak Tower Dieng", -7.192, 109.918, "Tower pemancar dan padang sabana luas", 2);
-        }
+        Gunung prau = getOrCreateGunung("Gunung Prau", "Wonosobo & Batang, Jawa Tengah", 2565, -7.1856, 109.9234, "0852-2891-2345 (Basecamp Patak Banteng)", "33.07.12.2001");
+        initJalur(prau, "via Patak Banteng", "Mudah", LevelFisik.PEMULA, 3.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Patak Banteng", -7.208, 109.932, "Basecamp favorit pemula dengan fasilitas komplit & ojek", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Senthongsari", -7.200, 109.930, "Pos pertama dengan gazebo dan warung makanan", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Canggal Walitis", -7.195, 109.928, "Jalur tangga batu di tengah perkebunan dan pinus", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Pos 3 Cacingan", -7.190, 109.925, "Tanjakan tangga tanah berakar, licin saat musim hujan", 4);
+            seedTitik(j, JenisTitik.POS, "Sunrise Camp Teletubbies", -7.186, 109.923, "Puncak hamparan bukit rumput luas, Golden Sunrise terindah", 5);
+        });
+        initJalur(prau, "via Dieng Kulon", "Mudah", LevelFisik.PEMULA, 4.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Dieng Kulon (Dwarawati)", -7.205, 109.915, "Jalur lebih landai dan santai ramah pemula dekat Candi", 1);
+            seedTitik(j, JenisTitik.POS, "Puncak Tower Dieng", -7.192, 109.918, "Tower pemancar dan padang sabana luas", 2);
+        });
+        initJalur(prau, "via Kalilembu", "Mudah", LevelFisik.PEMULA, 3.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Kalilembu Dieng", -7.210, 109.925, "Alternatif favorit pemula, jalur landai kebun kentang", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Telaga Wurung", -7.198, 109.922, "Area istirahat teduh pepohonan pinus", 2);
+        });
+        initJalur(prau, "via Wates (Temanggung)", "Mudah-Sedang", LevelFisik.PEMULA, 4.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Wates Wonoboyo", -7.165, 109.965, "Jalur lereng timur menyusuri perkebunan teh yang asri", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Plawangan Wates", -7.178, 109.940, "Pemandangan bukit hijau dan danau telaga", 2);
+        });
 
         // 7. Gunung Papandayan (2.665 mdpl) - Garut, Jawa Barat
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Papandayan")) {
-            Gunung papandayan = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Papandayan")
-                    .lokasi("Garut, Jawa Barat")
-                    .ketinggianMdpl(2665)
-                    .latitude(-7.3200)
-                    .longitude(107.7300)
-                    .kontakBasecamp("0813-2012-3456 (Pos Tiket Camp David)")
-                    .kodeWilayah("32.05.08.2001")
-                    .build());
-
-            Jalur campDavid = jalurRepository.save(Jalur.builder()
-                    .gunung(papandayan)
-                    .namaJalur("via Camp David")
-                    .tingkatKesulitan("Mudah")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(4.0)
-                    .build());
-            seedTitik(campDavid, JenisTitik.BASECAMP, "Basecamp Camp David", -7.315, 107.742, "Pintu gerbang wisata pendakian ramah keluarga & pemula", 1);
-            seedTitik(campDavid, JenisTitik.TITIK_RAWAN, "Kawah Mas & Kawah Belerang", -7.320, 107.738, "Asap belerang aktif, wajib masker saat melintas", 2);
-            seedTitik(campDavid, JenisTitik.POS, "Pondok Saladah", -7.325, 107.732, "Area camping favorit berumput dengan toilet dan warung", 3);
-            seedTitik(campDavid, JenisTitik.SUMBER_AIR, "Sungai Pondok Saladah", -7.326, 107.731, "Aliran air jernih pegunungan untuk masak dan minum", 4);
-            seedTitik(campDavid, JenisTitik.POS, "Hutan Mati Papandayan", -7.328, 107.728, "Pohon cantigi hangus eksotis akibat letusan masa lampau", 5);
-            seedTitik(campDavid, JenisTitik.POS, "Padang Edelweis Tegal Alun", -7.332, 107.725, "Lembah tersembunyi dengan ribuan bunga edelweis abadi", 6);
-        }
+        Gunung papandayan = getOrCreateGunung("Gunung Papandayan", "Garut, Jawa Barat", 2665, -7.3200, 107.7300, "0813-2012-3456 (Pos Tiket Camp David)", "32.05.08.2001");
+        initJalur(papandayan, "via Camp David", "Mudah", LevelFisik.PEMULA, 4.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Camp David", -7.315, 107.742, "Pintu gerbang wisata pendakian ramah keluarga & pemula", 1);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Kawah Mas & Kawah Belerang", -7.320, 107.738, "Asap belerang aktif, wajib masker saat melintas", 2);
+            seedTitik(j, JenisTitik.POS, "Pondok Saladah", -7.325, 107.732, "Area camping favorit berumput dengan toilet dan warung", 3);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sungai Pondok Saladah", -7.326, 107.731, "Aliran air jernih pegunungan untuk masak dan minum", 4);
+            seedTitik(j, JenisTitik.POS, "Hutan Mati Papandayan", -7.328, 107.728, "Pohon cantigi hangus eksotis akibat letusan masa lampau", 5);
+            seedTitik(j, JenisTitik.POS, "Padang Edelweis Tegal Alun", -7.332, 107.725, "Lembah tersembunyi dengan ribuan bunga edelweis abadi", 6);
+        });
+        initJalur(papandayan, "via Cisurupan", "Mudah-Sedang", LevelFisik.PEMULA, 4.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pos Cisurupan", -7.305, 107.750, "Pintu masuk dari kaki bukit Cisurupan", 1);
+            seedTitik(j, JenisTitik.POS, "Kawah Baru Papandayan", -7.318, 107.735, "Kawah baru dengan bebatuan warna-warni", 2);
+        });
 
         // 8. Gunung Andong (1.726 mdpl) - Magelang, Jawa Tengah
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Andong")) {
-            Gunung andong = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Andong")
-                    .lokasi("Magelang, Jawa Tengah")
-                    .ketinggianMdpl(1726)
-                    .latitude(-7.3889)
-                    .longitude(110.3667)
-                    .kontakBasecamp("0812-3456-7891 (Basecamp Sawit)")
-                    .kodeWilayah("33.08.17.2001")
-                    .build());
-
-            Jalur sawit = jalurRepository.save(Jalur.builder()
-                    .gunung(andong)
-                    .namaJalur("via Sawit")
-                    .tingkatKesulitan("Mudah")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(2.0)
-                    .build());
-            seedTitik(sawit, JenisTitik.BASECAMP, "Basecamp Sawit", -7.395, 110.370, "Basecamp ramah pendaki pemula, jalur tangga tertata rapi", 1);
-            seedTitik(sawit, JenisTitik.POS, "Pos 1 Kemuning", -7.392, 110.368, "Hutan pinus teduh dan sejuk", 2);
-            seedTitik(sawit, JenisTitik.POS, "Pos 2 Dewa Daru", -7.390, 110.367, "Warung kopi dan istirahat sebelum punggungan puncak", 3);
-            seedTitik(sawit, JenisTitik.POS, "Puncak Alap-Alap & Puncak Makam", -7.388, 110.366, "Puncak 360 derajat melihat Merbabu, Merapi, Sindoro, dan Sumbing", 4);
-        }
+        Gunung andong = getOrCreateGunung("Gunung Andong", "Magelang, Jawa Tengah", 1726, -7.3889, 110.3667, "0812-3456-7891 (Basecamp Sawit)", "33.08.17.2001");
+        initJalur(andong, "via Sawit", "Mudah", LevelFisik.PEMULA, 2.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Sawit", -7.395, 110.370, "Basecamp ramah pendaki pemula, jalur tangga tertata rapi", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Kemuning", -7.392, 110.368, "Hutan pinus teduh dan sejuk", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Dewa Daru", -7.390, 110.367, "Warung kopi dan istirahat sebelum punggungan puncak", 3);
+            seedTitik(j, JenisTitik.POS, "Puncak Alap-Alap & Puncak Makam", -7.388, 110.366, "Puncak 360 derajat melihat Merbabu, Merapi, Sindoro, dan Sumbing", 4);
+        });
+        initJalur(andong, "via Pendem", "Mudah", LevelFisik.PEMULA, 2.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Pendem Girirejo", -7.398, 110.365, "Jalur tangga semen rapi dan area parkir luas", 1);
+            seedTitik(j, JenisTitik.POS, "Punggung Naga Andong", -7.390, 110.365, "Punggungan rumput asri menyambung ke puncak makam", 2);
+        });
+        initJalur(andong, "via Gogik", "Mudah", LevelFisik.PEMULA, 2.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Gogik", -7.385, 110.375, "Jalur lereng timur yang asri dan sejuk", 1);
+            seedTitik(j, JenisTitik.POS, "Puncak Jiwa", -7.388, 110.368, "Salah satu puncak panorama Andong", 2);
+        });
 
         // 9. Gunung Ijen (2.769 mdpl) - Banyuwangi, Jawa Timur
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Ijen")) {
-            Gunung ijen = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Ijen")
-                    .lokasi("Banyuwangi-Bondowoso, Jawa Timur")
-                    .ketinggianMdpl(2769)
-                    .latitude(-8.0580)
-                    .longitude(114.2420)
-                    .kontakBasecamp("0819-8765-4321 (TWA Kawah Ijen Paltuding)")
-                    .kodeWilayah("35.10.15.2001")
-                    .build());
-
-            Jalur paltuding = jalurRepository.save(Jalur.builder()
-                    .gunung(ijen)
-                    .namaJalur("via Paltuding")
-                    .tingkatKesulitan("Mudah-Sedang")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(2.5)
-                    .build());
-            seedTitik(paltuding, JenisTitik.BASECAMP, "Pos Paltuding", -8.075, 114.225, "Pintu masuk resmi TWA Ijen, fasilitas lengkap dan persewaan masker gas", 1);
-            seedTitik(paltuding, JenisTitik.POS, "Pos Bunder", -8.065, 114.235, "Pos timbang belerang para penambang tradisional", 2);
-            seedTitik(paltuding, JenisTitik.POS, "Bibir Kawah Ijen", -8.058, 114.242, "Pemandangan danau asam toska terbesar di dunia", 3);
-            seedTitik(paltuding, JenisTitik.TITIK_RAWAN, "Dasar Kawah Blue Fire", -8.056, 114.245, "Fenomena api biru dunia, wajib masker gas respirator", 4);
-        }
+        Gunung ijen = getOrCreateGunung("Gunung Ijen", "Banyuwangi-Bondowoso, Jawa Timur", 2769, -8.0580, 114.2420, "0819-8765-4321 (TWA Kawah Ijen Paltuding)", "35.10.15.2001");
+        initJalur(ijen, "via Paltuding", "Mudah-Sedang", LevelFisik.PEMULA, 2.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pos Paltuding", -8.075, 114.225, "Pintu masuk resmi TWA Ijen, fasilitas lengkap dan persewaan masker gas", 1);
+            seedTitik(j, JenisTitik.POS, "Pos Bunder", -8.065, 114.235, "Pos timbang belerang para penambang tradisional", 2);
+            seedTitik(j, JenisTitik.POS, "Bibir Kawah Ijen", -8.058, 114.242, "Pemandangan danau asam toska terbesar di dunia", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Dasar Kawah Blue Fire", -8.056, 114.245, "Fenomena api biru dunia, wajib masker gas respirator", 4);
+        });
+        initJalur(ijen, "via Taman Dadar / Rembangan", "Sedang", LevelFisik.MENENGAH, 5.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Perkebunan Rembangan", -8.030, 114.180, "Trekking menyusuri perkebunan kopi dan hutan cemara", 1);
+            seedTitik(j, JenisTitik.POS, "Puncak Merapi Ijen", -8.050, 114.220, "Puncak gunung mati di samping Kawah Ijen", 2);
+        });
 
         // 10. Gunung Batur (1.717 mdpl) - Kintamani, Bali (Luar Jawa)
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Batur")) {
-            Gunung batur = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Batur")
-                    .lokasi("Kintamani, Bangli, Bali")
-                    .ketinggianMdpl(1717)
-                    .latitude(-8.2420)
-                    .longitude(115.3750)
-                    .kontakBasecamp("0878-6543-2109 (Basecamp Toya Bungkah)")
-                    .kodeWilayah("51.06.04.2001")
-                    .build());
-
-            Jalur toyaBungkah = jalurRepository.save(Jalur.builder()
-                    .gunung(batur)
-                    .namaJalur("via Toya Bungkah")
-                    .tingkatKesulitan("Mudah")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(2.5)
-                    .build());
-            seedTitik(toyaBungkah, JenisTitik.BASECAMP, "Basecamp Toya Bungkah", -8.255, 115.385, "Tepi Danau Batur dengan pemandian air panas alami", 1);
-            seedTitik(toyaBungkah, JenisTitik.POS, "Hutan Pinus & Batuan Vulkanik", -8.248, 115.380, "Jalur pasir vulkanik di sela pepohonan pinus", 2);
-            seedTitik(toyaBungkah, JenisTitik.POS, "Puncak Sunrise Batur", -8.242, 115.375, "Puncak kawah dengan pemandangan Danau Batur & Gunung Abang", 3);
-        }
-
-
-        // ==================== C. GUNUNG FAVORIT MENENGAH ====================
+        Gunung batur = getOrCreateGunung("Gunung Batur", "Kintamani, Bangli, Bali", 1717, -8.2420, 115.3750, "0878-6543-2109 (Basecamp Toya Bungkah)", "51.06.04.2001");
+        initJalur(batur, "via Toya Bungkah", "Mudah", LevelFisik.PEMULA, 2.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Toya Bungkah", -8.255, 115.385, "Tepi Danau Batur dengan pemandian air panas alami", 1);
+            seedTitik(j, JenisTitik.POS, "Hutan Pinus & Batuan Vulkanik", -8.248, 115.380, "Jalur pasir vulkanik di sela pepohonan pinus", 2);
+            seedTitik(j, JenisTitik.POS, "Puncak Sunrise Batur", -8.242, 115.375, "Puncak kawah dengan pemandangan Danau Batur & Gunung Abang", 3);
+        });
+        initJalur(batur, "via Pasar Agung", "Mudah", LevelFisik.PEMULA, 2.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pura Pasar Agung Batur", -8.250, 115.365, "Jalur tercepat dan populer untuk pemburu sunrise", 1);
+            seedTitik(j, JenisTitik.POS, "Puncak Kawah Kedua Batur", -8.244, 115.372, "Bibir kaldera dengan uap panas vulkanik", 2);
+        });
 
         // 11. Gunung Merbabu (3.145 mdpl) - Jawa Tengah
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Merbabu")) {
-            Gunung merbabu = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Merbabu")
-                    .lokasi("Boyolali & Magelang, Jawa Tengah")
-                    .ketinggianMdpl(3145)
-                    .latitude(-7.4550)
-                    .longitude(110.4400)
-                    .kontakBasecamp("0821-3344-5566 (Basecamp Selo Baru)")
-                    .kodeWilayah("33.09.11.2001")
-                    .build());
-
-            Jalur selo = jalurRepository.save(Jalur.builder()
-                    .gunung(merbabu)
-                    .namaJalur("via Selo")
-                    .tingkatKesulitan("Sedang")
-                    .levelMinimum(LevelFisik.MENENGAH)
-                    .estimasiJam(7.0)
-                    .build());
-            seedTitik(selo, JenisTitik.BASECAMP, "Basecamp Selo", -7.495, 110.470, "Pintu masuk jalur favorit sejuta umat di lereng timur", 1);
-            seedTitik(selo, JenisTitik.POS, "Pos 1 Dok-dok", -7.485, 110.465, "Pos peristirahatan awal", 2);
-            seedTitik(selo, JenisTitik.POS, "Pos 3 Batu Tulis", -7.470, 110.455, "Area camp dengan pemandangan megah Gunung Merapi di seberang", 3);
-            seedTitik(selo, JenisTitik.POS, "Sabana 1 & Sabana 2", -7.460, 110.445, "Hamparan bukit rumput savana hijau bergelombang yang memukau", 4);
-            seedTitik(selo, JenisTitik.TITIK_RAWAN, "Puncak Triangulasi & Kenteng Songo", -7.455, 110.440, "Puncak tertinggi Merbabu dengan batu lesung bersejarah", 5);
-
-            Jalur suwanting = jalurRepository.save(Jalur.builder()
-                    .gunung(merbabu)
-                    .namaJalur("via Suwanting")
-                    .tingkatKesulitan("Sulit")
-                    .levelMinimum(LevelFisik.MAHIR)
-                    .estimasiJam(9.0)
-                    .build());
-            seedTitik(suwanting, JenisTitik.BASECAMP, "Basecamp Suwanting", -7.475, 110.395, "Jalur menantang dengan tanjakan terjal tiada henti", 1);
-            seedTitik(suwanting, JenisTitik.POS, "Pos 3 Lembah Manding", -7.460, 110.420, "Area camp di punggungan savana terjal", 2);
-        }
+        Gunung merbabu = getOrCreateGunung("Gunung Merbabu", "Boyolali & Magelang, Jawa Tengah", 3145, -7.4550, 110.4400, "0821-3344-5566 (Basecamp Selo Baru)", "33.09.11.2001");
+        initJalur(merbabu, "via Selo", "Sedang", LevelFisik.MENENGAH, 7.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Selo", -7.495, 110.470, "Pintu masuk jalur favorit sejuta umat di lereng timur", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Dok-dok", -7.485, 110.465, "Pos peristirahatan awal", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Batu Tulis", -7.470, 110.455, "Area camp dengan pemandangan megah Gunung Merapi di seberang", 3);
+            seedTitik(j, JenisTitik.POS, "Sabana 1 & Sabana 2", -7.460, 110.445, "Hamparan bukit rumput savana hijau bergelombang yang memukau", 4);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Triangulasi & Kenteng Songo", -7.455, 110.440, "Puncak tertinggi Merbabu dengan batu lesung bersejarah", 5);
+        });
+        initJalur(merbabu, "via Suwanting", "Sulit", LevelFisik.MAHIR, 9.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Suwanting", -7.475, 110.395, "Jalur menantang dengan tanjakan terjal tiada henti", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Lembah Manding", -7.460, 110.420, "Area camp di punggungan savana terjal", 2);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Suwanting & Triangulasi", -7.455, 110.440, "Puncak bukit savana terbuka terpaan angin kencang", 3);
+        });
+        initJalur(merbabu, "via Wekas", "Sedang", LevelFisik.MENENGAH, 7.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Wekas Magelang", -7.445, 110.405, "Jalur air melimpah favorit pendaki santai", 1);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Pos 2 Wekas (Pipa Air Alami)", -7.450, 110.420, "Area camp luas dengan kran air bersih pegunungan", 2);
+            seedTitik(j, JenisTitik.POS, "Kawah Mati & Pertigaan Helipad", -7.452, 110.435, "Pertemuan jalur Wekas, Thekelan, dan Cuntel", 3);
+        });
+        initJalur(merbabu, "via Thekelan", "Sedang-Sulit", LevelFisik.MENENGAH, 8.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Thekelan Kopeng", -7.410, 110.430, "Jalur klasik utara Kopeng", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 4 Watu Gubug", -7.435, 110.435, "Batu berlubang mirip gua kecil tempat berlindung", 2);
+            seedTitik(j, JenisTitik.POS, "Puncak Pemancar", -7.448, 110.438, "Stasiun pemancar radio tua di ketinggian 3.000 mdpl", 3);
+        });
 
         // 12. Gunung Gede (2.958 mdpl) - Jawa Barat
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Gede")) {
-            Gunung gede = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Gede")
-                    .lokasi("Cianjur, Sukabumi & Bogor, Jawa Barat")
-                    .ketinggianMdpl(2958)
-                    .latitude(-6.7830)
-                    .longitude(106.9830)
-                    .kontakBasecamp("0811-2233-4455 (Balai TNGGP Cibodas)")
-                    .kodeWilayah("32.03.02.2001")
-                    .build());
-
-            Jalur cibodas = jalurRepository.save(Jalur.builder()
-                    .gunung(gede)
-                    .namaJalur("via Cibodas")
-                    .tingkatKesulitan("Sedang")
-                    .levelMinimum(LevelFisik.MENENGAH)
-                    .estimasiJam(7.5)
-                    .build());
-            seedTitik(cibodas, JenisTitik.BASECAMP, "Pintu Masuk Cibodas", -6.745, 107.005, "Pintu gerbang TNGGP, hutan hujan tropis basah", 1);
-            seedTitik(cibodas, JenisTitik.POS, "Telaga Biru & Rawa Gayonggong", -6.755, 106.995, "Danau alami dan jembatan kayu di atas rawa", 2);
-            seedTitik(cibodas, JenisTitik.TITIK_RAWAN, "Air Panas Cibeureum", -6.765, 106.990, "Tebing batu basah dengan aliran air panas belerang alami", 3);
-            seedTitik(cibodas, JenisTitik.POS, "Kandang Badak", -6.775, 106.985, "Pos persimpangan Gede-Pangrango, area camp utama", 4);
-            seedTitik(cibodas, JenisTitik.SUMBER_AIR, "Mata Air Kandang Badak", -6.776, 106.984, "Sumber air melimpah di dekat shelter pos", 5);
-            seedTitik(cibodas, JenisTitik.POS, "Alun-Alun Suryakencana", -6.790, 106.985, "Padang edelweis legendaris seluas 50 hektar", 6);
-            seedTitik(cibodas, JenisTitik.POS, "Puncak Gede & Kawah Ratu", -6.783, 106.983, "Puncak batu menghadap kawah aktif yang menakjubkan", 7);
-        }
+        Gunung gede = getOrCreateGunung("Gunung Gede", "Cianjur, Sukabumi & Bogor, Jawa Barat", 2958, -6.7830, 106.9830, "0811-2233-4455 (Balai TNGGP Cibodas)", "32.03.02.2001");
+        initJalur(gede, "via Cibodas", "Sedang", LevelFisik.MENENGAH, 7.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pintu Masuk Cibodas", -6.745, 107.005, "Pintu gerbang TNGGP, hutan hujan tropis basah", 1);
+            seedTitik(j, JenisTitik.POS, "Telaga Biru & Rawa Gayonggong", -6.755, 106.995, "Danau alami dan jembatan kayu di atas rawa", 2);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Air Panas Cibeureum", -6.765, 106.990, "Tebing batu basah dengan aliran air panas belerang alami", 3);
+            seedTitik(j, JenisTitik.POS, "Kandang Badak", -6.775, 106.985, "Pos persimpangan Gede-Pangrango, area camp utama", 4);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Mata Air Kandang Badak", -6.776, 106.984, "Sumber air melimpah di dekat shelter pos", 5);
+            seedTitik(j, JenisTitik.POS, "Alun-Alun Suryakencana", -6.790, 106.985, "Padang edelweis legendaris seluas 50 hektar", 6);
+            seedTitik(j, JenisTitik.POS, "Puncak Gede & Kawah Ratu", -6.783, 106.983, "Puncak batu menghadap kawah aktif yang menakjubkan", 7);
+        });
+        initJalur(gede, "via Gunung Putri", "Sedang-Sulit", LevelFisik.MENENGAH, 6.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Gunung Putri", -6.760, 107.025, "Jalur tercepat menuju padang edelweis Suryakencana", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Mondokan", -6.775, 107.005, "Tanjakan akar tanah terjal hutan pinus", 2);
+            seedTitik(j, JenisTitik.POS, "Gerbang Suryakencana Timur", -6.788, 106.990, "Pintu masuk timur Alun-Alun Suryakencana", 3);
+        });
+        initJalur(gede, "via Selabintana", "Sulit", LevelFisik.MAHIR, 10.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Selabintana Sukabumi", -6.850, 106.960, "Jalur petualangan rimba selatan Sukabumi", 1);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Sungai Cibeureum & Hutan Pacet", -6.820, 106.970, "Hutan basah lebat habitat lintah dan pacet", 2);
+            seedTitik(j, JenisTitik.POS, "Alun-Alun Suryakencana Barat", -6.795, 106.980, "Ujung barat padang savana Suryakencana", 3);
+        });
 
         // 13. Gunung Lawu (3.265 mdpl) - Karanganyar/Magetan
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Lawu")) {
-            Gunung lawu = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Lawu")
-                    .lokasi("Karanganyar (Jateng) & Magetan (Jatim)")
-                    .ketinggianMdpl(3265)
-                    .latitude(-7.6250)
-                    .longitude(111.1920)
-                    .kontakBasecamp("0822-4455-6677 (Basecamp Candi Cetho)")
-                    .kodeWilayah("33.13.14.2001")
-                    .build());
-
-            Jalur cetho = jalurRepository.save(Jalur.builder()
-                    .gunung(lawu)
-                    .namaJalur("via Candi Cetho")
-                    .tingkatKesulitan("Sedang")
-                    .levelMinimum(LevelFisik.MENENGAH)
-                    .estimasiJam(8.5)
-                    .build());
-            seedTitik(cetho, JenisTitik.BASECAMP, "Basecamp Candi Cetho", -7.595, 111.155, "Titik awal di kawasan cagar budaya Candi Hindu Cetho", 1);
-            seedTitik(cetho, JenisTitik.POS, "Pos 3 Penggik", -7.608, 111.170, "Pos peristirahatan hutan cemara", 2);
-            seedTitik(cetho, JenisTitik.POS, "Pos 5 Bulak Peperangan", -7.618, 111.185, "Sabana savana luas lokasi perkemahan populer", 3);
-            seedTitik(cetho, JenisTitik.POS, "Gupak Menjangan & Pasar Dieng", -7.622, 111.189, "Telaga kecil musiman dan dataran batu mistis", 4);
-            seedTitik(cetho, JenisTitik.POS, "Warung Mbok Yem", -7.624, 111.191, "Warung tertinggi di Indonesia pada ketinggian 3.150 mdpl", 5);
-            seedTitik(cetho, JenisTitik.POS, "Puncak Hargo Dumilah", -7.625, 111.192, "Puncak tertinggi Gunung Lawu dengan tugu trigulasi", 6);
-        }
+        Gunung lawu = getOrCreateGunung("Gunung Lawu", "Karanganyar (Jateng) & Magetan (Jatim)", 3265, -7.6250, 111.1920, "0822-4455-6677 (Basecamp Candi Cetho)", "33.13.14.2001");
+        initJalur(lawu, "via Candi Cetho", "Sedang", LevelFisik.MENENGAH, 8.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Candi Cetho", -7.595, 111.155, "Titik awal di kawasan cagar budaya Candi Hindu Cetho", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Penggik", -7.608, 111.170, "Pos peristirahatan hutan cemara", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 5 Bulak Peperangan", -7.618, 111.185, "Sabana savana luas lokasi perkemahan populer", 3);
+            seedTitik(j, JenisTitik.POS, "Gupak Menjangan & Pasar Dieng", -7.622, 111.189, "Telaga kecil musiman dan dataran batu mistis", 4);
+            seedTitik(j, JenisTitik.POS, "Warung Mbok Yem", -7.624, 111.191, "Warung tertinggi di Indonesia pada ketinggian 3.150 mdpl", 5);
+            seedTitik(j, JenisTitik.POS, "Puncak Hargo Dumilah", -7.625, 111.192, "Puncak tertinggi Gunung Lawu dengan tugu trigulasi", 6);
+        });
+        initJalur(lawu, "via Cemoro Sewu", "Sedang", LevelFisik.MENENGAH, 7.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Cemoro Sewu Magetan", -7.660, 111.190, "Jalur tangga batu rapi paling ramai dan banyak warung", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Watu Gedeg", -7.645, 111.192, "Pos peristirahatan dengan shelter tertutup", 2);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sendang Drajat", -7.630, 111.192, "Mata air sakral di dekat puncak Hargo Dumilah", 3);
+            seedTitik(j, JenisTitik.POS, "Puncak Hargo Dumilah", -7.625, 111.192, "Tugu puncak tertinggi 3.265 mdpl", 4);
+        });
+        initJalur(lawu, "via Cemoro Kandang", "Sedang", LevelFisik.MENENGAH, 8.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Cemoro Kandang Karanganyar", -7.662, 111.185, "Jalur tanah landai berliku di lereng barat", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Penggik", -7.640, 111.187, "Shelter peristirahatan hutan pinus dan cemara", 2);
+            seedTitik(j, JenisTitik.POS, "Puncak Hargo Dumilah", -7.625, 111.192, "Puncak Lawu", 3);
+        });
 
         // 14. Gunung Sindoro (3.153 mdpl) - Jawa Tengah
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Sindoro")) {
-            Gunung sindoro = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Sindoro")
-                    .lokasi("Wonosobo & Temanggung, Jawa Tengah")
-                    .ketinggianMdpl(3153)
-                    .latitude(-7.3000)
-                    .longitude(109.9980)
-                    .kontakBasecamp("0813-9988-7766 (Basecamp Kledung)")
-                    .kodeWilayah("33.23.09.2001")
-                    .build());
-
-            Jalur kledung = jalurRepository.save(Jalur.builder()
-                    .gunung(sindoro)
-                    .namaJalur("via Kledung")
-                    .tingkatKesulitan("Sedang")
-                    .levelMinimum(LevelFisik.MENENGAH)
-                    .estimasiJam(6.5)
-                    .build());
-            seedTitik(kledung, JenisTitik.BASECAMP, "Basecamp Kledung", -7.335, 110.015, "Basecamp di perbatasan Temanggung-Wonosobo", 1);
-            seedTitik(kledung, JenisTitik.POS, "Pos 2 Makam", -7.320, 110.008, "Batas kebun tembakau dan hutan pinus", 2);
-            seedTitik(kledung, JenisTitik.POS, "Pos 3 Sunrise Camp", -7.310, 110.002, "Tempat camping favorit menghadap gagahnya Gunung Sumbing", 3);
-            seedTitik(kledung, JenisTitik.TITIK_RAWAN, "Puncak Kawah Sindoro", -7.300, 109.998, "Kawah aktif belerang dengan padang batu eksotis", 4);
-        }
+        Gunung sindoro = getOrCreateGunung("Gunung Sindoro", "Wonosobo & Temanggung, Jawa Tengah", 3153, -7.3000, 109.9980, "0813-9988-7766 (Basecamp Kledung)", "33.23.09.2001");
+        initJalur(sindoro, "via Kledung", "Sedang", LevelFisik.MENENGAH, 6.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Kledung", -7.335, 110.015, "Basecamp di perbatasan Temanggung-Wonosobo", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Makam", -7.320, 110.008, "Batas kebun tembakau dan hutan pinus", 2);
+            seedTitik(j, JenisTitik.POS, "Pos 3 Sunrise Camp", -7.310, 110.002, "Tempat camping favorit menghadap gagahnya Gunung Sumbing", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Puncak Kawah Sindoro", -7.300, 109.998, "Kawah aktif belerang dengan padang batu eksotis", 4);
+        });
+        initJalur(sindoro, "via Sigedang (Tambi)", "Sedang", LevelFisik.MENENGAH, 6.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Sigedang Kejajar", -7.265, 109.980, "Jalur lereng utara menyusuri perkebunan teh Tambi Wonosobo", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Watu Susun", -7.280, 109.988, "Bebatuan alam bertingkat dengan pemandangan Dieng", 2);
+            seedTitik(j, JenisTitik.POS, "Kawah Utama Sindoro", -7.300, 109.998, "Bibir kawah utara Sindoro", 3);
+        });
+        initJalur(sindoro, "via Ndoro Arum (Banaran)", "Sedang-Sulit", LevelFisik.MENENGAH, 6.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Ndoro Arum Banaran", -7.325, 109.970, "Jalur barat daya yang asri dan sejuk", 1);
+            seedTitik(j, JenisTitik.POS, "Lembah Bidadari", -7.312, 109.982, "Padang bunga edelweis dan bukit savana", 2);
+        });
 
         // 15. Gunung Arjuno (3.339 mdpl) - Jawa Timur
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Arjuno")) {
-            Gunung arjuno = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Arjuno")
-                    .lokasi("Malang-Pasuruan, Jawa Timur")
-                    .ketinggianMdpl(3339)
-                    .latitude(-7.7610)
-                    .longitude(112.5960)
-                    .kontakBasecamp("0812-1122-3344 (Basecamp Tretes)")
-                    .kodeWilayah("35.07.22.2001")
-                    .build());
-
-            Jalur lawangTretes = jalurRepository.save(Jalur.builder()
-                    .gunung(arjuno)
-                    .namaJalur("Lawang via Tretes")
-                    .tingkatKesulitan("Sedang")
-                    .levelMinimum(LevelFisik.MENENGAH)
-                    .estimasiJam(8.0)
-                    .build());
-            seedTitik(lawangTretes, JenisTitik.BASECAMP, "Basecamp Tretes", -7.720, 112.620, "Basecamp utama pendakian Arjuno dari Tretes", 1);
-            seedTitik(lawangTretes, JenisTitik.POS, "Pos 1 Lalijiwo", -7.740, 112.610, "Pos peristirahatan, vegetasi hutan montane", 2);
-            seedTitik(lawangTretes, JenisTitik.SUMBER_AIR, "Sumber Air Lalijiwo", -7.742, 112.608, "Sumber air bersih di area Lalijiwo", 3);
-            seedTitik(lawangTretes, JenisTitik.TITIK_RAWAN, "Angin Kencang Puncak Ogal-Agil", -7.761, 112.596, "Area puncak rawan angin kencang dan sambaran petir", 4);
-        }
+        Gunung arjuno = getOrCreateGunung("Gunung Arjuno", "Malang-Pasuruan, Jawa Timur", 3339, -7.7610, 112.5960, "0812-1122-3344 (Basecamp Tretes)", "35.07.22.2001");
+        initJalur(arjuno, "Lawang via Tretes", "Sedang", LevelFisik.MENENGAH, 8.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Tretes", -7.720, 112.620, "Basecamp utama pendakian Arjuno dari Tretes", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Lalijiwo", -7.740, 112.610, "Pos peristirahatan, vegetasi hutan montane", 2);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sumber Air Lalijiwo", -7.742, 112.608, "Sumber air bersih di area Lalijiwo", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Angin Kencang Puncak Ogal-Agil", -7.761, 112.596, "Area puncak rawan angin kencang dan sambaran petir", 4);
+        });
+        initJalur(arjuno, "via Sumber Brantas (Batu)", "Sedang", LevelFisik.MENENGAH, 7.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Pos Jurang Kuali Sumber Brantas", -7.765, 112.540, "Pintu masuk lereng barat Kota Batu menyusuri kebun apel", 1);
+            seedTitik(j, JenisTitik.POS, "Lembah Lengkehan", -7.762, 112.570, "Lembah pelana antara Gunung Arjuno dan Welirang", 2);
+            seedTitik(j, JenisTitik.POS, "Pasar Setan Arjuno", -7.761, 112.585, "Dataran batu luas sebelum tanjakan Puncak Ogal-Agil", 3);
+        });
+        initJalur(arjuno, "via Purwosari (Candi)", "Sedang-Sulit", LevelFisik.MENENGAH, 8.5, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Purwosari Pasuruan", -7.770, 112.665, "Jalur sarat sejarah peninggalan situs pertapaan Majapahit", 1);
+            seedTitik(j, JenisTitik.POS, "Situs Candi Sepilar", -7.765, 112.635, "Kompleks candi batu peninggalan kerajaan kuno", 2);
+            seedTitik(j, JenisTitik.POS, "Puncak Ogal-Agil", -7.761, 112.596, "Puncak tertinggi Arjuno 3.339 mdpl", 3);
+        });
 
         // 16. Gunung Welirang (3.156 mdpl) - Jawa Timur
-        if (!gunungRepository.existsByNamaIgnoreCase("Gunung Welirang")) {
-            Gunung welirang = gunungRepository.save(Gunung.builder()
-                    .nama("Gunung Welirang")
-                    .lokasi("Pasuruan, Jawa Timur")
-                    .ketinggianMdpl(3156)
-                    .latitude(-7.7660)
-                    .longitude(112.5770)
-                    .kontakBasecamp("0812-1122-3344 (Basecamp Tretes)")
-                    .kodeWilayah("35.14.04.2005")
-                    .build());
+        Gunung welirang = getOrCreateGunung("Gunung Welirang", "Pasuruan, Jawa Timur", 3156, -7.7660, 112.5770, "0812-1122-3344 (Basecamp Tretes)", "35.14.04.2005");
+        initJalur(welirang, "via Tretes", "Mudah-Sedang", LevelFisik.PEMULA, 6.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Tretes", -7.720, 112.620, "Titik awal pendakian Welirang via Tretes", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 1 Air Panas", -7.735, 112.605, "Pos dekat sumber air panas alami", 2);
+            seedTitik(j, JenisTitik.SUMBER_AIR, "Sumber Air Air Panas", -7.736, 112.604, "Sumber air panas belerang untuk rileks", 3);
+            seedTitik(j, JenisTitik.TITIK_RAWAN, "Kawah Belerang Welirang", -7.766, 112.577, "Area kawah aktif tambang belerang, kenakan masker", 4);
+        });
+        initJalur(welirang, "via Pacet (Mojokerto)", "Sedang", LevelFisik.MENENGAH, 7.0, j -> {
+            seedTitik(j, JenisTitik.BASECAMP, "Basecamp Claket Pacet", -7.685, 112.550, "Jalur lereng barat laut Mojokerto menyusuri hutan bambu", 1);
+            seedTitik(j, JenisTitik.POS, "Pos 2 Putuk Lesung", -7.720, 112.560, "Pos peristirahatan hutan rimba", 2);
+            seedTitik(j, JenisTitik.POS, "Kawah Jero Welirang", -7.760, 112.575, "Bibir kawah utara Welirang", 3);
+        });
 
-            Jalur viaTretes = jalurRepository.save(Jalur.builder()
-                    .gunung(welirang)
-                    .namaJalur("via Tretes")
-                    .tingkatKesulitan("Mudah-Sedang")
-                    .levelMinimum(LevelFisik.PEMULA)
-                    .estimasiJam(6.0)
-                    .build());
-            seedTitik(viaTretes, JenisTitik.BASECAMP, "Basecamp Tretes", -7.720, 112.620, "Titik awal pendakian Welirang via Tretes", 1);
-            seedTitik(viaTretes, JenisTitik.POS, "Pos 1 Air Panas", -7.735, 112.605, "Pos dekat sumber air panas alami", 2);
-            seedTitik(viaTretes, JenisTitik.SUMBER_AIR, "Sumber Air Air Panas", -7.736, 112.604, "Sumber air panas belerang untuk rileks", 3);
-            seedTitik(viaTretes, JenisTitik.TITIK_RAWAN, "Kawah Belerang Welirang", -7.766, 112.577, "Area kawah aktif tambang belerang, kenakan masker", 4);
+        log.info("  ✔ {} master gunung aktif", gunungRepository.count());
+        log.info("  ✔ {} jalur pendakian aktif", jalurRepository.count());
+        log.info("  ✔ {} titik pos waypoint aktif", titikJalurRepository.count());
+    }
+
+    private Gunung getOrCreateGunung(String nama, String lokasi, int mdpl, double lat, double lon, String kontak, String kodeWilayah) {
+        return gunungRepository.findByNamaIgnoreCase(nama).orElseGet(() ->
+                gunungRepository.save(Gunung.builder()
+                        .nama(nama)
+                        .lokasi(lokasi)
+                        .ketinggianMdpl(mdpl)
+                        .latitude(lat)
+                        .longitude(lon)
+                        .kontakBasecamp(kontak)
+                        .kodeWilayah(kodeWilayah)
+                        .build())
+        );
+    }
+
+    private void initJalur(Gunung gunung, String namaJalur, String kesulitan, LevelFisik level, double estimasiJam, java.util.function.Consumer<Jalur> pointSeeder) {
+        Jalur jalur = jalurRepository.findByGunungIdAndNamaJalurIgnoreCase(gunung.getId(), namaJalur).orElseGet(() ->
+                jalurRepository.save(Jalur.builder()
+                        .gunung(gunung)
+                        .namaJalur(namaJalur)
+                        .tingkatKesulitan(kesulitan)
+                        .levelMinimum(level)
+                        .estimasiJam(estimasiJam)
+                        .build())
+        );
+
+        if (!titikJalurRepository.existsByJalurId(jalur.getId())) {
+            pointSeeder.accept(jalur);
         }
+    }
 
-        log.info("  ✔ {} master gunung berhasil disimpan", gunungRepository.count());
-        log.info("  ✔ {} jalur pendakian tersimpan", jalurRepository.count());
-        log.info("  ✔ {} titik pos waypoint tersimpan", titikJalurRepository.count());
+    private void seedTitik(Jalur jalur, JenisTitik jenis, String nama,
+                           double lat, double lon, String deskripsi, int urutan) {
+        titikJalurRepository.save(TitikJalur.builder()
+                .jalur(jalur)
+                .jenis(jenis)
+                .nama(nama)
+                .latitude(lat)
+                .longitude(lon)
+                .deskripsi(deskripsi)
+                .urutan(urutan)
+                .build());
     }
 
     // -------------------------------------------------------------------------
@@ -626,7 +495,6 @@ public class DataSeeder implements CommandLineRunner {
             return;
         }
 
-        // Temukan beberapa jalur untuk rencana pendakian contoh
         jalurRepository.findAll().stream().filter(j -> j.getNamaJalur().contains("Patak Banteng")).findFirst().ifPresent(jalurPrau -> {
             RencanaPendakian rencanaPrau = rencanaRepository.save(RencanaPendakian.builder()
                     .pembuat(sari)
@@ -726,18 +594,5 @@ public class DataSeeder implements CommandLineRunner {
                 .build());
 
         log.info("  ✔ {} panduan keselamatan disimpan", panduanRepository.count());
-    }
-
-    private void seedTitik(Jalur jalur, JenisTitik jenis, String nama,
-                           double lat, double lon, String deskripsi, int urutan) {
-        titikJalurRepository.save(TitikJalur.builder()
-                .jalur(jalur)
-                .jenis(jenis)
-                .nama(nama)
-                .latitude(lat)
-                .longitude(lon)
-                .deskripsi(deskripsi)
-                .urutan(urutan)
-                .build());
     }
 }

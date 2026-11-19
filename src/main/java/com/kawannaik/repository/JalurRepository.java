@@ -11,4 +11,6 @@ import java.util.List;
 public interface JalurRepository extends JpaRepository<Jalur, Long> {
     List<Jalur> findByGunungId(Long gunungId);
     List<Jalur> findByLevelMinimum(LevelFisik levelMinimum);
+    boolean existsByGunungIdAndNamaJalurIgnoreCase(Long gunungId, String namaJalur);
+    java.util.Optional<Jalur> findByGunungIdAndNamaJalurIgnoreCase(Long gunungId, String namaJalur);
 }

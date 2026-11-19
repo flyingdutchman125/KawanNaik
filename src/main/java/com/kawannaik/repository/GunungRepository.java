@@ -11,4 +11,5 @@ public interface GunungRepository extends JpaRepository<Gunung, Long> {
     List<Gunung> findByNamaContainingIgnoreCase(String nama);
     List<Gunung> findByLokasiContainingIgnoreCase(String lokasi);
     boolean existsByNamaIgnoreCase(String nama);
+    java.util.Optional<Gunung> findByNamaIgnoreCase(String nama);
 }
