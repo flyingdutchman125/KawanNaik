@@ -27,7 +27,8 @@ export default function AdminGunungPage() {
     ketinggianMdpl: '',
     latitude: '',
     longitude: '',
-    kontakBasecamp: ''
+    kontakBasecamp: '',
+    kodeWilayah: ''
   });
 
   const loadGunung = async () => {
@@ -64,7 +65,8 @@ export default function AdminGunungPage() {
       ketinggianMdpl: '',
       latitude: '',
       longitude: '',
-      kontakBasecamp: ''
+      kontakBasecamp: '',
+      kodeWilayah: ''
     });
     setEditingGunung(null);
   };
@@ -77,7 +79,8 @@ export default function AdminGunungPage() {
       ketinggianMdpl: gunung.ketinggianMdpl != null ? String(gunung.ketinggianMdpl) : '',
       latitude: gunung.latitude != null ? String(gunung.latitude) : '',
       longitude: gunung.longitude != null ? String(gunung.longitude) : '',
-      kontakBasecamp: gunung.kontakBasecamp || ''
+      kontakBasecamp: gunung.kontakBasecamp || '',
+      kodeWilayah: gunung.kodeWilayah || ''
     });
     setActiveTab('tambah');
   };
@@ -128,7 +131,8 @@ export default function AdminGunungPage() {
         ketinggianMdpl: parseInt(formData.ketinggianMdpl, 10),
         latitude: formData.latitude ? parseFloat(formData.latitude) : null,
         longitude: formData.longitude ? parseFloat(formData.longitude) : null,
-        kontakBasecamp: formData.kontakBasecamp ? formData.kontakBasecamp.trim() : null
+        kontakBasecamp: formData.kontakBasecamp ? formData.kontakBasecamp.trim() : null,
+        kodeWilayah: formData.kodeWilayah?.trim() ? formData.kodeWilayah.trim() : null
       };
 
       if (editingGunung) {
@@ -528,6 +532,24 @@ export default function AdminGunungPage() {
                   onChange={e => setFormData(p => ({ ...p, kontakBasecamp: e.target.value }))}
                   maxLength={50}
                 />
+              </div>
+
+              {/* Kode Wilayah BMKG */}
+              <div className="form-group">
+                <label className="form-label">
+                  Kode Wilayah BMKG (Opsional)
+                </label>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Format adm4, contoh: 35.08.05.2002"
+                  value={formData.kodeWilayah}
+                  onChange={e => setFormData(p => ({ ...p, kodeWilayah: e.target.value }))}
+                  maxLength={20}
+                />
+                <div className="body-sm" style={{ marginTop: 4, fontSize: 11 }}>
+                  Digunakan untuk integrasi prakiraan cuaca BMKG otomatis.
+                </div>
               </div>
 
               {/* Koordinat GPS */}

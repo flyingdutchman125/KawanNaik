@@ -55,7 +55,7 @@ public class GunungServiceImpl implements GunungService {
                 .latitude(request.getLatitude())
                 .longitude(request.getLongitude())
                 .kontakBasecamp(request.getKontakBasecamp())
-                .kodeWilayah(request.getKodeWilayah())
+                .kodeWilayah(StringUtils.hasText(request.getKodeWilayah()) ? request.getKodeWilayah().trim() : null)
                 .build();
 
         return mapToResponse(gunungRepository.save(gunung));
@@ -73,7 +73,7 @@ public class GunungServiceImpl implements GunungService {
         gunung.setLatitude(request.getLatitude());
         gunung.setLongitude(request.getLongitude());
         gunung.setKontakBasecamp(request.getKontakBasecamp());
-        gunung.setKodeWilayah(request.getKodeWilayah());
+        gunung.setKodeWilayah(StringUtils.hasText(request.getKodeWilayah()) ? request.getKodeWilayah().trim() : null);
 
         return mapToResponse(gunungRepository.save(gunung));
     }

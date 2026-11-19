@@ -25,7 +25,7 @@ public class GunungRequest {
     private String kontakBasecamp;
 
     // Format Kepmendagri tingkat IV, contoh 35.08.05.2002
-    @jakarta.validation.constraints.Pattern(regexp = "^\\d{2}\\.\\d{2}\\.\\d{2}\\.\\d{4}$", message = "Kode wilayah harus format adm4, contoh 35.08.05.2002")
+    @jakarta.validation.constraints.Pattern(regexp = "^$|^\\d{2}\\.\\d{2}\\.\\d{2}\\.\\d{4}$", message = "Kode wilayah harus format adm4, contoh 35.08.05.2002")
     private String kodeWilayah;
 
     public GunungRequest() {
