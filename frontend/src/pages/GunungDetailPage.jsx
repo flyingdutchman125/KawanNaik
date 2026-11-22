@@ -195,7 +195,12 @@ export default function GunungDetailPage() {
               </div>
             )}
 
-            <JalurMap titik={titik} />
+            <JalurMap
+              titik={titik}
+              gpxTrack={selectedJalur?.gpxTrack || []}
+              jalurId={selectedJalur?.id}
+              namaJalur={selectedJalur?.namaJalur}
+            />
 
             {/* Titik jalur */}
             {titik.length > 0 && (

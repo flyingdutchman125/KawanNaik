@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Slamet - via Dipajaya (Pemalang)</name>
+    <desc>Rute pendakian resmi Gunung Slamet via via Dipajaya (Pemalang)</desc>
+  </metadata>
+  <wpt lat="-7.212" lon="109.24">
+    <ele>1828.0</ele>
+    <name>Basecamp Dipajaya Clekatakan</name>
+    <desc>Jalur timur laut Pemalang yang teduh dan asri</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.228" lon="109.225">
+    <ele>3428.0</ele>
+    <name>Pos 4 Igir-igir</name>
+    <desc>Punggungan savana menyatu dengan jalur Bambangan</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Slamet via via Dipajaya (Pemalang)</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.212075" lon="109.24008"><ele>1828.0</ele></trkpt>
+      <trkpt lat="-7.212357" lon="109.239713"><ele>1861.3</ele></trkpt>
+      <trkpt lat="-7.212639" lon="109.239346"><ele>1894.7</ele></trkpt>
+      <trkpt lat="-7.212922" lon="109.23898"><ele>1928.0</ele></trkpt>
+      <trkpt lat="-7.213207" lon="109.238615"><ele>1961.3</ele></trkpt>
+      <trkpt lat="-7.213495" lon="109.238254"><ele>1994.7</ele></trkpt>
+      <trkpt lat="-7.213787" lon="109.237897"><ele>2028.0</ele></trkpt>
+      <trkpt lat="-7.214083" lon="109.237545"><ele>2061.3</ele></trkpt>
+      <trkpt lat="-7.214384" lon="109.237198"><ele>2094.7</ele></trkpt>
+      <trkpt lat="-7.21469" lon="109.236857"><ele>2128.0</ele></trkpt>
+      <trkpt lat="-7.215002" lon="109.236522"><ele>2161.3</ele></trkpt>
+      <trkpt lat="-7.215319" lon="109.236192"><ele>2194.7</ele></trkpt>
+      <trkpt lat="-7.215641" lon="109.235867"><ele>2228.0</ele></trkpt>
+      <trkpt lat="-7.215968" lon="109.235548"><ele>2261.3</ele></trkpt>
+      <trkpt lat="-7.216298" lon="109.235232"><ele>2294.7</ele></trkpt>
+      <trkpt lat="-7.216632" lon="109.23492"><ele>2328.0</ele></trkpt>
+      <trkpt lat="-7.216969" lon="109.234611"><ele>2361.3</ele></trkpt>
+      <trkpt lat="-7.217307" lon="109.234304"><ele>2394.7</ele></trkpt>
+      <trkpt lat="-7.217646" lon="109.233997"><ele>2428.0</ele></trkpt>
+      <trkpt lat="-7.217985" lon="109.233691"><ele>2461.3</ele></trkpt>
+      <trkpt lat="-7.218323" lon="109.233384"><ele>2494.7</ele></trkpt>
+      <trkpt lat="-7.21866" lon="109.233075"><ele>2528.0</ele></trkpt>
+      <trkpt lat="-7.218995" lon="109.232764"><ele>2561.3</ele></trkpt>
+      <trkpt lat="-7.219328" lon="109.232451"><ele>2594.7</ele></trkpt>
+      <trkpt lat="-7.219658" lon="109.232135"><ele>2628.0</ele></trkpt>
+      <trkpt lat="-7.219986" lon="109.231817"><ele>2661.3</ele></trkpt>
+      <trkpt lat="-7.220311" lon="109.231496"><ele>2694.7</ele></trkpt>
+      <trkpt lat="-7.220635" lon="109.231173"><ele>2728.0</ele></trkpt>
+      <trkpt lat="-7.220957" lon="109.230849"><ele>2761.3</ele></trkpt>
+      <trkpt lat="-7.221278" lon="109.230523"><ele>2794.7</ele></trkpt>
+      <trkpt lat="-7.221599" lon="109.230198"><ele>2828.0</ele></trkpt>
+      <trkpt lat="-7.221921" lon="109.229873"><ele>2861.3</ele></trkpt>
+      <trkpt lat="-7.222245" lon="109.22955"><ele>2894.7</ele></trkpt>
+      <trkpt lat="-7.222572" lon="109.229231"><ele>2928.0</ele></trkpt>
+      <trkpt lat="-7.222902" lon="109.228914"><ele>2961.3</ele></trkpt>
+      <trkpt lat="-7.223236" lon="109.228603"><ele>2994.7</ele></trkpt>
+      <trkpt lat="-7.223575" lon="109.228297"><ele>3028.0</ele></trkpt>
+      <trkpt lat="-7.223921" lon="109.227997"><ele>3061.3</ele></trkpt>
+      <trkpt lat="-7.224272" lon="109.227704"><ele>3094.7</ele></trkpt>
+      <trkpt lat="-7.22463" lon="109.227417"><ele>3128.0</ele></trkpt>
+      <trkpt lat="-7.224994" lon="109.227138"><ele>3161.3</ele></trkpt>
+      <trkpt lat="-7.225364" lon="109.226865"><ele>3194.7</ele></trkpt>
+      <trkpt lat="-7.22574" lon="109.226598"><ele>3228.0</ele></trkpt>
+      <trkpt lat="-7.226122" lon="109.226337"><ele>3261.3</ele></trkpt>
+      <trkpt lat="-7.226508" lon="109.22608"><ele>3294.7</ele></trkpt>
+      <trkpt lat="-7.226897" lon="109.225828"><ele>3328.0</ele></trkpt>
+      <trkpt lat="-7.227289" lon="109.225578"><ele>3361.3</ele></trkpt>
+      <trkpt lat="-7.227682" lon="109.225329"><ele>3394.7</ele></trkpt>
+      <trkpt lat="-7.228" lon="109.225"><ele>3428.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

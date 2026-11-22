@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Papandayan - via Cisurupan</name>
+    <desc>Rute pendakian resmi Gunung Papandayan via via Cisurupan</desc>
+  </metadata>
+  <wpt lat="-7.305" lon="107.75">
+    <ele>1065.0</ele>
+    <name>Pos Cisurupan</name>
+    <desc>Pintu masuk dari kaki bukit Cisurupan</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.318" lon="107.735">
+    <ele>2665.0</ele>
+    <name>Kawah Baru Papandayan</name>
+    <desc>Kawah baru dengan bebatuan warna-warni</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Papandayan via via Cisurupan</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.305088" lon="107.750076"><ele>1065.0</ele></trkpt>
+      <trkpt lat="-7.305318" lon="107.749665"><ele>1102.2</ele></trkpt>
+      <trkpt lat="-7.305549" lon="107.749254"><ele>1139.4</ele></trkpt>
+      <trkpt lat="-7.305782" lon="107.748845"><ele>1176.6</ele></trkpt>
+      <trkpt lat="-7.306018" lon="107.748439"><ele>1213.8</ele></trkpt>
+      <trkpt lat="-7.306259" lon="107.748037"><ele>1251.0</ele></trkpt>
+      <trkpt lat="-7.306507" lon="107.747641"><ele>1288.3</ele></trkpt>
+      <trkpt lat="-7.306763" lon="107.747252"><ele>1325.5</ele></trkpt>
+      <trkpt lat="-7.307026" lon="107.746869"><ele>1362.7</ele></trkpt>
+      <trkpt lat="-7.307298" lon="107.746494"><ele>1399.9</ele></trkpt>
+      <trkpt lat="-7.307579" lon="107.746127"><ele>1437.1</ele></trkpt>
+      <trkpt lat="-7.307868" lon="107.745766"><ele>1474.3</ele></trkpt>
+      <trkpt lat="-7.308164" lon="107.745412"><ele>1511.5</ele></trkpt>
+      <trkpt lat="-7.308466" lon="107.745063"><ele>1548.7</ele></trkpt>
+      <trkpt lat="-7.308774" lon="107.744719"><ele>1585.9</ele></trkpt>
+      <trkpt lat="-7.309086" lon="107.744378"><ele>1623.1</ele></trkpt>
+      <trkpt lat="-7.3094" lon="107.744039"><ele>1660.3</ele></trkpt>
+      <trkpt lat="-7.309715" lon="107.743702"><ele>1697.6</ele></trkpt>
+      <trkpt lat="-7.31003" lon="107.743364"><ele>1734.8</ele></trkpt>
+      <trkpt lat="-7.310344" lon="107.743025"><ele>1772.0</ele></trkpt>
+      <trkpt lat="-7.310655" lon="107.742684"><ele>1809.2</ele></trkpt>
+      <trkpt lat="-7.310964" lon="107.742341"><ele>1846.4</ele></trkpt>
+      <trkpt lat="-7.31127" lon="107.741995"><ele>1883.6</ele></trkpt>
+      <trkpt lat="-7.311572" lon="107.741646"><ele>1920.8</ele></trkpt>
+      <trkpt lat="-7.311871" lon="107.741295"><ele>1958.0</ele></trkpt>
+      <trkpt lat="-7.312168" lon="107.740941"><ele>1995.2</ele></trkpt>
+      <trkpt lat="-7.312463" lon="107.740586"><ele>2032.4</ele></trkpt>
+      <trkpt lat="-7.312757" lon="107.74023"><ele>2069.7</ele></trkpt>
+      <trkpt lat="-7.313052" lon="107.739874"><ele>2106.9</ele></trkpt>
+      <trkpt lat="-7.313348" lon="107.739521"><ele>2144.1</ele></trkpt>
+      <trkpt lat="-7.313648" lon="107.739169"><ele>2181.3</ele></trkpt>
+      <trkpt lat="-7.313952" lon="107.738822"><ele>2218.5</ele></trkpt>
+      <trkpt lat="-7.314261" lon="107.738479"><ele>2255.7</ele></trkpt>
+      <trkpt lat="-7.314577" lon="107.738142"><ele>2292.9</ele></trkpt>
+      <trkpt lat="-7.3149" lon="107.737811"><ele>2330.1</ele></trkpt>
+      <trkpt lat="-7.31523" lon="107.737486"><ele>2367.3</ele></trkpt>
+      <trkpt lat="-7.315568" lon="107.737168"><ele>2404.5</ele></trkpt>
+      <trkpt lat="-7.315913" lon="107.736857"><ele>2441.7</ele></trkpt>
+      <trkpt lat="-7.316266" lon="107.736551"><ele>2479.0</ele></trkpt>
+      <trkpt lat="-7.316624" lon="107.736251"><ele>2516.2</ele></trkpt>
+      <trkpt lat="-7.316986" lon="107.735954"><ele>2553.4</ele></trkpt>
+      <trkpt lat="-7.317353" lon="107.735661"><ele>2590.6</ele></trkpt>
+      <trkpt lat="-7.31772" lon="107.735368"><ele>2627.8</ele></trkpt>
+      <trkpt lat="-7.318" lon="107.735"><ele>2665.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

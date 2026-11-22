@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Batur - via Pasar Agung</name>
+    <desc>Rute pendakian resmi Gunung Batur via via Pasar Agung</desc>
+  </metadata>
+  <wpt lat="-8.25" lon="115.365">
+    <ele>800.0</ele>
+    <name>Pura Pasar Agung Batur</name>
+    <desc>Jalur tercepat dan populer untuk pemburu sunrise</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-8.244" lon="115.372">
+    <ele>1717.0</ele>
+    <name>Puncak Kawah Kedua Batur</name>
+    <desc>Bibir kaldera dengan uap panas vulkanik</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Batur via via Pasar Agung</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-8.249912" lon="115.364924"><ele>800.0</ele></trkpt>
+      <trkpt lat="-8.249767" lon="115.365407"><ele>845.9</ele></trkpt>
+      <trkpt lat="-8.249611" lon="115.365881"><ele>891.7</ele></trkpt>
+      <trkpt lat="-8.24943" lon="115.366333"><ele>937.5</ele></trkpt>
+      <trkpt lat="-8.249213" lon="115.366754"><ele>983.4</ele></trkpt>
+      <trkpt lat="-8.248957" lon="115.367142"><ele>1029.2</ele></trkpt>
+      <trkpt lat="-8.248666" lon="115.3675"><ele>1075.1</ele></trkpt>
+      <trkpt lat="-8.248351" lon="115.367837"><ele>1121.0</ele></trkpt>
+      <trkpt lat="-8.248024" lon="115.368164"><ele>1166.8</ele></trkpt>
+      <trkpt lat="-8.247699" lon="115.368492"><ele>1212.7</ele></trkpt>
+      <trkpt lat="-8.247384" lon="115.36883"><ele>1258.5</ele></trkpt>
+      <trkpt lat="-8.247085" lon="115.36918"><ele>1304.3</ele></trkpt>
+      <trkpt lat="-8.246798" lon="115.369541"><ele>1350.2</ele></trkpt>
+      <trkpt lat="-8.246515" lon="115.369906"><ele>1396.1</ele></trkpt>
+      <trkpt lat="-8.246224" lon="115.370263"><ele>1441.9</ele></trkpt>
+      <trkpt lat="-8.245913" lon="115.370604"><ele>1487.8</ele></trkpt>
+      <trkpt lat="-8.245571" lon="115.370918"><ele>1533.6</ele></trkpt>
+      <trkpt lat="-8.245194" lon="115.371202"><ele>1579.4</ele></trkpt>
+      <trkpt lat="-8.244785" lon="115.371459"><ele>1625.3</ele></trkpt>
+      <trkpt lat="-8.244353" lon="115.371695"><ele>1671.2</ele></trkpt>
+      <trkpt lat="-8.244" lon="115.372"><ele>1717.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

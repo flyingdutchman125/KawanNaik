@@ -161,4 +161,29 @@ class JalurServiceTest {
         assertThrows(ResourceNotFoundException.class, () -> jalurService.deleteJalur(999L));
         verify(jalurRepository, never()).deleteById(anyLong());
     }
+
+    @Test
+    void getGpxByJalurId_Success() {
+        jalur.setGpxData("<gpx></gpx>");
+        when(jalurRepository.findById(10L)).thenReturn(Optional.of(jalur));
+
+        String result = jalurService.getGpxByJalurId(10L);
+
+        assertEquals("<gpx></gpx>", result);
+    }
+
+    @Test
+    void getGpxByJalurId_NotFound() {
+        when(jalurRepository.findById(999L)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> jalurService.getGpxByJalurId(999L));
+    }
+
+    @Test
+    void getGpxByJalurId_EmptyGpx() {
+        jalur.setGpxData(null);
+        when(jalurRepository.findById(10L)).thenReturn(Optional.of(jalur));
+
+        assertThrows(ResourceNotFoundException.class, () -> jalurService.getGpxByJalurId(10L));
+    }
 }

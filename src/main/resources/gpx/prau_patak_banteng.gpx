@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Prau - via Patak Banteng</name>
+    <desc>Rute pendakian resmi Gunung Prau via via Patak Banteng</desc>
+  </metadata>
+  <wpt lat="-7.208" lon="109.932">
+    <ele>965.0</ele>
+    <name>Basecamp Patak Banteng</name>
+    <desc>Basecamp favorit pemula dengan fasilitas komplit &amp; ojek</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.2" lon="109.93">
+    <ele>1365.0</ele>
+    <name>Pos 1 Senthongsari</name>
+    <desc>Pos pertama dengan gazebo dan warung makanan</desc>
+    <type>POS</type>
+  </wpt>
+  <wpt lat="-7.195" lon="109.928">
+    <ele>1765.0</ele>
+    <name>Pos 2 Canggal Walitis</name>
+    <desc>Jalur tangga batu di tengah perkebunan dan pinus</desc>
+    <type>POS</type>
+  </wpt>
+  <wpt lat="-7.19" lon="109.925">
+    <ele>2165.0</ele>
+    <name>Pos 3 Cacingan</name>
+    <desc>Tanjakan tangga tanah berakar, licin saat musim hujan</desc>
+    <type>TITIK_RAWAN</type>
+  </wpt>
+  <wpt lat="-7.186" lon="109.923">
+    <ele>2565.0</ele>
+    <name>Sunrise Camp Teletubbies</name>
+    <desc>Puncak hamparan bukit rumput luas, Golden Sunrise terindah</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Prau via via Patak Banteng</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.208018" lon="109.931928"><ele>965.0</ele></trkpt>
+      <trkpt lat="-7.207514" lon="109.932056"><ele>987.2</ele></trkpt>
+      <trkpt lat="-7.207016" lon="109.932157"><ele>1009.4</ele></trkpt>
+      <trkpt lat="-7.206532" lon="109.932205"><ele>1031.7</ele></trkpt>
+      <trkpt lat="-7.206065" lon="109.932184"><ele>1053.9</ele></trkpt>
+      <trkpt lat="-7.205615" lon="109.932095"><ele>1076.1</ele></trkpt>
+      <trkpt lat="-7.205178" lon="109.931953"><ele>1098.3</ele></trkpt>
+      <trkpt lat="-7.204749" lon="109.931781"><ele>1120.6</ele></trkpt>
+      <trkpt lat="-7.204321" lon="109.931607"><ele>1142.8</ele></trkpt>
+      <trkpt lat="-7.203887" lon="109.93145"><ele>1165.0</ele></trkpt>
+      <trkpt lat="-7.203447" lon="109.931322"><ele>1187.2</ele></trkpt>
+      <trkpt lat="-7.203001" lon="109.931219"><ele>1209.4</ele></trkpt>
+      <trkpt lat="-7.202552" lon="109.931127"><ele>1231.7</ele></trkpt>
+      <trkpt lat="-7.202105" lon="109.931025"><ele>1253.9</ele></trkpt>
+      <trkpt lat="-7.201666" lon="109.930892"><ele>1276.1</ele></trkpt>
+      <trkpt lat="-7.201238" lon="109.930713"><ele>1298.3</ele></trkpt>
+      <trkpt lat="-7.200823" lon="109.930484"><ele>1320.6</ele></trkpt>
+      <trkpt lat="-7.200418" lon="109.930215"><ele>1342.8</ele></trkpt>
+      <trkpt lat="-7.200043" lon="109.929892"><ele>1365.0</ele></trkpt>
+      <trkpt lat="-7.199454" lon="109.930046"><ele>1401.4</ele></trkpt>
+      <trkpt lat="-7.198901" lon="109.930111"><ele>1437.7</ele></trkpt>
+      <trkpt lat="-7.198409" lon="109.930023"><ele>1474.1</ele></trkpt>
+      <trkpt lat="-7.197965" lon="109.929816"><ele>1510.5</ele></trkpt>
+      <trkpt lat="-7.197533" lon="109.929576"><ele>1546.8</ele></trkpt>
+      <trkpt lat="-7.197085" lon="109.929379"><ele>1583.2</ele></trkpt>
+      <trkpt lat="-7.196617" lon="109.929229"><ele>1619.5</ele></trkpt>
+      <trkpt lat="-7.196158" lon="109.92906"><ele>1655.9</ele></trkpt>
+      <trkpt lat="-7.195739" lon="109.928788"><ele>1692.3</ele></trkpt>
+      <trkpt lat="-7.195375" lon="109.92838"><ele>1728.6</ele></trkpt>
+      <trkpt lat="-7.195057" lon="109.927906"><ele>1765.0</ele></trkpt>
+      <trkpt lat="-7.194488" lon="109.927908"><ele>1798.3</ele></trkpt>
+      <trkpt lat="-7.193954" lon="109.927854"><ele>1831.7</ele></trkpt>
+      <trkpt lat="-7.19348" lon="109.9277"><ele>1865.0</ele></trkpt>
+      <trkpt lat="-7.193059" lon="109.927457"><ele>1898.3</ele></trkpt>
+      <trkpt lat="-7.192658" lon="109.927181"><ele>1931.7</ele></trkpt>
+      <trkpt lat="-7.192243" lon="109.926929"><ele>1965.0</ele></trkpt>
+      <trkpt lat="-7.1918" lon="109.926722"><ele>1998.3</ele></trkpt>
+      <trkpt lat="-7.19135" lon="109.926528"><ele>2031.7</ele></trkpt>
+      <trkpt lat="-7.190931" lon="109.926282"><ele>2065.0</ele></trkpt>
+      <trkpt lat="-7.190578" lon="109.925926"><ele>2098.3</ele></trkpt>
+      <trkpt lat="-7.190297" lon="109.925449"><ele>2131.7</ele></trkpt>
+      <trkpt lat="-7.190026" lon="109.924949"><ele>2165.0</ele></trkpt>
+      <trkpt lat="-7.189432" lon="109.925024"><ele>2209.4</ele></trkpt>
+      <trkpt lat="-7.188908" lon="109.924961"><ele>2253.9</ele></trkpt>
+      <trkpt lat="-7.188462" lon="109.924742"><ele>2298.3</ele></trkpt>
+      <trkpt lat="-7.188031" lon="109.924493"><ele>2342.8</ele></trkpt>
+      <trkpt lat="-7.187555" lon="109.924335"><ele>2387.2</ele></trkpt>
+      <trkpt lat="-7.187047" lon="109.924239"><ele>2431.7</ele></trkpt>
+      <trkpt lat="-7.186593" lon="109.924036"><ele>2476.1</ele></trkpt>
+      <trkpt lat="-7.186261" lon="109.92359"><ele>2520.6</ele></trkpt>
+      <trkpt lat="-7.186" lon="109.923"><ele>2565.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

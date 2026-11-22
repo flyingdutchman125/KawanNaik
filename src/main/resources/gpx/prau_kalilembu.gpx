@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Prau - via Kalilembu</name>
+    <desc>Rute pendakian resmi Gunung Prau via via Kalilembu</desc>
+  </metadata>
+  <wpt lat="-7.21" lon="109.925">
+    <ele>965.0</ele>
+    <name>Basecamp Kalilembu Dieng</name>
+    <desc>Alternatif favorit pemula, jalur landai kebun kentang</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.198" lon="109.922">
+    <ele>2565.0</ele>
+    <name>Pos 2 Telaga Wurung</name>
+    <desc>Area istirahat teduh pepohonan pinus</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Prau via via Kalilembu</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.210027" lon="109.924893"><ele>965.0</ele></trkpt>
+      <trkpt lat="-7.20955" lon="109.924912"><ele>1024.3</ele></trkpt>
+      <trkpt lat="-7.209074" lon="109.924927"><ele>1083.5</ele></trkpt>
+      <trkpt lat="-7.208601" lon="109.92493"><ele>1142.8</ele></trkpt>
+      <trkpt lat="-7.208132" lon="109.924916"><ele>1202.0</ele></trkpt>
+      <trkpt lat="-7.207669" lon="109.92488"><ele>1261.3</ele></trkpt>
+      <trkpt lat="-7.207212" lon="109.924819"><ele>1320.6</ele></trkpt>
+      <trkpt lat="-7.20676" lon="109.924736"><ele>1379.8</ele></trkpt>
+      <trkpt lat="-7.206314" lon="109.924634"><ele>1439.1</ele></trkpt>
+      <trkpt lat="-7.205871" lon="109.924517"><ele>1498.3</ele></trkpt>
+      <trkpt lat="-7.20543" lon="109.924393"><ele>1557.6</ele></trkpt>
+      <trkpt lat="-7.204989" lon="109.924268"><ele>1616.9</ele></trkpt>
+      <trkpt lat="-7.204546" lon="109.924148"><ele>1676.1</ele></trkpt>
+      <trkpt lat="-7.204102" lon="109.924037"><ele>1735.4</ele></trkpt>
+      <trkpt lat="-7.203655" lon="109.923936"><ele>1794.6</ele></trkpt>
+      <trkpt lat="-7.203205" lon="109.923846"><ele>1853.9</ele></trkpt>
+      <trkpt lat="-7.202754" lon="109.923764"><ele>1913.1</ele></trkpt>
+      <trkpt lat="-7.202301" lon="109.923683"><ele>1972.4</ele></trkpt>
+      <trkpt lat="-7.201851" lon="109.923598"><ele>2031.7</ele></trkpt>
+      <trkpt lat="-7.201403" lon="109.923501"><ele>2090.9</ele></trkpt>
+      <trkpt lat="-7.200959" lon="109.923385"><ele>2150.2</ele></trkpt>
+      <trkpt lat="-7.200522" lon="109.923245"><ele>2209.4</ele></trkpt>
+      <trkpt lat="-7.200092" lon="109.923077"><ele>2268.7</ele></trkpt>
+      <trkpt lat="-7.199669" lon="109.92288"><ele>2328.0</ele></trkpt>
+      <trkpt lat="-7.199252" lon="109.922657"><ele>2387.2</ele></trkpt>
+      <trkpt lat="-7.198841" lon="109.922413"><ele>2446.5</ele></trkpt>
+      <trkpt lat="-7.198433" lon="109.922155"><ele>2505.7</ele></trkpt>
+      <trkpt lat="-7.198" lon="109.922"><ele>2565.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

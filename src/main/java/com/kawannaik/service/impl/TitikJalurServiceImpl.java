@@ -111,6 +111,8 @@ public class TitikJalurServiceImpl implements TitikJalurService {
             if (nodes.getLength() < 2) throw new IllegalArgumentException("GPX harus memiliki minimal 2 titik track");
 
             titikJalurRepository.deleteByJalurId(jalurId);
+            jalur.setGpxData(gpxContent);
+            jalurRepository.save(jalur);
             for (int i = 0; i < nodes.getLength(); i++) {
                 var node = (org.w3c.dom.Element) nodes.item(i);
                 String lat = node.getAttribute("lat");

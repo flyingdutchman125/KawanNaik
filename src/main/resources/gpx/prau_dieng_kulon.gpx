@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Prau - via Dieng Kulon</name>
+    <desc>Rute pendakian resmi Gunung Prau via via Dieng Kulon</desc>
+  </metadata>
+  <wpt lat="-7.205" lon="109.915">
+    <ele>965.0</ele>
+    <name>Basecamp Dieng Kulon (Dwarawati)</name>
+    <desc>Jalur lebih landai dan santai ramah pemula dekat Candi</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.192" lon="109.918">
+    <ele>2565.0</ele>
+    <name>Puncak Tower Dieng</name>
+    <desc>Tower pemancar dan padang sabana luas</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Prau via via Dieng Kulon</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.204974" lon="109.914887"><ele>965.0</ele></trkpt>
+      <trkpt lat="-7.204557" lon="109.915127"><ele>1020.2</ele></trkpt>
+      <trkpt lat="-7.20414" lon="109.915366"><ele>1075.3</ele></trkpt>
+      <trkpt lat="-7.203721" lon="109.915593"><ele>1130.5</ele></trkpt>
+      <trkpt lat="-7.203297" lon="109.915805"><ele>1185.7</ele></trkpt>
+      <trkpt lat="-7.202869" lon="109.915995"><ele>1240.9</ele></trkpt>
+      <trkpt lat="-7.202435" lon="109.916162"><ele>1296.0</ele></trkpt>
+      <trkpt lat="-7.201996" lon="109.916305"><ele>1351.2</ele></trkpt>
+      <trkpt lat="-7.201552" lon="109.916425"><ele>1406.4</ele></trkpt>
+      <trkpt lat="-7.201103" lon="109.916527"><ele>1461.6</ele></trkpt>
+      <trkpt lat="-7.200651" lon="109.916616"><ele>1516.7</ele></trkpt>
+      <trkpt lat="-7.200198" lon="109.916697"><ele>1571.9</ele></trkpt>
+      <trkpt lat="-7.199744" lon="109.916776"><ele>1627.1</ele></trkpt>
+      <trkpt lat="-7.199291" lon="109.916858"><ele>1682.2</ele></trkpt>
+      <trkpt lat="-7.198839" lon="109.916946"><ele>1737.4</ele></trkpt>
+      <trkpt lat="-7.198389" lon="109.917043"><ele>1792.6</ele></trkpt>
+      <trkpt lat="-7.197942" lon="109.91715"><ele>1847.8</ele></trkpt>
+      <trkpt lat="-7.197496" lon="109.917264"><ele>1902.9</ele></trkpt>
+      <trkpt lat="-7.197051" lon="109.917382"><ele>1958.1</ele></trkpt>
+      <trkpt lat="-7.196606" lon="109.9175"><ele>2013.3</ele></trkpt>
+      <trkpt lat="-7.19616" lon="109.917612"><ele>2068.4</ele></trkpt>
+      <trkpt lat="-7.195711" lon="109.917714"><ele>2123.6</ele></trkpt>
+      <trkpt lat="-7.195259" lon="109.917799"><ele>2178.8</ele></trkpt>
+      <trkpt lat="-7.194802" lon="109.917865"><ele>2234.0</ele></trkpt>
+      <trkpt lat="-7.19434" lon="109.91791"><ele>2289.1</ele></trkpt>
+      <trkpt lat="-7.193873" lon="109.917934"><ele>2344.3</ele></trkpt>
+      <trkpt lat="-7.193402" lon="109.917938"><ele>2399.5</ele></trkpt>
+      <trkpt lat="-7.192928" lon="109.917928"><ele>2454.7</ele></trkpt>
+      <trkpt lat="-7.192451" lon="109.917908"><ele>2509.8</ele></trkpt>
+      <trkpt lat="-7.192" lon="109.918"><ele>2565.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

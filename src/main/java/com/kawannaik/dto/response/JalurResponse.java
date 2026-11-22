@@ -14,12 +14,18 @@ public class JalurResponse {
     private LevelFisik levelMinimum;
     private Double estimasiJam;
     private List<TitikJalurResponse> titikJalurList;
+    private List<List<Double>> gpxTrack;
+    private Boolean hasGpx;
 
     public JalurResponse() {
         super();
     }
 
     public JalurResponse(Long id, Long gunungId, String namaGunung, String namaJalur, Double jarakKm, String tingkatKesulitan, LevelFisik levelMinimum, Double estimasiJam, List<TitikJalurResponse> titikJalurList) {
+        this(id, gunungId, namaGunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, titikJalurList, null, false);
+    }
+
+    public JalurResponse(Long id, Long gunungId, String namaGunung, String namaJalur, Double jarakKm, String tingkatKesulitan, LevelFisik levelMinimum, Double estimasiJam, List<TitikJalurResponse> titikJalurList, List<List<Double>> gpxTrack, Boolean hasGpx) {
         super();
         this.id = id;
         this.gunungId = gunungId;
@@ -30,6 +36,8 @@ public class JalurResponse {
         this.levelMinimum = levelMinimum;
         this.estimasiJam = estimasiJam;
         this.titikJalurList = titikJalurList;
+        this.gpxTrack = gpxTrack;
+        this.hasGpx = hasGpx;
     }
 
     public static Builder builder() {
@@ -46,6 +54,8 @@ public class JalurResponse {
         private LevelFisik levelMinimum;
         private Double estimasiJam;
         private List<TitikJalurResponse> titikJalurList;
+        private List<List<Double>> gpxTrack;
+        private Boolean hasGpx;
 
         public Builder id(Long id) {
             this.id = id;
@@ -92,8 +102,18 @@ public class JalurResponse {
             return this;
         }
 
+        public Builder gpxTrack(List<List<Double>> gpxTrack) {
+            this.gpxTrack = gpxTrack;
+            return this;
+        }
+
+        public Builder hasGpx(Boolean hasGpx) {
+            this.hasGpx = hasGpx;
+            return this;
+        }
+
         public JalurResponse build() {
-            return new JalurResponse(id, gunungId, namaGunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, titikJalurList);
+            return new JalurResponse(id, gunungId, namaGunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, titikJalurList, gpxTrack, hasGpx);
         }
     }
 
@@ -167,5 +187,21 @@ public class JalurResponse {
 
     public void setTitikJalurList(List<TitikJalurResponse> titikJalurList) {
         this.titikJalurList = titikJalurList;
+    }
+
+    public List<List<Double>> getGpxTrack() {
+        return gpxTrack;
+    }
+
+    public void setGpxTrack(List<List<Double>> gpxTrack) {
+        this.gpxTrack = gpxTrack;
+    }
+
+    public Boolean getHasGpx() {
+        return hasGpx;
+    }
+
+    public void setHasGpx(Boolean hasGpx) {
+        this.hasGpx = hasGpx;
     }
 }

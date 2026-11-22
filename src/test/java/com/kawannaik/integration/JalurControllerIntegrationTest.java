@@ -166,4 +166,22 @@ class JalurControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true));
     }
+
+    @Test
+    void downloadGpx_WhenGpxExists_ShouldReturnGpxXml() throws Exception {
+        String sampleGpx = "<?xml version=\"1.0\"?><gpx><trk><trkseg><trkpt lat=\"-8.358\" lon=\"116.531\"><ele>1150</ele></trkpt><trkpt lat=\"-8.419\" lon=\"116.458\"><ele>3726</ele></trkpt></trkseg></trk></gpx>";
+        sembalun.setGpxData(sampleGpx);
+        jalurRepository.save(sembalun);
+
+        mockMvc.perform(get("/api/v1/jalur/" + sembalun.getId() + "/gpx"))
+                .andExpect(status().isOk())
+                .andExpect(result -> org.junit.jupiter.api.Assertions.assertTrue(result.getResponse().getContentAsString().contains("<trkpt lat=\"-8.358\" lon=\"116.531\">")));
+    }
+
+    @Test
+    void downloadGpx_WhenNoGpx_ShouldReturn404() throws Exception {
+        mockMvc.perform(get("/api/v1/jalur/" + sembalun.getId() + "/gpx"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.success").value(false));
+    }
 }

@@ -65,6 +65,7 @@ CREATE TABLE jalur (
     tingkat_kesulitan VARCHAR(50),
     level_minimum     ENUM('PEMULA','MENENGAH','MAHIR') NOT NULL,
     estimasi_jam      DOUBLE,
+    gpx_data          TEXT,
     created_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     updated_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),

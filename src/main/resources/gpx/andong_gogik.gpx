@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Andong - via Gogik</name>
+    <desc>Rute pendakian resmi Gunung Andong via via Gogik</desc>
+  </metadata>
+  <wpt lat="-7.385" lon="110.375">
+    <ele>800.0</ele>
+    <name>Basecamp Gogik</name>
+    <desc>Jalur lereng timur yang asri dan sejuk</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.388" lon="110.368">
+    <ele>1726.0</ele>
+    <name>Puncak Jiwa</name>
+    <desc>Salah satu puncak panorama Andong</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Andong via via Gogik</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.385101" lon="110.375043"><ele>800.0</ele></trkpt>
+      <trkpt lat="-7.385083" lon="110.374518"><ele>857.9</ele></trkpt>
+      <trkpt lat="-7.385088" lon="110.374002"><ele>915.8</ele></trkpt>
+      <trkpt lat="-7.385146" lon="110.373509"><ele>973.6</ele></trkpt>
+      <trkpt lat="-7.385268" lon="110.373043"><ele>1031.5</ele></trkpt>
+      <trkpt lat="-7.385443" lon="110.372601"><ele>1089.4</ele></trkpt>
+      <trkpt lat="-7.385649" lon="110.372171"><ele>1147.2</ele></trkpt>
+      <trkpt lat="-7.385856" lon="110.371742"><ele>1205.1</ele></trkpt>
+      <trkpt lat="-7.38604" lon="110.371303"><ele>1263.0</ele></trkpt>
+      <trkpt lat="-7.386197" lon="110.370852"><ele>1320.9</ele></trkpt>
+      <trkpt lat="-7.386337" lon="110.370394"><ele>1378.8</ele></trkpt>
+      <trkpt lat="-7.386487" lon="110.369941"><ele>1436.6</ele></trkpt>
+      <trkpt lat="-7.386679" lon="110.369505"><ele>1494.5</ele></trkpt>
+      <trkpt lat="-7.38694" lon="110.369099"><ele>1552.4</ele></trkpt>
+      <trkpt lat="-7.387276" lon="110.368725"><ele>1610.2</ele></trkpt>
+      <trkpt lat="-7.387674" lon="110.368378"><ele>1668.1</ele></trkpt>
+      <trkpt lat="-7.388" lon="110.368"><ele>1726.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Andong - via Pendem</name>
+    <desc>Rute pendakian resmi Gunung Andong via via Pendem</desc>
+  </metadata>
+  <wpt lat="-7.398" lon="110.365">
+    <ele>800.0</ele>
+    <name>Basecamp Pendem Girirejo</name>
+    <desc>Jalur tangga semen rapi dan area parkir luas</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.39" lon="110.365">
+    <ele>1726.0</ele>
+    <name>Punggung Naga Andong</name>
+    <desc>Punggungan rumput asri menyambung ke puncak makam</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Andong via via Pendem</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.398" lon="110.364884"><ele>800.0</ele></trkpt>
+      <trkpt lat="-7.397529" lon="110.365123"><ele>854.5</ele></trkpt>
+      <trkpt lat="-7.397059" lon="110.365339"><ele>908.9</ele></trkpt>
+      <trkpt lat="-7.396588" lon="110.365499"><ele>963.4</ele></trkpt>
+      <trkpt lat="-7.396118" lon="110.36559"><ele>1017.9</ele></trkpt>
+      <trkpt lat="-7.395647" lon="110.365615"><ele>1072.4</ele></trkpt>
+      <trkpt lat="-7.395176" lon="110.365592"><ele>1126.8</ele></trkpt>
+      <trkpt lat="-7.394706" lon="110.36555"><ele>1181.3</ele></trkpt>
+      <trkpt lat="-7.394235" lon="110.365515"><ele>1235.8</ele></trkpt>
+      <trkpt lat="-7.393765" lon="110.365504"><ele>1290.2</ele></trkpt>
+      <trkpt lat="-7.393294" lon="110.365519"><ele>1344.7</ele></trkpt>
+      <trkpt lat="-7.392824" lon="110.365545"><ele>1399.2</ele></trkpt>
+      <trkpt lat="-7.392353" lon="110.365558"><ele>1453.6</ele></trkpt>
+      <trkpt lat="-7.391882" lon="110.365532"><ele>1508.1</ele></trkpt>
+      <trkpt lat="-7.391412" lon="110.365447"><ele>1562.6</ele></trkpt>
+      <trkpt lat="-7.390941" lon="110.365299"><ele>1617.1</ele></trkpt>
+      <trkpt lat="-7.390471" lon="110.365102"><ele>1671.5</ele></trkpt>
+      <trkpt lat="-7.39" lon="110.365"><ele>1726.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

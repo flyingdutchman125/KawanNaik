@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Sindoro - via Ndoro Arum (Banaran)</name>
+    <desc>Rute pendakian resmi Gunung Sindoro via via Ndoro Arum (Banaran)</desc>
+  </metadata>
+  <wpt lat="-7.325" lon="109.97">
+    <ele>1553.0</ele>
+    <name>Basecamp Ndoro Arum Banaran</name>
+    <desc>Jalur barat daya yang asri dan sejuk</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.312" lon="109.982">
+    <ele>3153.0</ele>
+    <name>Lembah Bidadari</name>
+    <desc>Padang bunga edelweis dan bukit savana</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Sindoro via via Ndoro Arum (Banaran)</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.324925" lon="109.969919"><ele>1553.0</ele></trkpt>
+      <trkpt lat="-7.324655" lon="109.970295"><ele>1594.0</ele></trkpt>
+      <trkpt lat="-7.324384" lon="109.97067"><ele>1635.1</ele></trkpt>
+      <trkpt lat="-7.324111" lon="109.971043"><ele>1676.1</ele></trkpt>
+      <trkpt lat="-7.323834" lon="109.971412"><ele>1717.1</ele></trkpt>
+      <trkpt lat="-7.323551" lon="109.971774"><ele>1758.1</ele></trkpt>
+      <trkpt lat="-7.323261" lon="109.972129"><ele>1799.2</ele></trkpt>
+      <trkpt lat="-7.322964" lon="109.972476"><ele>1840.2</ele></trkpt>
+      <trkpt lat="-7.322659" lon="109.972814"><ele>1881.2</ele></trkpt>
+      <trkpt lat="-7.322346" lon="109.973144"><ele>1922.2</ele></trkpt>
+      <trkpt lat="-7.322025" lon="109.973465"><ele>1963.3</ele></trkpt>
+      <trkpt lat="-7.321698" lon="109.973779"><ele>2004.3</ele></trkpt>
+      <trkpt lat="-7.321365" lon="109.974088"><ele>2045.3</ele></trkpt>
+      <trkpt lat="-7.321028" lon="109.974392"><ele>2086.3</ele></trkpt>
+      <trkpt lat="-7.320689" lon="109.974693"><ele>2127.4</ele></trkpt>
+      <trkpt lat="-7.320349" lon="109.974993"><ele>2168.4</ele></trkpt>
+      <trkpt lat="-7.320009" lon="109.975294"><ele>2209.4</ele></trkpt>
+      <trkpt lat="-7.319671" lon="109.975596"><ele>2250.4</ele></trkpt>
+      <trkpt lat="-7.319335" lon="109.975902"><ele>2291.5</ele></trkpt>
+      <trkpt lat="-7.319004" lon="109.976211"><ele>2332.5</ele></trkpt>
+      <trkpt lat="-7.318676" lon="109.976525"><ele>2373.5</ele></trkpt>
+      <trkpt lat="-7.318351" lon="109.976842"><ele>2414.5</ele></trkpt>
+      <trkpt lat="-7.31803" lon="109.977162"><ele>2455.6</ele></trkpt>
+      <trkpt lat="-7.31771" lon="109.977485"><ele>2496.6</ele></trkpt>
+      <trkpt lat="-7.317392" lon="109.977809"><ele>2537.6</ele></trkpt>
+      <trkpt lat="-7.317073" lon="109.978132"><ele>2578.6</ele></trkpt>
+      <trkpt lat="-7.316751" lon="109.978453"><ele>2619.7</ele></trkpt>
+      <trkpt lat="-7.316426" lon="109.978769"><ele>2660.7</ele></trkpt>
+      <trkpt lat="-7.316095" lon="109.979079"><ele>2701.7</ele></trkpt>
+      <trkpt lat="-7.315757" lon="109.979382"><ele>2742.7</ele></trkpt>
+      <trkpt lat="-7.31541" lon="109.979675"><ele>2783.8</ele></trkpt>
+      <trkpt lat="-7.315055" lon="109.979959"><ele>2824.8</ele></trkpt>
+      <trkpt lat="-7.31469" lon="109.980232"><ele>2865.8</ele></trkpt>
+      <trkpt lat="-7.314315" lon="109.980495"><ele>2906.8</ele></trkpt>
+      <trkpt lat="-7.313931" lon="109.980748"><ele>2947.9</ele></trkpt>
+      <trkpt lat="-7.313539" lon="109.980992"><ele>2988.9</ele></trkpt>
+      <trkpt lat="-7.313141" lon="109.98123"><ele>3029.9</ele></trkpt>
+      <trkpt lat="-7.312738" lon="109.981462"><ele>3070.9</ele></trkpt>
+      <trkpt lat="-7.312332" lon="109.981691"><ele>3112.0</ele></trkpt>
+      <trkpt lat="-7.312" lon="109.982"><ele>3153.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

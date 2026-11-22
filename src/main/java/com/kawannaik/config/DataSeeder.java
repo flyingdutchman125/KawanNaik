@@ -57,6 +57,7 @@ public class DataSeeder implements CommandLineRunner {
 
         seedPengguna();
         seedGunungDanJalurLengkap();
+        seedGpxDataForAllJalur();
         seedRencanaDanPeserta();
         seedPanduanKeselamatan();
 
@@ -477,6 +478,46 @@ public class DataSeeder implements CommandLineRunner {
                 .deskripsi(deskripsi)
                 .urutan(urutan)
                 .build());
+    }
+
+    private void seedGpxDataForAllJalur() {
+        log.info("Memeriksa dan memperbarui data GPX resmi untuk seluruh jalur pendakian...");
+        int updated = 0;
+        for (Jalur j : jalurRepository.findAll()) {
+            if (j.getGpxData() == null || j.getGpxData().isBlank()) {
+                String gName = j.getGunung() != null ? j.getGunung().getNama() : "";
+                String filename = slugify(gName) + "_" + slugify(j.getNamaJalur()) + ".gpx";
+                String gpx = loadGpxResource(filename);
+                if (gpx != null) {
+                    j.setGpxData(gpx);
+                    jalurRepository.save(j);
+                    updated++;
+                }
+            }
+        }
+        log.info("  ✔ {} jalur berhasil disinkronkan dengan file GPX resmi", updated);
+    }
+
+    private String loadGpxResource(String filename) {
+        try {
+            org.springframework.core.io.ClassPathResource resource =
+                    new org.springframework.core.io.ClassPathResource("gpx/" + filename);
+            if (resource.exists()) {
+                return new String(resource.getInputStream().readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            }
+        } catch (Exception e) {
+            log.warn("Gagal memuat GPX resource {}: {}", filename, e.getMessage());
+        }
+        return null;
+    }
+
+    private String slugify(String text) {
+        if (text == null) return "";
+        return text.toLowerCase()
+                .replaceAll("gunung\\s*", "")
+                .replaceAll("via\\s*", "")
+                .replaceAll("[^a-z0-9]+", "_")
+                .replaceAll("^_+|_+$", "");
     }
 
     // -------------------------------------------------------------------------

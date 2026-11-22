@@ -37,6 +37,9 @@ public class Jalur {
     @Column(name = "estimasi_jam")
     private Double estimasiJam;
 
+    @Column(name = "gpx_data", columnDefinition = "TEXT")
+    private String gpxData;
+
     @OneToMany(mappedBy = "jalur", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("urutan ASC")
     private List<TitikJalur> titikJalurList = new ArrayList<>();
@@ -54,6 +57,10 @@ public class Jalur {
     }
 
     public Jalur(Long id, Gunung gunung, String namaJalur, Double jarakKm, String tingkatKesulitan, LevelFisik levelMinimum, Double estimasiJam, List<TitikJalur> titikJalurList, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this(id, gunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, null, titikJalurList, createdAt, updatedAt);
+    }
+
+    public Jalur(Long id, Gunung gunung, String namaJalur, Double jarakKm, String tingkatKesulitan, LevelFisik levelMinimum, Double estimasiJam, String gpxData, List<TitikJalur> titikJalurList, LocalDateTime createdAt, LocalDateTime updatedAt) {
         super();
         this.id = id;
         this.gunung = gunung;
@@ -62,6 +69,7 @@ public class Jalur {
         this.tingkatKesulitan = tingkatKesulitan;
         this.levelMinimum = levelMinimum != null ? levelMinimum : LevelFisik.PEMULA;
         this.estimasiJam = estimasiJam;
+        this.gpxData = gpxData;
         this.titikJalurList = titikJalurList != null ? titikJalurList : new ArrayList<>();
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -79,6 +87,7 @@ public class Jalur {
         private String tingkatKesulitan;
         private LevelFisik levelMinimum = LevelFisik.PEMULA;
         private Double estimasiJam;
+        private String gpxData;
         private List<TitikJalur> titikJalurList = new ArrayList<>();
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
@@ -118,6 +127,11 @@ public class Jalur {
             return this;
         }
 
+        public Builder gpxData(String gpxData) {
+            this.gpxData = gpxData;
+            return this;
+        }
+
         public Builder titikJalurList(List<TitikJalur> titikJalurList) {
             this.titikJalurList = titikJalurList;
             return this;
@@ -134,7 +148,7 @@ public class Jalur {
         }
 
         public Jalur build() {
-            return new Jalur(id, gunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, titikJalurList, createdAt, updatedAt);
+            return new Jalur(id, gunung, namaJalur, jarakKm, tingkatKesulitan, levelMinimum, estimasiJam, gpxData, titikJalurList, createdAt, updatedAt);
         }
     }
 
@@ -192,6 +206,14 @@ public class Jalur {
 
     public void setEstimasiJam(Double estimasiJam) {
         this.estimasiJam = estimasiJam;
+    }
+
+    public String getGpxData() {
+        return gpxData;
+    }
+
+    public void setGpxData(String gpxData) {
+        this.gpxData = gpxData;
     }
 
     public List<TitikJalur> getTitikJalurList() {

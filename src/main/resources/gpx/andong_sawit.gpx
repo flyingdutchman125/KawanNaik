@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Andong - via Sawit</name>
+    <desc>Rute pendakian resmi Gunung Andong via via Sawit</desc>
+  </metadata>
+  <wpt lat="-7.395" lon="110.37">
+    <ele>800.0</ele>
+    <name>Basecamp Sawit</name>
+    <desc>Basecamp ramah pendaki pemula, jalur tangga tertata rapi</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-7.392" lon="110.368">
+    <ele>1108.7</ele>
+    <name>Pos 1 Kemuning</name>
+    <desc>Hutan pinus teduh dan sejuk</desc>
+    <type>POS</type>
+  </wpt>
+  <wpt lat="-7.39" lon="110.367">
+    <ele>1417.3</ele>
+    <name>Pos 2 Dewa Daru</name>
+    <desc>Warung kopi dan istirahat sebelum punggungan puncak</desc>
+    <type>POS</type>
+  </wpt>
+  <wpt lat="-7.388" lon="110.366">
+    <ele>1726.0</ele>
+    <name>Puncak Alap-Alap &amp; Puncak Makam</name>
+    <desc>Puncak 360 derajat melihat Merbabu, Merapi, Sindoro, dan Sumbing</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Andong via via Sawit</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-7.395037" lon="110.369945"><ele>800.0</ele></trkpt>
+      <trkpt lat="-7.394325" lon="110.370084"><ele>844.1</ele></trkpt>
+      <trkpt lat="-7.393808" lon="110.36993"><ele>888.2</ele></trkpt>
+      <trkpt lat="-7.39345" lon="110.369539"><ele>932.3</ele></trkpt>
+      <trkpt lat="-7.393063" lon="110.369192"><ele>976.4</ele></trkpt>
+      <trkpt lat="-7.392615" lon="110.368935"><ele>1020.5</ele></trkpt>
+      <trkpt lat="-7.392256" lon="110.368545"><ele>1064.6</ele></trkpt>
+      <trkpt lat="-7.392029" lon="110.367942"><ele>1108.7</ele></trkpt>
+      <trkpt lat="-7.391349" lon="110.368051"><ele>1185.8</ele></trkpt>
+      <trkpt lat="-7.390873" lon="110.367753"><ele>1263.0</ele></trkpt>
+      <trkpt lat="-7.390364" lon="110.367522"><ele>1340.2</ele></trkpt>
+      <trkpt lat="-7.390027" lon="110.366945"><ele>1417.3</ele></trkpt>
+      <trkpt lat="-7.389369" lon="110.367012"><ele>1494.5</ele></trkpt>
+      <trkpt lat="-7.388875" lon="110.36675"><ele>1571.7</ele></trkpt>
+      <trkpt lat="-7.388345" lon="110.36656"><ele>1648.8</ele></trkpt>
+      <trkpt lat="-7.388" lon="110.366"><ele>1726.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

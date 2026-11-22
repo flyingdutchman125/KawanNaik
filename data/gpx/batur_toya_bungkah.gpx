@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="KawanNaik" version="1.1"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Gunung Batur - via Toya Bungkah</name>
+    <desc>Rute pendakian resmi Gunung Batur via via Toya Bungkah</desc>
+  </metadata>
+  <wpt lat="-8.255" lon="115.385">
+    <ele>800.0</ele>
+    <name>Basecamp Toya Bungkah</name>
+    <desc>Tepi Danau Batur dengan pemandian air panas alami</desc>
+    <type>BASECAMP</type>
+  </wpt>
+  <wpt lat="-8.248" lon="115.38">
+    <ele>1258.5</ele>
+    <name>Hutan Pinus &amp; Batuan Vulkanik</name>
+    <desc>Jalur pasir vulkanik di sela pepohonan pinus</desc>
+    <type>POS</type>
+  </wpt>
+  <wpt lat="-8.242" lon="115.375">
+    <ele>1717.0</ele>
+    <name>Puncak Sunrise Batur</name>
+    <desc>Puncak kawah dengan pemandangan Danau Batur &amp; Gunung Abang</desc>
+    <type>POS</type>
+  </wpt>
+  <trk>
+    <name>Gunung Batur via via Toya Bungkah</name>
+    <type>hiking</type>
+    <trkseg>
+      <trkpt lat="-8.255043" lon="115.38494"><ele>800.0</ele></trkpt>
+      <trkpt lat="-8.254539" lon="115.384867"><ele>824.1</ele></trkpt>
+      <trkpt lat="-8.254048" lon="115.384775"><ele>848.3</ele></trkpt>
+      <trkpt lat="-8.253585" lon="115.384645"><ele>872.4</ele></trkpt>
+      <trkpt lat="-8.253158" lon="115.384464"><ele>896.5</ele></trkpt>
+      <trkpt lat="-8.252768" lon="115.38423"><ele>920.7</ele></trkpt>
+      <trkpt lat="-8.25241" lon="115.383953"><ele>944.8</ele></trkpt>
+      <trkpt lat="-8.252072" lon="115.383647"><ele>968.9</ele></trkpt>
+      <trkpt lat="-8.25174" lon="115.383332"><ele>993.1</ele></trkpt>
+      <trkpt lat="-8.251404" lon="115.383024"><ele>1017.2</ele></trkpt>
+      <trkpt lat="-8.251053" lon="115.382736"><ele>1041.3</ele></trkpt>
+      <trkpt lat="-8.250687" lon="115.382469"><ele>1065.4</ele></trkpt>
+      <trkpt lat="-8.250311" lon="115.382218"><ele>1089.6</ele></trkpt>
+      <trkpt lat="-8.249932" lon="115.381969"><ele>1113.7</ele></trkpt>
+      <trkpt lat="-8.249562" lon="115.381708"><ele>1137.8</ele></trkpt>
+      <trkpt lat="-8.249212" lon="115.38142"><ele>1162.0</ele></trkpt>
+      <trkpt lat="-8.248887" lon="115.381095"><ele>1186.1</ele></trkpt>
+      <trkpt lat="-8.248589" lon="115.380733"><ele>1210.2</ele></trkpt>
+      <trkpt lat="-8.248311" lon="115.380343"><ele>1234.4</ele></trkpt>
+      <trkpt lat="-8.248074" lon="115.379911"><ele>1258.5</ele></trkpt>
+      <trkpt lat="-8.247568" lon="115.3798"><ele>1285.5</ele></trkpt>
+      <trkpt lat="-8.247077" lon="115.379672"><ele>1312.4</ele></trkpt>
+      <trkpt lat="-8.246621" lon="115.379501"><ele>1339.4</ele></trkpt>
+      <trkpt lat="-8.24621" lon="115.379277"><ele>1366.4</ele></trkpt>
+      <trkpt lat="-8.245842" lon="115.379002"><ele>1393.4</ele></trkpt>
+      <trkpt lat="-8.245503" lon="115.37869"><ele>1420.3</ele></trkpt>
+      <trkpt lat="-8.245177" lon="115.378364"><ele>1447.3</ele></trkpt>
+      <trkpt lat="-8.244847" lon="115.378043"><ele>1474.3</ele></trkpt>
+      <trkpt lat="-8.244501" lon="115.37774"><ele>1501.2</ele></trkpt>
+      <trkpt lat="-8.244138" lon="115.377458"><ele>1528.2</ele></trkpt>
+      <trkpt lat="-8.243769" lon="115.377184"><ele>1555.2</ele></trkpt>
+      <trkpt lat="-8.243407" lon="115.376899"><ele>1582.1</ele></trkpt>
+      <trkpt lat="-8.243071" lon="115.376585"><ele>1609.1</ele></trkpt>
+      <trkpt lat="-8.242773" lon="115.376226"><ele>1636.1</ele></trkpt>
+      <trkpt lat="-8.242515" lon="115.375818"><ele>1663.1</ele></trkpt>
+      <trkpt lat="-8.242288" lon="115.375372"><ele>1690.0</ele></trkpt>
+      <trkpt lat="-8.242" lon="115.375"><ele>1717.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -44,6 +44,18 @@ public class JalurController {
         return ResponseEntity.ok(ApiResponse.success(response, "Data jalur pendakian berhasil diambil"));
     }
 
+    @Operation(summary = "Unduh file GPX rute jalur", description = "Mengunduh file GPX track resmi yang dapat digunakan di aplikasi navigasi/jam GPS")
+    @GetMapping(value = "/jalur/{id}/gpx", produces = "application/gpx+xml")
+    public ResponseEntity<String> downloadGpx(@PathVariable Long id) {
+        String gpx = jalurService.getGpxByJalurId(id);
+        JalurResponse j = jalurService.getJalurById(id);
+        String safeName = j.getNamaJalur() != null ? j.getNamaJalur().replaceAll("[^a-zA-Z0-9_-]", "_") : "route";
+        String filename = "jalur_" + id + "_" + safeName + ".gpx";
+        return ResponseEntity.ok()
+                .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                .body(gpx);
+    }
+
     // Admin endpoints (Use case 12: Kelola Data Jalur)
     @Operation(summary = "Tambah jalur baru (Admin)", description = "Menambahkan master data jalur pendakian baru")
     @PostMapping("/admin/jalur")

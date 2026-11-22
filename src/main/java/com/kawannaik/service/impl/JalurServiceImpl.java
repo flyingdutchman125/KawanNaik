@@ -93,6 +93,17 @@ public class JalurServiceImpl implements JalurService {
         jalurRepository.deleteById(id);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public String getGpxByJalurId(Long id) {
+        Jalur jalur = jalurRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Jalur dengan ID " + id + " tidak ditemukan"));
+        if (jalur.getGpxData() == null || jalur.getGpxData().isBlank()) {
+            throw new ResourceNotFoundException("File GPX untuk jalur ini belum tersedia");
+        }
+        return jalur.getGpxData();
+    }
+
     private JalurResponse mapToResponse(Jalur j) {
         List<TitikJalurResponse> titikList = null;
         if (j.getTitikJalurList() != null) {
@@ -110,6 +121,9 @@ public class JalurServiceImpl implements JalurService {
                     .collect(Collectors.toList());
         }
 
+        List<List<Double>> gpxTrack = parseGpxTrack(j.getGpxData());
+        boolean hasGpx = j.getGpxData() != null && !j.getGpxData().isBlank();
+
         return JalurResponse.builder()
                 .id(j.getId())
                 .gunungId(j.getGunung() != null ? j.getGunung().getId() : null)
@@ -120,6 +134,34 @@ public class JalurServiceImpl implements JalurService {
                 .levelMinimum(j.getLevelMinimum())
                 .estimasiJam(j.getEstimasiJam())
                 .titikJalurList(titikList)
+                .gpxTrack(gpxTrack)
+                .hasGpx(hasGpx)
                 .build();
+    }
+
+    private List<List<Double>> parseGpxTrack(String gpxXml) {
+        if (gpxXml == null || gpxXml.isBlank()) {
+            return java.util.Collections.emptyList();
+        }
+        List<List<Double>> track = new java.util.ArrayList<>();
+        java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("<trkpt[^>]+lat=[\"']([^\"']+)[\"'][^>]+lon=[\"']([^\"']+)[\"']").matcher(gpxXml);
+        while (matcher.find()) {
+            try {
+                double lat = Double.parseDouble(matcher.group(1));
+                double lon = Double.parseDouble(matcher.group(2));
+                track.add(List.of(lat, lon));
+            } catch (NumberFormatException ignored) {}
+        }
+        if (track.isEmpty()) {
+            java.util.regex.Matcher matcher2 = java.util.regex.Pattern.compile("<trkpt[^>]+lon=[\"']([^\"']+)[\"'][^>]+lat=[\"']([^\"']+)[\"']").matcher(gpxXml);
+            while (matcher2.find()) {
+                try {
+                    double lon = Double.parseDouble(matcher2.group(1));
+                    double lat = Double.parseDouble(matcher2.group(2));
+                    track.add(List.of(lat, lon));
+                } catch (NumberFormatException ignored) {}
+            }
+        }
+        return track;
     }
 }

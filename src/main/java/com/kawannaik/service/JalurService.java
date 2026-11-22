@@ -11,4 +11,5 @@ public interface JalurService {
     JalurResponse createJalur(JalurRequest request);
     JalurResponse updateJalur(Long id, JalurRequest request);
     void deleteJalur(Long id);
+    String getGpxByJalurId(Long id);
 }
