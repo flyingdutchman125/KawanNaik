@@ -1,5 +1,5 @@
 // src/pages/AdminGunungPage.jsx
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { gunungApi } from '../lib/api';
 import { useToast } from '../hooks/useToast';
@@ -16,6 +16,8 @@ export default function AdminGunungPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [fetchingGps, setFetchingGps] = useState(false);
+  const [importing, setImporting] = useState(false);
+  const fileInputRef = useRef(null);
 
   // Edit State
   const [editingGunung, setEditingGunung] = useState(null);
@@ -107,6 +109,75 @@ export default function AdminGunungPage() {
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
+  };
+
+  // Export Data JSON
+  const handleExportJson = () => {
+    if (gunungList.length === 0) {
+      return toast('Tidak ada data gunung untuk diekspor', 'error');
+    }
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(gunungList, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute('href', dataStr);
+    downloadAnchor.setAttribute('download', 'data_gunung.json');
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    toast('Data gunung berhasil diekspor ke file data_gunung.json! 📁', 'success');
+  };
+
+  // Import Data JSON
+  const handleImportFile = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImporting(true);
+    try {
+      const text = await file.text();
+      const items = JSON.parse(text);
+      if (!Array.isArray(items)) {
+        throw new Error('Format file harus berupa array JSON data gunung');
+      }
+
+      let imported = 0;
+      let skipped = 0;
+
+      for (const item of items) {
+        if (!item.nama || !item.lokasi || !item.ketinggianMdpl) continue;
+
+        // Lewati jika gunung sudah terdaftar berdasarkan nama
+        const exists = gunungList.some(g => g.nama?.trim().toLowerCase() === item.nama?.trim().toLowerCase());
+        if (exists) {
+          skipped++;
+          continue;
+        }
+
+        const payload = {
+          nama: item.nama.trim(),
+          lokasi: item.lokasi.trim(),
+          ketinggianMdpl: parseInt(item.ketinggianMdpl, 10),
+          latitude: item.latitude != null ? parseFloat(item.latitude) : null,
+          longitude: item.longitude != null ? parseFloat(item.longitude) : null,
+          kontakBasecamp: item.kontakBasecamp ? item.kontakBasecamp.trim() : null,
+          kodeWilayah: item.kodeWilayah ? item.kodeWilayah.trim() : null
+        };
+
+        await gunungApi.create(payload);
+        imported++;
+      }
+
+      await loadGunung();
+      if (imported > 0) {
+        toast(`${imported} data gunung berhasil diimpor! ${skipped > 0 ? `(${skipped} sudah ada)` : ''} ⛰️`, 'success');
+      } else {
+        toast(`Tidak ada data baru yang diimpor (${skipped} data sudah terdaftar di database)`, 'info');
+      }
+    } catch (err) {
+      toast(`Gagal import data: ${err.message}`, 'error');
+    } finally {
+      setImporting(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   };
 
   // Handle Create or Update
@@ -295,6 +366,59 @@ export default function AdminGunungPage() {
           >
             Buka Panel Jalur →
           </button>
+        </div>
+
+        {/* Toolbar: Import & Export Data Gunung */}
+        <div
+          style={{
+            marginBottom: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: 'var(--color-surface)',
+            padding: '12px 14px',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid var(--color-border)',
+            flexWrap: 'wrap',
+            gap: 10
+          }}
+        >
+          <div>
+            <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--color-text-main)' }}>
+              📦 Sinkronisasi Data Master Gunung
+            </div>
+            <div className="body-sm" style={{ color: 'var(--color-text-muted)', fontSize: 11 }}>
+              Ekspor dataset ke file JSON atau impor data baru ke database
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <input
+              type="file"
+              ref={fileInputRef}
+              accept=".json"
+              style={{ display: 'none' }}
+              onChange={handleImportFile}
+            />
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={importing}
+              style={{ padding: '6px 12px', fontSize: 12, gap: 4 }}
+              title="Unggah file JSON data gunung untuk diimpor ke sistem"
+            >
+              {importing ? '⏳ Mengimpor...' : '📤 Import JSON'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={handleExportJson}
+              style={{ padding: '6px 12px', fontSize: 12, gap: 4 }}
+              title="Unduh seluruh data master gunung dalam format JSON"
+            >
+              📥 Export JSON
+            </button>
+          </div>
         </div>
 
         {/* TAB 1: DAFTAR GUNUNG */}

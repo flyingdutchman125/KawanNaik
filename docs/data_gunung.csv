@@ -1,0 +1,47 @@
+Nama Gunung,Lokasi,Ketinggian (mdpl),Latitude,Longitude,Kontak Basecamp,Kode Wilayah BMKG,Nama Jalur,Tingkat Kesulitan,Level Minimum,Estimasi (Jam),Jumlah Titik Pos
+"Gunung Semeru","Lumajang, Jawa Timur",3676,-8.108,112.922,"0812-3456-7890 (TNBTS Ranu Pani)","35.08.05.2002","Ranu Pani","Sulit","MAHIR",12,7
+"Gunung Semeru","Lumajang, Jawa Timur",3676,-8.108,112.922,"0812-3456-7890 (TNBTS Ranu Pani)","35.08.05.2002","Arek-Arek","Sangat Sulit","MAHIR",14,4
+"Gunung Semeru","Lumajang, Jawa Timur",3676,-8.108,112.922,"0812-3456-7890 (TNBTS Ranu Pani)","35.08.05.2002","via Tawon Songo","Ekstrem / Petualangan","MAHIR",15,3
+"Gunung Rinjani","Lombok Timur, Nusa Tenggara Barat",3726,-8.419,116.458,"0819-0700-1234 (TNGR Sembalun)","52.03.09.2001","via Sembalun","Sangat Sulit","MAHIR",14,8
+"Gunung Rinjani","Lombok Timur, Nusa Tenggara Barat",3726,-8.419,116.458,"0819-0700-1234 (TNGR Sembalun)","52.03.09.2001","via Senaru","Sulit","MAHIR",13,3
+"Gunung Rinjani","Lombok Timur, Nusa Tenggara Barat",3726,-8.419,116.458,"0819-0700-1234 (TNGR Sembalun)","52.03.09.2001","via Torean","Sulit / Petualangan","MAHIR",12,4
+"Gunung Rinjani","Lombok Timur, Nusa Tenggara Barat",3726,-8.419,116.458,"0819-0700-1234 (TNGR Sembalun)","52.03.09.2001","via Aik Berik","Sedang-Sulit","MENENGAH",11,3
+"Gunung Kerinci","Kerinci, Jambi & Solok Selatan, Sumbar",3805,-1.697,101.264,"0852-6677-8899 (Pos R10 Kersik Tuo)","15.01.05.2001","via Kersik Tuo","Sangat Sulit","MAHIR",12,8
+"Gunung Kerinci","Kerinci, Jambi & Solok Selatan, Sumbar",3805,-1.697,101.264,"0852-6677-8899 (Pos R10 Kersik Tuo)","15.01.05.2001","via Solok Selatan (Bangun Rejo)","Ekstrem / Ekspedisi","MAHIR",18,3
+"Gunung Raung","Banyuwangi-Bondowoso, Jawa Timur",3344,-8.125,114.045,"0812-4980-9988 (Basecamp Kalibaru)","35.10.02.2001","via Kalibaru","Ekstrem / Teknikal","MAHIR",16,7
+"Gunung Raung","Banyuwangi-Bondowoso, Jawa Timur",3344,-8.125,114.045,"0812-4980-9988 (Basecamp Kalibaru)","35.10.02.2001","via Sumberwringin","Sulit","MAHIR",12,3
+"Gunung Slamet","Purbalingga, Jawa Tengah",3428,-7.242,109.208,"0857-1234-5678 (Basecamp Bambangan)","33.03.10.2001","via Bambangan","Sangat Sulit","MAHIR",11,6
+"Gunung Slamet","Purbalingga, Jawa Tengah",3428,-7.242,109.208,"0857-1234-5678 (Basecamp Bambangan)","33.03.10.2001","via Guci (Tegal)","Sulit","MAHIR",12,3
+"Gunung Slamet","Purbalingga, Jawa Tengah",3428,-7.242,109.208,"0857-1234-5678 (Basecamp Bambangan)","33.03.10.2001","via Dipajaya (Pemalang)","Sulit","MAHIR",11.5,2
+"Gunung Slamet","Purbalingga, Jawa Tengah",3428,-7.242,109.208,"0857-1234-5678 (Basecamp Bambangan)","33.03.10.2001","via Baturraden (Banyumas)","Sangat Sulit","MAHIR",13,3
+"Gunung Prau","Wonosobo & Batang, Jawa Tengah",2565,-7.1856,109.9234,"0852-2891-2345 (Basecamp Patak Banteng)","33.07.12.2001","via Patak Banteng","Mudah","PEMULA",3.5,5
+"Gunung Prau","Wonosobo & Batang, Jawa Tengah",2565,-7.1856,109.9234,"0852-2891-2345 (Basecamp Patak Banteng)","33.07.12.2001","via Dieng Kulon","Mudah","PEMULA",4,2
+"Gunung Prau","Wonosobo & Batang, Jawa Tengah",2565,-7.1856,109.9234,"0852-2891-2345 (Basecamp Patak Banteng)","33.07.12.2001","via Kalilembu","Mudah","PEMULA",3.5,2
+"Gunung Prau","Wonosobo & Batang, Jawa Tengah",2565,-7.1856,109.9234,"0852-2891-2345 (Basecamp Patak Banteng)","33.07.12.2001","via Wates (Temanggung)","Mudah-Sedang","PEMULA",4.5,2
+"Gunung Papandayan","Garut, Jawa Barat",2665,-7.32,107.73,"0813-2012-3456 (Pos Tiket Camp David)","32.05.08.2001","via Camp David","Mudah","PEMULA",4,6
+"Gunung Papandayan","Garut, Jawa Barat",2665,-7.32,107.73,"0813-2012-3456 (Pos Tiket Camp David)","32.05.08.2001","via Cisurupan","Mudah-Sedang","PEMULA",4.5,2
+"Gunung Andong","Magelang, Jawa Tengah",1726,-7.3889,110.3667,"0812-3456-7891 (Basecamp Sawit)","33.08.17.2001","via Sawit","Mudah","PEMULA",2,4
+"Gunung Andong","Magelang, Jawa Tengah",1726,-7.3889,110.3667,"0812-3456-7891 (Basecamp Sawit)","33.08.17.2001","via Pendem","Mudah","PEMULA",2,2
+"Gunung Andong","Magelang, Jawa Tengah",1726,-7.3889,110.3667,"0812-3456-7891 (Basecamp Sawit)","33.08.17.2001","via Gogik","Mudah","PEMULA",2,2
+"Gunung Ijen","Banyuwangi-Bondowoso, Jawa Timur",2769,-8.058,114.242,"0819-8765-4321 (TWA Kawah Ijen Paltuding)","35.10.15.2001","via Paltuding","Mudah-Sedang","PEMULA",2.5,4
+"Gunung Ijen","Banyuwangi-Bondowoso, Jawa Timur",2769,-8.058,114.242,"0819-8765-4321 (TWA Kawah Ijen Paltuding)","35.10.15.2001","via Taman Dadar / Rembangan","Sedang","MENENGAH",5,2
+"Gunung Batur","Kintamani, Bangli, Bali",1717,-8.242,115.375,"0878-6543-2109 (Basecamp Toya Bungkah)","51.06.04.2001","via Toya Bungkah","Mudah","PEMULA",2.5,3
+"Gunung Batur","Kintamani, Bangli, Bali",1717,-8.242,115.375,"0878-6543-2109 (Basecamp Toya Bungkah)","51.06.04.2001","via Pasar Agung","Mudah","PEMULA",2,2
+"Gunung Merbabu","Boyolali & Magelang, Jawa Tengah",3145,-7.455,110.44,"0821-3344-5566 (Basecamp Selo Baru)","33.09.11.2001","via Selo","Sedang","MENENGAH",7,5
+"Gunung Merbabu","Boyolali & Magelang, Jawa Tengah",3145,-7.455,110.44,"0821-3344-5566 (Basecamp Selo Baru)","33.09.11.2001","via Suwanting","Sulit","MAHIR",9,3
+"Gunung Merbabu","Boyolali & Magelang, Jawa Tengah",3145,-7.455,110.44,"0821-3344-5566 (Basecamp Selo Baru)","33.09.11.2001","via Wekas","Sedang","MENENGAH",7,3
+"Gunung Merbabu","Boyolali & Magelang, Jawa Tengah",3145,-7.455,110.44,"0821-3344-5566 (Basecamp Selo Baru)","33.09.11.2001","via Thekelan","Sedang-Sulit","MENENGAH",8,3
+"Gunung Gede","Cianjur, Sukabumi & Bogor, Jawa Barat",2958,-6.783,106.983,"0811-2233-4455 (Balai TNGGP Cibodas)","32.03.02.2001","via Cibodas","Sedang","MENENGAH",7.5,7
+"Gunung Gede","Cianjur, Sukabumi & Bogor, Jawa Barat",2958,-6.783,106.983,"0811-2233-4455 (Balai TNGGP Cibodas)","32.03.02.2001","via Gunung Putri","Sedang-Sulit","MENENGAH",6,3
+"Gunung Gede","Cianjur, Sukabumi & Bogor, Jawa Barat",2958,-6.783,106.983,"0811-2233-4455 (Balai TNGGP Cibodas)","32.03.02.2001","via Selabintana","Sulit","MAHIR",10,3
+"Gunung Lawu","Karanganyar (Jateng) & Magetan (Jatim)",3265,-7.625,111.192,"0822-4455-6677 (Basecamp Candi Cetho)","33.13.14.2001","via Candi Cetho","Sedang","MENENGAH",8.5,6
+"Gunung Lawu","Karanganyar (Jateng) & Magetan (Jatim)",3265,-7.625,111.192,"0822-4455-6677 (Basecamp Candi Cetho)","33.13.14.2001","via Cemoro Sewu","Sedang","MENENGAH",7,4
+"Gunung Lawu","Karanganyar (Jateng) & Magetan (Jatim)",3265,-7.625,111.192,"0822-4455-6677 (Basecamp Candi Cetho)","33.13.14.2001","via Cemoro Kandang","Sedang","MENENGAH",8,3
+"Gunung Sindoro","Wonosobo & Temanggung, Jawa Tengah",3153,-7.3,109.998,"0813-9988-7766 (Basecamp Kledung)","33.23.09.2001","via Kledung","Sedang","MENENGAH",6.5,4
+"Gunung Sindoro","Wonosobo & Temanggung, Jawa Tengah",3153,-7.3,109.998,"0813-9988-7766 (Basecamp Kledung)","33.23.09.2001","via Sigedang (Tambi)","Sedang","MENENGAH",6,3
+"Gunung Sindoro","Wonosobo & Temanggung, Jawa Tengah",3153,-7.3,109.998,"0813-9988-7766 (Basecamp Kledung)","33.23.09.2001","via Ndoro Arum (Banaran)","Sedang-Sulit","MENENGAH",6.5,2
+"Gunung Arjuno","Malang-Pasuruan, Jawa Timur",3339,-7.761,112.596,"0812-1122-3344 (Basecamp Tretes)","35.07.22.2001","Lawang via Tretes","Sedang","MENENGAH",8,4
+"Gunung Arjuno","Malang-Pasuruan, Jawa Timur",3339,-7.761,112.596,"0812-1122-3344 (Basecamp Tretes)","35.07.22.2001","via Sumber Brantas (Batu)","Sedang","MENENGAH",7.5,3
+"Gunung Arjuno","Malang-Pasuruan, Jawa Timur",3339,-7.761,112.596,"0812-1122-3344 (Basecamp Tretes)","35.07.22.2001","via Purwosari (Candi)","Sedang-Sulit","MENENGAH",8.5,3
+"Gunung Welirang","Pasuruan, Jawa Timur",3156,-7.766,112.577,"0812-1122-3344 (Basecamp Tretes)","35.14.04.2005","via Tretes","Mudah-Sedang","PEMULA",6,4
+"Gunung Welirang","Pasuruan, Jawa Timur",3156,-7.766,112.577,"0812-1122-3344 (Basecamp Tretes)","35.14.04.2005","via Pacet (Mojokerto)","Sedang","MENENGAH",7,3

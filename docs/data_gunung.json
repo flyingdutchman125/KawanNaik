@@ -1,0 +1,1914 @@
+[
+  {
+    "nama": "Gunung Semeru",
+    "lokasi": "Lumajang, Jawa Timur",
+    "ketinggianMdpl": 3676,
+    "latitude": -8.108,
+    "longitude": 112.922,
+    "kontakBasecamp": "0812-3456-7890 (TNBTS Ranu Pani)",
+    "kodeWilayah": "35.08.05.2002",
+    "jalurList": [
+      {
+        "namaJalur": "Ranu Pani",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 12,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Ranu Pani",
+            "latitude": -8.013,
+            "longitude": 112.952,
+            "deskripsi": "Titik awal pendakian, registrasi & briefing TNBTS",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Watu Rejeng",
+            "latitude": -8.03,
+            "longitude": 112.94,
+            "deskripsi": "Pos peristirahatan pertama di bawah tebing batu",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Ranu Kumbolo",
+            "latitude": -8.05,
+            "longitude": 112.932,
+            "deskripsi": "Danau air tawar indah, area mendirikan tenda utama",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Tanjakan Cinta",
+            "latitude": -8.053,
+            "longitude": 112.933,
+            "deskripsi": "Tanjakan terjal melegenda, rawan kram otot",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos Kalimati",
+            "latitude": -8.065,
+            "longitude": 112.93,
+            "deskripsi": "Camp terakhir sebelum summit attack Mahameru",
+            "urutan": 5
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sumber Mani",
+            "latitude": -8.066,
+            "longitude": 112.931,
+            "deskripsi": "Mata air alami bersih di hutan dekat Kalimati",
+            "urutan": 6
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Mahameru & Arcopodo",
+            "latitude": -8.108,
+            "longitude": 112.922,
+            "deskripsi": "Tanjakan pasir curam, waspadai gas beracun & batu gugur",
+            "urutan": 7
+          }
+        ]
+      },
+      {
+        "namaJalur": "Arek-Arek",
+        "tingkatKesulitan": "Sangat Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 14,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Arek-Arek",
+            "latitude": -8.01,
+            "longitude": 112.945,
+            "deskripsi": "Titik start jalur alternatif Semeru",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos Oro-Oro Ombo",
+            "latitude": -8.035,
+            "longitude": 112.938,
+            "deskripsi": "Padang savana luas bunga verbena",
+            "urutan": 2
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sumber Air Ranu Kumbolo",
+            "latitude": -8.05,
+            "longitude": 112.932,
+            "deskripsi": "Sumber air tepi danau",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Tanjakan Besi",
+            "latitude": -8.07,
+            "longitude": 112.928,
+            "deskripsi": "Tanjakan sangat curam menuju puncak Mahameru",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Tawon Songo",
+        "tingkatKesulitan": "Ekstrem / Petualangan",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 15,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pos Pasrujambe Tawon Songo",
+            "latitude": -8.145,
+            "longitude": 112.985,
+            "deskripsi": "Pos jalur selatan Lumajang melewati hutan lindung rapat",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos Kali Kebo",
+            "latitude": -8.132,
+            "longitude": 112.96,
+            "deskripsi": "Pos lembah sungai berbatu",
+            "urutan": 2
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Punggungan Cadas Selatan",
+            "latitude": -8.118,
+            "longitude": 112.94,
+            "deskripsi": "Punggungan jurang terjal rawan longsor lahar dingin",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Rinjani",
+    "lokasi": "Lombok Timur, Nusa Tenggara Barat",
+    "ketinggianMdpl": 3726,
+    "latitude": -8.419,
+    "longitude": 116.458,
+    "kontakBasecamp": "0819-0700-1234 (TNGR Sembalun)",
+    "kodeWilayah": "52.03.09.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Sembalun",
+        "tingkatKesulitan": "Sangat Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 14,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Sembalun",
+            "latitude": -8.358,
+            "longitude": 116.531,
+            "deskripsi": "Pintu gerbang registrasi pendakian Rinjani",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Pemantauan",
+            "latitude": -8.375,
+            "longitude": 116.515,
+            "deskripsi": "Pos istirahat di tengah padang savana Sembalun",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Tengengean",
+            "latitude": -8.39,
+            "longitude": 116.495,
+            "deskripsi": "Pos peristirahatan dengan jembatan sungai kecil",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Pada Balong",
+            "latitude": -8.402,
+            "longitude": 116.479,
+            "deskripsi": "Pos terakhir sebelum tanjakan ekstrem Bukit Penyesalan",
+            "urutan": 4
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Bukit Penyesalan",
+            "latitude": -8.41,
+            "longitude": 116.468,
+            "deskripsi": "7 bukit berturut-turut dengan tanjakan sangat terjal",
+            "urutan": 5
+          },
+          {
+            "jenis": "POS",
+            "nama": "Plawangan Sembalun",
+            "latitude": -8.416,
+            "longitude": 116.46,
+            "deskripsi": "Bibir kawah dengan pemandangan Danau Segara Anak & Gunung Barujari",
+            "urutan": 6
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Mata Air Plawangan",
+            "latitude": -8.417,
+            "longitude": 116.459,
+            "deskripsi": "Sumber mata air di tebing dekat Plawangan",
+            "urutan": 7
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Letter E Summit Ridge",
+            "latitude": -8.418,
+            "longitude": 116.458,
+            "deskripsi": "Punggungan sempit berpasir licin menuju Puncak Dewi Anjani",
+            "urutan": 8
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Senaru",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 13,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pintu Masuk Senaru (Jebak Gawah)",
+            "latitude": -8.305,
+            "longitude": 116.408,
+            "deskripsi": "Gerbang hutan tropis lebat jalur Senaru",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Montong Satas",
+            "latitude": -8.33,
+            "longitude": 116.415,
+            "deskripsi": "Pos tengah hutan lindung",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Plawangan Senaru",
+            "latitude": -8.372,
+            "longitude": 116.43,
+            "deskripsi": "Spot spektakuler menghadap Danau Segara Anak",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Torean",
+        "tingkatKesulitan": "Sulit / Petualangan",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 12,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Desa Wisata Torean",
+            "latitude": -8.29,
+            "longitude": 116.44,
+            "deskripsi": "Pintu masuk lembah purba jalur Torean",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Birisan Nangka",
+            "latitude": -8.32,
+            "longitude": 116.445,
+            "deskripsi": "Pos hutan basah dan perkebunan kopi",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Lembah Kokok Puteh & Gua Susu",
+            "latitude": -8.36,
+            "longitude": 116.448,
+            "deskripsi": "Air terjun megah mengalir ke sungai belerang putih",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Tebing Propok Torean",
+            "latitude": -8.375,
+            "longitude": 116.442,
+            "deskripsi": "Tebing jurang sempit berpagar besi di atas sungai",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Aik Berik",
+        "tingkatKesulitan": "Sedang-Sulit",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 11,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pintu Masuk Aik Berik (Lombok Tengah)",
+            "latitude": -8.502,
+            "longitude": 116.325,
+            "deskripsi": "Jalur alternatif selatan dengan air terjun Benang Stokel",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Telaga",
+            "latitude": -8.46,
+            "longitude": 116.365,
+            "deskripsi": "Area camp telaga alami di dalam hutan tropis",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Plawangan Aik Berik",
+            "latitude": -8.435,
+            "longitude": 116.42,
+            "deskripsi": "Tepi kaldera selatan Rinjani",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Kerinci",
+    "lokasi": "Kerinci, Jambi & Solok Selatan, Sumbar",
+    "ketinggianMdpl": 3805,
+    "latitude": -1.697,
+    "longitude": 101.264,
+    "kontakBasecamp": "0852-6677-8899 (Pos R10 Kersik Tuo)",
+    "kodeWilayah": "15.01.05.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Kersik Tuo",
+        "tingkatKesulitan": "Sangat Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 12,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pintu Rimba R10",
+            "latitude": -1.745,
+            "longitude": 101.265,
+            "deskripsi": "Batas perkebunan teh Kayu Aro dan hutan tropis TNKS",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Bangku Panjang",
+            "latitude": -1.735,
+            "longitude": 101.264,
+            "deskripsi": "Pos peristirahatan awal",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Pondok Panorama",
+            "latitude": -1.72,
+            "longitude": 101.263,
+            "deskripsi": "Panorama kebun teh dan perbukitan Kerinci",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Shelter 1 & 2",
+            "latitude": -1.71,
+            "longitude": 101.264,
+            "deskripsi": "Area perkemahan di dalam hutan lebat",
+            "urutan": 4
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Lorong Hantu",
+            "latitude": -1.705,
+            "longitude": 101.264,
+            "deskripsi": "Jalur lorong tanah terjal dengan akar pohon menjuntai",
+            "urutan": 5
+          },
+          {
+            "jenis": "POS",
+            "nama": "Shelter 3",
+            "latitude": -1.702,
+            "longitude": 101.264,
+            "deskripsi": "Camp tertinggi sebelum summit attack (3.073 mdpl)",
+            "urutan": 6
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Mata Air Shelter 3",
+            "latitude": -1.703,
+            "longitude": 101.265,
+            "deskripsi": "Mata air rembesan jurang dekat Shelter 3",
+            "urutan": 7
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Tugu Yudha & Puncak Indrapura",
+            "latitude": -1.697,
+            "longitude": 101.264,
+            "deskripsi": "Atap Sumatera 3.805 mdpl, medan cadas terjal dan bebatuan",
+            "urutan": 8
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Solok Selatan (Bangun Rejo)",
+        "tingkatKesulitan": "Ekstrem / Ekspedisi",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 18,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Bangun Rejo Solok Selatan",
+            "latitude": -1.65,
+            "longitude": 101.28,
+            "deskripsi": "Titik awal ekspedisi rimba sisi Sumatera Barat",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos Camp Rimba Lumut",
+            "latitude": -1.67,
+            "longitude": 101.272,
+            "deskripsi": "Hutan lumut purba yang sangat lebat dan sejuk",
+            "urutan": 2
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Punggungan Batu Cadas Utara",
+            "latitude": -1.685,
+            "longitude": 101.268,
+            "deskripsi": "Jalur cadas berbatu terjal menyambung ke puncak",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Raung",
+    "lokasi": "Banyuwangi-Bondowoso, Jawa Timur",
+    "ketinggianMdpl": 3344,
+    "latitude": -8.125,
+    "longitude": 114.045,
+    "kontakBasecamp": "0812-4980-9988 (Basecamp Kalibaru)",
+    "kodeWilayah": "35.10.02.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Kalibaru",
+        "tingkatKesulitan": "Ekstrem / Teknikal",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 16,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Kalibaru",
+            "latitude": -8.21,
+            "longitude": 113.985,
+            "deskripsi": "Registrasi dan pengecekan perlengkapan climbing / tali temali",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Pak Syarif",
+            "latitude": -8.19,
+            "longitude": 114.005,
+            "deskripsi": "Pondok singgah perkebunan kopi",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 4 Pondok Motor",
+            "latitude": -8.16,
+            "longitude": 114.02,
+            "deskripsi": "Pos peristirahatan hutan vegetasi pinus",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 7 Camp Terakhir",
+            "latitude": -8.138,
+            "longitude": 114.038,
+            "deskripsi": "Lokasi perkemahan terakhir sebelum summit attack",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Bendera",
+            "latitude": -8.13,
+            "longitude": 114.04,
+            "deskripsi": "Titik persiapan pemakaian alat safety harness & carabiner",
+            "urutan": 5
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Jembatan Shiratal Mustaqim",
+            "latitude": -8.127,
+            "longitude": 114.043,
+            "deskripsi": "Punggungan batu selebar 1 meter dengan jurang 500m di kedua sisi",
+            "urutan": 6
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Sejati Raung",
+            "latitude": -8.125,
+            "longitude": 114.045,
+            "deskripsi": "Puncak sejati dengan pemandangan kaldera raksasa menakjubkan",
+            "urutan": 7
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Sumberwringin",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 12,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Sumberwringin Bondowoso",
+            "latitude": -7.985,
+            "longitude": 114.12,
+            "deskripsi": "Jalur utara legendaris sebelum jalur Kalibaru dibuka",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pondok Motor Sumberwringin",
+            "latitude": -8.065,
+            "longitude": 114.085,
+            "deskripsi": "Batas kebun pinus dan hutan pegunungan",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Bayangan Raung",
+            "latitude": -8.115,
+            "longitude": 114.055,
+            "deskripsi": "Bibir kaldera utara menghadap kawah raksasa",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Slamet",
+    "lokasi": "Purbalingga, Jawa Tengah",
+    "ketinggianMdpl": 3428,
+    "latitude": -7.242,
+    "longitude": 109.208,
+    "kontakBasecamp": "0857-1234-5678 (Basecamp Bambangan)",
+    "kodeWilayah": "33.03.10.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Bambangan",
+        "tingkatKesulitan": "Sangat Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 11,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Bambangan",
+            "latitude": -7.275,
+            "longitude": 109.245,
+            "deskripsi": "Basecamp resmi terpopuler pendakian Atap Jawa Tengah",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Pondok Gembirung",
+            "latitude": -7.265,
+            "longitude": 109.235,
+            "deskripsi": "Pos dengan warung dan shelter berteduh",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Pondok Cemara",
+            "latitude": -7.255,
+            "longitude": 109.225,
+            "deskripsi": "Hutan cemara asri dan tanah lapang camp",
+            "urutan": 3
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Pos 5 Samyang Rangkah",
+            "latitude": -7.248,
+            "longitude": 109.218,
+            "deskripsi": "Sumber mata air utama para pendaki",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 9 Plawangan",
+            "latitude": -7.245,
+            "longitude": 109.21,
+            "deskripsi": "Batas vegetasi terakhir sebelum zona bebatuan",
+            "urutan": 5
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Surono & Kawah Segoro Wedi",
+            "latitude": -7.242,
+            "longitude": 109.208,
+            "deskripsi": "Medan pasir dan batu merah labil yang curam, rawan badai es",
+            "urutan": 6
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Guci (Tegal)",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 12,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Permadi Guci",
+            "latitude": -7.185,
+            "longitude": 109.168,
+            "deskripsi": "Titik awal dekat pemandian air panas alami Guci",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Amreta",
+            "latitude": -7.215,
+            "longitude": 109.182,
+            "deskripsi": "Pos hutan pinus dengan sumber air jernih",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Plawangan Guci",
+            "latitude": -7.235,
+            "longitude": 109.198,
+            "deskripsi": "Batas punggungan utara menuju puncak Slamet",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Dipajaya (Pemalang)",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 11.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Dipajaya Clekatakan",
+            "latitude": -7.212,
+            "longitude": 109.24,
+            "deskripsi": "Jalur timur laut Pemalang yang teduh dan asri",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 4 Igir-igir",
+            "latitude": -7.228,
+            "longitude": 109.225,
+            "deskripsi": "Punggungan savana menyatu dengan jalur Bambangan",
+            "urutan": 2
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Baturraden (Banyumas)",
+        "tingkatKesulitan": "Sangat Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 13,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Baturraden (Wana Wisata)",
+            "latitude": -7.31,
+            "longitude": 109.22,
+            "deskripsi": "Jalur selatan Banyumas dengan hutan lumut basah lebat",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Pelangkah",
+            "latitude": -7.28,
+            "longitude": 109.215,
+            "deskripsi": "Pos peristirahatan hutan hujan pegunungan",
+            "urutan": 2
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Plawangan Selatan",
+            "latitude": -7.25,
+            "longitude": 109.21,
+            "deskripsi": "Batu terjal curam sebelum mencapai bibir kawah",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Prau",
+    "lokasi": "Wonosobo & Batang, Jawa Tengah",
+    "ketinggianMdpl": 2565,
+    "latitude": -7.1856,
+    "longitude": 109.9234,
+    "kontakBasecamp": "0852-2891-2345 (Basecamp Patak Banteng)",
+    "kodeWilayah": "33.07.12.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Patak Banteng",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 3.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Patak Banteng",
+            "latitude": -7.208,
+            "longitude": 109.932,
+            "deskripsi": "Basecamp favorit pemula dengan fasilitas komplit & ojek",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Senthongsari",
+            "latitude": -7.2,
+            "longitude": 109.93,
+            "deskripsi": "Pos pertama dengan gazebo dan warung makanan",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Canggal Walitis",
+            "latitude": -7.195,
+            "longitude": 109.928,
+            "deskripsi": "Jalur tangga batu di tengah perkebunan dan pinus",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Pos 3 Cacingan",
+            "latitude": -7.19,
+            "longitude": 109.925,
+            "deskripsi": "Tanjakan tangga tanah berakar, licin saat musim hujan",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Sunrise Camp Teletubbies",
+            "latitude": -7.186,
+            "longitude": 109.923,
+            "deskripsi": "Puncak hamparan bukit rumput luas, Golden Sunrise terindah",
+            "urutan": 5
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Dieng Kulon",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 4,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Dieng Kulon (Dwarawati)",
+            "latitude": -7.205,
+            "longitude": 109.915,
+            "deskripsi": "Jalur lebih landai dan santai ramah pemula dekat Candi",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Tower Dieng",
+            "latitude": -7.192,
+            "longitude": 109.918,
+            "deskripsi": "Tower pemancar dan padang sabana luas",
+            "urutan": 2
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Kalilembu",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 3.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Kalilembu Dieng",
+            "latitude": -7.21,
+            "longitude": 109.925,
+            "deskripsi": "Alternatif favorit pemula, jalur landai kebun kentang",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Telaga Wurung",
+            "latitude": -7.198,
+            "longitude": 109.922,
+            "deskripsi": "Area istirahat teduh pepohonan pinus",
+            "urutan": 2
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Wates (Temanggung)",
+        "tingkatKesulitan": "Mudah-Sedang",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 4.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Wates Wonoboyo",
+            "latitude": -7.165,
+            "longitude": 109.965,
+            "deskripsi": "Jalur lereng timur menyusuri perkebunan teh yang asri",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Plawangan Wates",
+            "latitude": -7.178,
+            "longitude": 109.94,
+            "deskripsi": "Pemandangan bukit hijau dan danau telaga",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Papandayan",
+    "lokasi": "Garut, Jawa Barat",
+    "ketinggianMdpl": 2665,
+    "latitude": -7.32,
+    "longitude": 107.73,
+    "kontakBasecamp": "0813-2012-3456 (Pos Tiket Camp David)",
+    "kodeWilayah": "32.05.08.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Camp David",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 4,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Camp David",
+            "latitude": -7.315,
+            "longitude": 107.742,
+            "deskripsi": "Pintu gerbang wisata pendakian ramah keluarga & pemula",
+            "urutan": 1
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Kawah Mas & Kawah Belerang",
+            "latitude": -7.32,
+            "longitude": 107.738,
+            "deskripsi": "Asap belerang aktif, wajib masker saat melintas",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pondok Saladah",
+            "latitude": -7.325,
+            "longitude": 107.732,
+            "deskripsi": "Area camping favorit berumput dengan toilet dan warung",
+            "urutan": 3
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sungai Pondok Saladah",
+            "latitude": -7.326,
+            "longitude": 107.731,
+            "deskripsi": "Aliran air jernih pegunungan untuk masak dan minum",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Hutan Mati Papandayan",
+            "latitude": -7.328,
+            "longitude": 107.728,
+            "deskripsi": "Pohon cantigi hangus eksotis akibat letusan masa lampau",
+            "urutan": 5
+          },
+          {
+            "jenis": "POS",
+            "nama": "Padang Edelweis Tegal Alun",
+            "latitude": -7.332,
+            "longitude": 107.725,
+            "deskripsi": "Lembah tersembunyi dengan ribuan bunga edelweis abadi",
+            "urutan": 6
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Cisurupan",
+        "tingkatKesulitan": "Mudah-Sedang",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 4.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pos Cisurupan",
+            "latitude": -7.305,
+            "longitude": 107.75,
+            "deskripsi": "Pintu masuk dari kaki bukit Cisurupan",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Kawah Baru Papandayan",
+            "latitude": -7.318,
+            "longitude": 107.735,
+            "deskripsi": "Kawah baru dengan bebatuan warna-warni",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Andong",
+    "lokasi": "Magelang, Jawa Tengah",
+    "ketinggianMdpl": 1726,
+    "latitude": -7.3889,
+    "longitude": 110.3667,
+    "kontakBasecamp": "0812-3456-7891 (Basecamp Sawit)",
+    "kodeWilayah": "33.08.17.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Sawit",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Sawit",
+            "latitude": -7.395,
+            "longitude": 110.37,
+            "deskripsi": "Basecamp ramah pendaki pemula, jalur tangga tertata rapi",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Kemuning",
+            "latitude": -7.392,
+            "longitude": 110.368,
+            "deskripsi": "Hutan pinus teduh dan sejuk",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Dewa Daru",
+            "latitude": -7.39,
+            "longitude": 110.367,
+            "deskripsi": "Warung kopi dan istirahat sebelum punggungan puncak",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Alap-Alap & Puncak Makam",
+            "latitude": -7.388,
+            "longitude": 110.366,
+            "deskripsi": "Puncak 360 derajat melihat Merbabu, Merapi, Sindoro, dan Sumbing",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Pendem",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Pendem Girirejo",
+            "latitude": -7.398,
+            "longitude": 110.365,
+            "deskripsi": "Jalur tangga semen rapi dan area parkir luas",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Punggung Naga Andong",
+            "latitude": -7.39,
+            "longitude": 110.365,
+            "deskripsi": "Punggungan rumput asri menyambung ke puncak makam",
+            "urutan": 2
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Gogik",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Gogik",
+            "latitude": -7.385,
+            "longitude": 110.375,
+            "deskripsi": "Jalur lereng timur yang asri dan sejuk",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Jiwa",
+            "latitude": -7.388,
+            "longitude": 110.368,
+            "deskripsi": "Salah satu puncak panorama Andong",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Ijen",
+    "lokasi": "Banyuwangi-Bondowoso, Jawa Timur",
+    "ketinggianMdpl": 2769,
+    "latitude": -8.058,
+    "longitude": 114.242,
+    "kontakBasecamp": "0819-8765-4321 (TWA Kawah Ijen Paltuding)",
+    "kodeWilayah": "35.10.15.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Paltuding",
+        "tingkatKesulitan": "Mudah-Sedang",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pos Paltuding",
+            "latitude": -8.075,
+            "longitude": 114.225,
+            "deskripsi": "Pintu masuk resmi TWA Ijen, fasilitas lengkap dan persewaan masker gas",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos Bunder",
+            "latitude": -8.065,
+            "longitude": 114.235,
+            "deskripsi": "Pos timbang belerang para penambang tradisional",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Bibir Kawah Ijen",
+            "latitude": -8.058,
+            "longitude": 114.242,
+            "deskripsi": "Pemandangan danau asam toska terbesar di dunia",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Dasar Kawah Blue Fire",
+            "latitude": -8.056,
+            "longitude": 114.245,
+            "deskripsi": "Fenomena api biru dunia, wajib masker gas respirator",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Taman Dadar / Rembangan",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Perkebunan Rembangan",
+            "latitude": -8.03,
+            "longitude": 114.18,
+            "deskripsi": "Trekking menyusuri perkebunan kopi dan hutan cemara",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Merapi Ijen",
+            "latitude": -8.05,
+            "longitude": 114.22,
+            "deskripsi": "Puncak gunung mati di samping Kawah Ijen",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Batur",
+    "lokasi": "Kintamani, Bangli, Bali",
+    "ketinggianMdpl": 1717,
+    "latitude": -8.242,
+    "longitude": 115.375,
+    "kontakBasecamp": "0878-6543-2109 (Basecamp Toya Bungkah)",
+    "kodeWilayah": "51.06.04.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Toya Bungkah",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Toya Bungkah",
+            "latitude": -8.255,
+            "longitude": 115.385,
+            "deskripsi": "Tepi Danau Batur dengan pemandian air panas alami",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Hutan Pinus & Batuan Vulkanik",
+            "latitude": -8.248,
+            "longitude": 115.38,
+            "deskripsi": "Jalur pasir vulkanik di sela pepohonan pinus",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Sunrise Batur",
+            "latitude": -8.242,
+            "longitude": 115.375,
+            "deskripsi": "Puncak kawah dengan pemandangan Danau Batur & Gunung Abang",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Pasar Agung",
+        "tingkatKesulitan": "Mudah",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 2,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pura Pasar Agung Batur",
+            "latitude": -8.25,
+            "longitude": 115.365,
+            "deskripsi": "Jalur tercepat dan populer untuk pemburu sunrise",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Kawah Kedua Batur",
+            "latitude": -8.244,
+            "longitude": 115.372,
+            "deskripsi": "Bibir kaldera dengan uap panas vulkanik",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Merbabu",
+    "lokasi": "Boyolali & Magelang, Jawa Tengah",
+    "ketinggianMdpl": 3145,
+    "latitude": -7.455,
+    "longitude": 110.44,
+    "kontakBasecamp": "0821-3344-5566 (Basecamp Selo Baru)",
+    "kodeWilayah": "33.09.11.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Selo",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Selo",
+            "latitude": -7.495,
+            "longitude": 110.47,
+            "deskripsi": "Pintu masuk jalur favorit sejuta umat di lereng timur",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Dok-dok",
+            "latitude": -7.485,
+            "longitude": 110.465,
+            "deskripsi": "Pos peristirahatan awal",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Batu Tulis",
+            "latitude": -7.47,
+            "longitude": 110.455,
+            "deskripsi": "Area camp dengan pemandangan megah Gunung Merapi di seberang",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Sabana 1 & Sabana 2",
+            "latitude": -7.46,
+            "longitude": 110.445,
+            "deskripsi": "Hamparan bukit rumput savana hijau bergelombang yang memukau",
+            "urutan": 4
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Triangulasi & Kenteng Songo",
+            "latitude": -7.455,
+            "longitude": 110.44,
+            "deskripsi": "Puncak tertinggi Merbabu dengan batu lesung bersejarah",
+            "urutan": 5
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Suwanting",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 9,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Suwanting",
+            "latitude": -7.475,
+            "longitude": 110.395,
+            "deskripsi": "Jalur menantang dengan tanjakan terjal tiada henti",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Lembah Manding",
+            "latitude": -7.46,
+            "longitude": 110.42,
+            "deskripsi": "Area camp di punggungan savana terjal",
+            "urutan": 2
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Suwanting & Triangulasi",
+            "latitude": -7.455,
+            "longitude": 110.44,
+            "deskripsi": "Puncak bukit savana terbuka terpaan angin kencang",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Wekas",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Wekas Magelang",
+            "latitude": -7.445,
+            "longitude": 110.405,
+            "deskripsi": "Jalur air melimpah favorit pendaki santai",
+            "urutan": 1
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Pos 2 Wekas (Pipa Air Alami)",
+            "latitude": -7.45,
+            "longitude": 110.42,
+            "deskripsi": "Area camp luas dengan kran air bersih pegunungan",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Kawah Mati & Pertigaan Helipad",
+            "latitude": -7.452,
+            "longitude": 110.435,
+            "deskripsi": "Pertemuan jalur Wekas, Thekelan, dan Cuntel",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Thekelan",
+        "tingkatKesulitan": "Sedang-Sulit",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 8,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Thekelan Kopeng",
+            "latitude": -7.41,
+            "longitude": 110.43,
+            "deskripsi": "Jalur klasik utara Kopeng",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 4 Watu Gubug",
+            "latitude": -7.435,
+            "longitude": 110.435,
+            "deskripsi": "Batu berlubang mirip gua kecil tempat berlindung",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Pemancar",
+            "latitude": -7.448,
+            "longitude": 110.438,
+            "deskripsi": "Stasiun pemancar radio tua di ketinggian 3.000 mdpl",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Gede",
+    "lokasi": "Cianjur, Sukabumi & Bogor, Jawa Barat",
+    "ketinggianMdpl": 2958,
+    "latitude": -6.783,
+    "longitude": 106.983,
+    "kontakBasecamp": "0811-2233-4455 (Balai TNGGP Cibodas)",
+    "kodeWilayah": "32.03.02.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Cibodas",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pintu Masuk Cibodas",
+            "latitude": -6.745,
+            "longitude": 107.005,
+            "deskripsi": "Pintu gerbang TNGGP, hutan hujan tropis basah",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Telaga Biru & Rawa Gayonggong",
+            "latitude": -6.755,
+            "longitude": 106.995,
+            "deskripsi": "Danau alami dan jembatan kayu di atas rawa",
+            "urutan": 2
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Air Panas Cibeureum",
+            "latitude": -6.765,
+            "longitude": 106.99,
+            "deskripsi": "Tebing batu basah dengan aliran air panas belerang alami",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Kandang Badak",
+            "latitude": -6.775,
+            "longitude": 106.985,
+            "deskripsi": "Pos persimpangan Gede-Pangrango, area camp utama",
+            "urutan": 4
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Mata Air Kandang Badak",
+            "latitude": -6.776,
+            "longitude": 106.984,
+            "deskripsi": "Sumber air melimpah di dekat shelter pos",
+            "urutan": 5
+          },
+          {
+            "jenis": "POS",
+            "nama": "Alun-Alun Suryakencana",
+            "latitude": -6.79,
+            "longitude": 106.985,
+            "deskripsi": "Padang edelweis legendaris seluas 50 hektar",
+            "urutan": 6
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Gede & Kawah Ratu",
+            "latitude": -6.783,
+            "longitude": 106.983,
+            "deskripsi": "Puncak batu menghadap kawah aktif yang menakjubkan",
+            "urutan": 7
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Gunung Putri",
+        "tingkatKesulitan": "Sedang-Sulit",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 6,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Gunung Putri",
+            "latitude": -6.76,
+            "longitude": 107.025,
+            "deskripsi": "Jalur tercepat menuju padang edelweis Suryakencana",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Mondokan",
+            "latitude": -6.775,
+            "longitude": 107.005,
+            "deskripsi": "Tanjakan akar tanah terjal hutan pinus",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Gerbang Suryakencana Timur",
+            "latitude": -6.788,
+            "longitude": 106.99,
+            "deskripsi": "Pintu masuk timur Alun-Alun Suryakencana",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Selabintana",
+        "tingkatKesulitan": "Sulit",
+        "levelMinimum": "MAHIR",
+        "estimasiJam": 10,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Selabintana Sukabumi",
+            "latitude": -6.85,
+            "longitude": 106.96,
+            "deskripsi": "Jalur petualangan rimba selatan Sukabumi",
+            "urutan": 1
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Sungai Cibeureum & Hutan Pacet",
+            "latitude": -6.82,
+            "longitude": 106.97,
+            "deskripsi": "Hutan basah lebat habitat lintah dan pacet",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Alun-Alun Suryakencana Barat",
+            "latitude": -6.795,
+            "longitude": 106.98,
+            "deskripsi": "Ujung barat padang savana Suryakencana",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Lawu",
+    "lokasi": "Karanganyar (Jateng) & Magetan (Jatim)",
+    "ketinggianMdpl": 3265,
+    "latitude": -7.625,
+    "longitude": 111.192,
+    "kontakBasecamp": "0822-4455-6677 (Basecamp Candi Cetho)",
+    "kodeWilayah": "33.13.14.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Candi Cetho",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 8.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Candi Cetho",
+            "latitude": -7.595,
+            "longitude": 111.155,
+            "deskripsi": "Titik awal di kawasan cagar budaya Candi Hindu Cetho",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Penggik",
+            "latitude": -7.608,
+            "longitude": 111.17,
+            "deskripsi": "Pos peristirahatan hutan cemara",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 5 Bulak Peperangan",
+            "latitude": -7.618,
+            "longitude": 111.185,
+            "deskripsi": "Sabana savana luas lokasi perkemahan populer",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Gupak Menjangan & Pasar Dieng",
+            "latitude": -7.622,
+            "longitude": 111.189,
+            "deskripsi": "Telaga kecil musiman dan dataran batu mistis",
+            "urutan": 4
+          },
+          {
+            "jenis": "POS",
+            "nama": "Warung Mbok Yem",
+            "latitude": -7.624,
+            "longitude": 111.191,
+            "deskripsi": "Warung tertinggi di Indonesia pada ketinggian 3.150 mdpl",
+            "urutan": 5
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Hargo Dumilah",
+            "latitude": -7.625,
+            "longitude": 111.192,
+            "deskripsi": "Puncak tertinggi Gunung Lawu dengan tugu trigulasi",
+            "urutan": 6
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Cemoro Sewu",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Cemoro Sewu Magetan",
+            "latitude": -7.66,
+            "longitude": 111.19,
+            "deskripsi": "Jalur tangga batu rapi paling ramai dan banyak warung",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Watu Gedeg",
+            "latitude": -7.645,
+            "longitude": 111.192,
+            "deskripsi": "Pos peristirahatan dengan shelter tertutup",
+            "urutan": 2
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sendang Drajat",
+            "latitude": -7.63,
+            "longitude": 111.192,
+            "deskripsi": "Mata air sakral di dekat puncak Hargo Dumilah",
+            "urutan": 3
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Hargo Dumilah",
+            "latitude": -7.625,
+            "longitude": 111.192,
+            "deskripsi": "Tugu puncak tertinggi 3.265 mdpl",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Cemoro Kandang",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 8,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Cemoro Kandang Karanganyar",
+            "latitude": -7.662,
+            "longitude": 111.185,
+            "deskripsi": "Jalur tanah landai berliku di lereng barat",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Penggik",
+            "latitude": -7.64,
+            "longitude": 111.187,
+            "deskripsi": "Shelter peristirahatan hutan pinus dan cemara",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Hargo Dumilah",
+            "latitude": -7.625,
+            "longitude": 111.192,
+            "deskripsi": "Puncak Lawu",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Sindoro",
+    "lokasi": "Wonosobo & Temanggung, Jawa Tengah",
+    "ketinggianMdpl": 3153,
+    "latitude": -7.3,
+    "longitude": 109.998,
+    "kontakBasecamp": "0813-9988-7766 (Basecamp Kledung)",
+    "kodeWilayah": "33.23.09.2001",
+    "jalurList": [
+      {
+        "namaJalur": "via Kledung",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 6.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Kledung",
+            "latitude": -7.335,
+            "longitude": 110.015,
+            "deskripsi": "Basecamp di perbatasan Temanggung-Wonosobo",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Makam",
+            "latitude": -7.32,
+            "longitude": 110.008,
+            "deskripsi": "Batas kebun tembakau dan hutan pinus",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 3 Sunrise Camp",
+            "latitude": -7.31,
+            "longitude": 110.002,
+            "deskripsi": "Tempat camping favorit menghadap gagahnya Gunung Sumbing",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Puncak Kawah Sindoro",
+            "latitude": -7.3,
+            "longitude": 109.998,
+            "deskripsi": "Kawah aktif belerang dengan padang batu eksotis",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Sigedang (Tambi)",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 6,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Sigedang Kejajar",
+            "latitude": -7.265,
+            "longitude": 109.98,
+            "deskripsi": "Jalur lereng utara menyusuri perkebunan teh Tambi Wonosobo",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Watu Susun",
+            "latitude": -7.28,
+            "longitude": 109.988,
+            "deskripsi": "Bebatuan alam bertingkat dengan pemandangan Dieng",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Kawah Utama Sindoro",
+            "latitude": -7.3,
+            "longitude": 109.998,
+            "deskripsi": "Bibir kawah utara Sindoro",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Ndoro Arum (Banaran)",
+        "tingkatKesulitan": "Sedang-Sulit",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 6.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Ndoro Arum Banaran",
+            "latitude": -7.325,
+            "longitude": 109.97,
+            "deskripsi": "Jalur barat daya yang asri dan sejuk",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Lembah Bidadari",
+            "latitude": -7.312,
+            "longitude": 109.982,
+            "deskripsi": "Padang bunga edelweis dan bukit savana",
+            "urutan": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Arjuno",
+    "lokasi": "Malang-Pasuruan, Jawa Timur",
+    "ketinggianMdpl": 3339,
+    "latitude": -7.761,
+    "longitude": 112.596,
+    "kontakBasecamp": "0812-1122-3344 (Basecamp Tretes)",
+    "kodeWilayah": "35.07.22.2001",
+    "jalurList": [
+      {
+        "namaJalur": "Lawang via Tretes",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 8,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Tretes",
+            "latitude": -7.72,
+            "longitude": 112.62,
+            "deskripsi": "Basecamp utama pendakian Arjuno dari Tretes",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Lalijiwo",
+            "latitude": -7.74,
+            "longitude": 112.61,
+            "deskripsi": "Pos peristirahatan, vegetasi hutan montane",
+            "urutan": 2
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sumber Air Lalijiwo",
+            "latitude": -7.742,
+            "longitude": 112.608,
+            "deskripsi": "Sumber air bersih di area Lalijiwo",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Angin Kencang Puncak Ogal-Agil",
+            "latitude": -7.761,
+            "longitude": 112.596,
+            "deskripsi": "Area puncak rawan angin kencang dan sambaran petir",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Sumber Brantas (Batu)",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Pos Jurang Kuali Sumber Brantas",
+            "latitude": -7.765,
+            "longitude": 112.54,
+            "deskripsi": "Pintu masuk lereng barat Kota Batu menyusuri kebun apel",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Lembah Lengkehan",
+            "latitude": -7.762,
+            "longitude": 112.57,
+            "deskripsi": "Lembah pelana antara Gunung Arjuno dan Welirang",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pasar Setan Arjuno",
+            "latitude": -7.761,
+            "longitude": 112.585,
+            "deskripsi": "Dataran batu luas sebelum tanjakan Puncak Ogal-Agil",
+            "urutan": 3
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Purwosari (Candi)",
+        "tingkatKesulitan": "Sedang-Sulit",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 8.5,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Purwosari Pasuruan",
+            "latitude": -7.77,
+            "longitude": 112.665,
+            "deskripsi": "Jalur sarat sejarah peninggalan situs pertapaan Majapahit",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Situs Candi Sepilar",
+            "latitude": -7.765,
+            "longitude": 112.635,
+            "deskripsi": "Kompleks candi batu peninggalan kerajaan kuno",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Puncak Ogal-Agil",
+            "latitude": -7.761,
+            "longitude": 112.596,
+            "deskripsi": "Puncak tertinggi Arjuno 3.339 mdpl",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nama": "Gunung Welirang",
+    "lokasi": "Pasuruan, Jawa Timur",
+    "ketinggianMdpl": 3156,
+    "latitude": -7.766,
+    "longitude": 112.577,
+    "kontakBasecamp": "0812-1122-3344 (Basecamp Tretes)",
+    "kodeWilayah": "35.14.04.2005",
+    "jalurList": [
+      {
+        "namaJalur": "via Tretes",
+        "tingkatKesulitan": "Mudah-Sedang",
+        "levelMinimum": "PEMULA",
+        "estimasiJam": 6,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Tretes",
+            "latitude": -7.72,
+            "longitude": 112.62,
+            "deskripsi": "Titik awal pendakian Welirang via Tretes",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 1 Air Panas",
+            "latitude": -7.735,
+            "longitude": 112.605,
+            "deskripsi": "Pos dekat sumber air panas alami",
+            "urutan": 2
+          },
+          {
+            "jenis": "SUMBER_AIR",
+            "nama": "Sumber Air Air Panas",
+            "latitude": -7.736,
+            "longitude": 112.604,
+            "deskripsi": "Sumber air panas belerang untuk rileks",
+            "urutan": 3
+          },
+          {
+            "jenis": "TITIK_RAWAN",
+            "nama": "Kawah Belerang Welirang",
+            "latitude": -7.766,
+            "longitude": 112.577,
+            "deskripsi": "Area kawah aktif tambang belerang, kenakan masker",
+            "urutan": 4
+          }
+        ]
+      },
+      {
+        "namaJalur": "via Pacet (Mojokerto)",
+        "tingkatKesulitan": "Sedang",
+        "levelMinimum": "MENENGAH",
+        "estimasiJam": 7,
+        "titikList": [
+          {
+            "jenis": "BASECAMP",
+            "nama": "Basecamp Claket Pacet",
+            "latitude": -7.685,
+            "longitude": 112.55,
+            "deskripsi": "Jalur lereng barat laut Mojokerto menyusuri hutan bambu",
+            "urutan": 1
+          },
+          {
+            "jenis": "POS",
+            "nama": "Pos 2 Putuk Lesung",
+            "latitude": -7.72,
+            "longitude": 112.56,
+            "deskripsi": "Pos peristirahatan hutan rimba",
+            "urutan": 2
+          },
+          {
+            "jenis": "POS",
+            "nama": "Kawah Jero Welirang",
+            "latitude": -7.76,
+            "longitude": 112.575,
+            "deskripsi": "Bibir kawah utara Welirang",
+            "urutan": 3
+          }
+        ]
+      }
+    ]
+  }
+]
