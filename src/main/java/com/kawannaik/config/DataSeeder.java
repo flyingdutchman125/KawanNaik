@@ -484,6 +484,37 @@ public class DataSeeder implements CommandLineRunner {
     // -------------------------------------------------------------------------
     private void seedRencanaDanPeserta() {
         if (rencanaRepository.count() > 0) {
+            // Perbarui data rencana yang sudah ada jika detail pertemuan masih kosong
+            for (RencanaPendakian r : rencanaRepository.findAll()) {
+                if (r.getWaktuKumpul() == null || r.getTitikKumpul() == null) {
+                    if (r.getCatatan() != null && r.getCatatan().contains("Prau")) {
+                        r.setWaktuKumpul("06:30 WIB");
+                        r.setTitikKumpul("Basecamp Patak Banteng (Wonosobo)");
+                        r.setPerlengkapan("Tenda dome, Sleeping bag polar, Matras foil, Jaket hangat, Jas hujan, Headlamp, Logistik pribadi");
+                        r.setEstimasiBiaya(65000);
+                        r.setKontak("0812-3456-7890");
+                    } else if (r.getCatatan() != null && r.getCatatan().contains("Rinjani")) {
+                        r.setWaktuKumpul("05:30 WITA");
+                        r.setTitikKumpul("Basecamp TNGR Sembalun (Lombok Timur)");
+                        r.setPerlengkapan("Tenda windproof 4 season, Sleeping bag bulu angsa, Matras tebal, Jaket windproof/down jacket, Headlamp & baterai cadangan, Sepatu trekking, Logistik 4 hari, P3K pribadi");
+                        r.setEstimasiBiaya(350000);
+                        r.setKontak("0852-6677-8899");
+                    } else if (r.getCatatan() != null && r.getCatatan().contains("Papandayan")) {
+                        r.setWaktuKumpul("07:00 WIB");
+                        r.setTitikKumpul("Pos Tiket Camp David Cisurupan (Garut)");
+                        r.setPerlengkapan("Tenda, Sleeping bag, Matras, Jaket gunung, Jas hujan, Pakaian ganti, Air minum min 2L, Makanan ringan");
+                        r.setEstimasiBiaya(50000);
+                        r.setKontak("0813-2012-3456");
+                    } else {
+                        r.setWaktuKumpul("06:00 WIB");
+                        r.setTitikKumpul("Basecamp Utama");
+                        r.setPerlengkapan("Tenda, Sleeping bag, Matras, Jaket gunung, Jas hujan, Headlamp");
+                        r.setEstimasiBiaya(75000);
+                        r.setKontak("0812-3456-7890");
+                    }
+                    rencanaRepository.save(r);
+                }
+            }
             return;
         }
 
@@ -500,6 +531,11 @@ public class DataSeeder implements CommandLineRunner {
                     .pembuat(sari)
                     .jalur(jalurPrau)
                     .tanggalNaik(LocalDate.now().plusDays(7))
+                    .waktuKumpul("06:30 WIB")
+                    .titikKumpul("Basecamp Patak Banteng (Wonosobo)")
+                    .perlengkapan("Tenda dome, Sleeping bag polar, Matras foil, Jaket hangat, Jas hujan, Headlamp, Logistik pribadi")
+                    .estimasiBiaya(65000)
+                    .kontak("0812-3456-7890")
                     .kuota(6)
                     .levelMinimum(LevelFisik.PEMULA)
                     .catatan("Hiking santai menikmati sunrise Gunung Prau Dieng. Terbuka untuk pemula. Kita kumpul di Basecamp Patak Banteng Sabtu siang.")
@@ -513,6 +549,11 @@ public class DataSeeder implements CommandLineRunner {
                     .pembuat(budi)
                     .jalur(jalurRinjani)
                     .tanggalNaik(LocalDate.now().plusDays(21))
+                    .waktuKumpul("05:30 WITA")
+                    .titikKumpul("Basecamp TNGR Sembalun (Lombok Timur)")
+                    .perlengkapan("Tenda windproof 4 season, Sleeping bag bulu angsa, Matras tebal, Jaket windproof/down jacket, Headlamp & baterai cadangan, Sepatu trekking, Logistik 4 hari, P3K pribadi")
+                    .estimasiBiaya(350000)
+                    .kontak("0852-6677-8899")
                     .kuota(4)
                     .levelMinimum(LevelFisik.MAHIR)
                     .catatan("Ekspedisi Rinjani 4D3N via Sembalun tembus Senaru. Wajib fisik prima, bawa perlengkapan standar summit dingin dan tenda windproof.")
@@ -526,6 +567,11 @@ public class DataSeeder implements CommandLineRunner {
                     .pembuat(sari)
                     .jalur(jalurPapandayan)
                     .tanggalNaik(LocalDate.now().plusDays(14))
+                    .waktuKumpul("07:00 WIB")
+                    .titikKumpul("Pos Tiket Camp David Cisurupan (Garut)")
+                    .perlengkapan("Tenda, Sleeping bag, Matras, Jaket gunung, Jas hujan, Pakaian ganti, Air minum min 2L, Makanan ringan")
+                    .estimasiBiaya(50000)
+                    .kontak("0813-2012-3456")
                     .kuota(10)
                     .levelMinimum(LevelFisik.PEMULA)
                     .catatan("Camp ceria Papandayan di Pondok Saladah dan foto di Hutan Mati. Cocok untuk first-time hiker.")
